@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
+		B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */; };
+		B5B309DC1A770ED6003E143B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309DB1A770ED6003E143B /* ViewController.swift */; };
+		B5B309DF1A770ED6003E143B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B309DD1A770ED6003E143B /* Main.storyboard */; };
+		B5B309E11A770ED6003E143B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B309E01A770ED6003E143B /* Images.xcassets */; };
+		B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B309E21A770ED6003E143B /* LaunchScreen.xib */; };
+		B5B309F01A770ED6003E143B /* HafenCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309EF1A770ED6003E143B /* HafenCityTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5B309EA1A770ED6003E143B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5B309C91A770ED6003E143B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5B309D01A770ED6003E143B;
+			remoteInfo = HafenCity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B309D51A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5B309D61A770ED6003E143B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5B309D91A770ED6003E143B /* HafenCity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HafenCity.xcdatamodel; sourceTree = "<group>"; };
+		B5B309DB1A770ED6003E143B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5B309DE1A770ED6003E143B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B5B309E01A770ED6003E143B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B5B309E31A770ED6003E143B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B5B309E91A770ED6003E143B /* HafenCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HafenCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B309EE1A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5B309EF1A770ED6003E143B /* HafenCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HafenCityTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5B309CE1A770ED6003E143B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5B309E61A770ED6003E143B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5B309C81A770ED6003E143B = {
+			isa = PBXGroup;
+			children = (
+				B5B309D31A770ED6003E143B /* HafenCity */,
+				B5B309EC1A770ED6003E143B /* HafenCityTests */,
+				B5B309D21A770ED6003E143B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5B309D21A770ED6003E143B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5B309D11A770ED6003E143B /* HafenCity.app */,
+				B5B309E91A770ED6003E143B /* HafenCityTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5B309D31A770ED6003E143B /* HafenCity */ = {
+			isa = PBXGroup;
+			children = (
+				B5B309D61A770ED6003E143B /* AppDelegate.swift */,
+				B5B309DB1A770ED6003E143B /* ViewController.swift */,
+				B5B309DD1A770ED6003E143B /* Main.storyboard */,
+				B5B309E01A770ED6003E143B /* Images.xcassets */,
+				B5B309E21A770ED6003E143B /* LaunchScreen.xib */,
+				B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */,
+				B5B309D41A770ED6003E143B /* Supporting Files */,
+			);
+			path = HafenCity;
+			sourceTree = "<group>";
+		};
+		B5B309D41A770ED6003E143B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5B309D51A770ED6003E143B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5B309EC1A770ED6003E143B /* HafenCityTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5B309EF1A770ED6003E143B /* HafenCityTests.swift */,
+				B5B309ED1A770ED6003E143B /* Supporting Files */,
+			);
+			path = HafenCityTests;
+			sourceTree = "<group>";
+		};
+		B5B309ED1A770ED6003E143B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5B309EE1A770ED6003E143B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5B309D01A770ED6003E143B /* HafenCity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5B309F31A770ED6003E143B /* Build configuration list for PBXNativeTarget "HafenCity" */;
+			buildPhases = (
+				B5B309CD1A770ED6003E143B /* Sources */,
+				B5B309CE1A770ED6003E143B /* Frameworks */,
+				B5B309CF1A770ED6003E143B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HafenCity;
+			productName = HafenCity;
+			productReference = B5B309D11A770ED6003E143B /* HafenCity.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5B309E81A770ED6003E143B /* HafenCityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5B309F61A770ED6003E143B /* Build configuration list for PBXNativeTarget "HafenCityTests" */;
+			buildPhases = (
+				B5B309E51A770ED6003E143B /* Sources */,
+				B5B309E61A770ED6003E143B /* Frameworks */,
+				B5B309E71A770ED6003E143B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5B309EB1A770ED6003E143B /* PBXTargetDependency */,
+			);
+			name = HafenCityTests;
+			productName = HafenCityTests;
+			productReference = B5B309E91A770ED6003E143B /* HafenCityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5B309C91A770ED6003E143B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Ben Meline";
+				TargetAttributes = {
+					B5B309D01A770ED6003E143B = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B5B309E81A770ED6003E143B = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = B5B309D01A770ED6003E143B;
+					};
+				};
+			};
+			buildConfigurationList = B5B309CC1A770ED6003E143B /* Build configuration list for PBXProject "HafenCity" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B5B309C81A770ED6003E143B;
+			productRefGroup = B5B309D21A770ED6003E143B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5B309D01A770ED6003E143B /* HafenCity */,
+				B5B309E81A770ED6003E143B /* HafenCityTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5B309CF1A770ED6003E143B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5B309DF1A770ED6003E143B /* Main.storyboard in Resources */,
+				B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */,
+				B5B309E11A770ED6003E143B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5B309E71A770ED6003E143B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5B309CD1A770ED6003E143B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5B309DC1A770ED6003E143B /* ViewController.swift in Sources */,
+				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
+				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5B309E51A770ED6003E143B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5B309F01A770ED6003E143B /* HafenCityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5B309EB1A770ED6003E143B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5B309D01A770ED6003E143B /* HafenCity */;
+			targetProxy = B5B309EA1A770ED6003E143B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B5B309DD1A770ED6003E143B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5B309DE1A770ED6003E143B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B5B309E21A770ED6003E143B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5B309E31A770ED6003E143B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5B309F11A770ED6003E143B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B5B309F21A770ED6003E143B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5B309F41A770ED6003E143B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HafenCity/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5B309F51A770ED6003E143B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HafenCity/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B5B309F71A770ED6003E143B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HafenCityTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HafenCity.app/HafenCity";
+			};
+			name = Debug;
+		};
+		B5B309F81A770ED6003E143B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HafenCityTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HafenCity.app/HafenCity";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5B309CC1A770ED6003E143B /* Build configuration list for PBXProject "HafenCity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5B309F11A770ED6003E143B /* Debug */,
+				B5B309F21A770ED6003E143B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5B309F31A770ED6003E143B /* Build configuration list for PBXNativeTarget "HafenCity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5B309F41A770ED6003E143B /* Debug */,
+				B5B309F51A770ED6003E143B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B5B309F61A770ED6003E143B /* Build configuration list for PBXNativeTarget "HafenCityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5B309F71A770ED6003E143B /* Debug */,
+				B5B309F81A770ED6003E143B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B5B309D91A770ED6003E143B /* HafenCity.xcdatamodel */,
+			);
+			currentVersion = B5B309D91A770ED6003E143B /* HafenCity.xcdatamodel */;
+			path = HafenCity.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B5B309C91A770ED6003E143B /* Project object */;
+}
