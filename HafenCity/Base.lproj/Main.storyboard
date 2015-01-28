@@ -16,11 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="C6l-ON-294">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="C6l-ON-294">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="C6l-ON-294" secondAttribute="centerX" id="FlY-Vt-llm"/>
+                            <constraint firstAttribute="centerY" secondItem="C6l-ON-294" secondAttribute="centerY" id="n0F-3a-pj9"/>
+                            <constraint firstItem="C6l-ON-294" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="rg4-Zf-5GE"/>
+                            <constraint firstItem="C6l-ON-294" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="zNi-gG-9zP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="C6l-ON-294" id="ruO-QR-T18"/>
