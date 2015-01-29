@@ -35,5 +35,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Center View Controller-->
+        <scene sceneID="q7t-IY-dzg">
+            <objects>
+                <viewController storyboardIdentifier="CenterViewController" title="Center View Controller" id="lUL-uM-tt1" customClass="CenterViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DM0-EA-rVH"/>
+                        <viewControllerLayoutGuide type="bottom" id="HSe-aK-dim"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tjt-Hf-Xif">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BDx-Bs-PNy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="BDx-Bs-PNy" secondAttribute="centerY" constant="-64" id="1vA-4H-cca"/>
+                            <constraint firstAttribute="width" secondItem="BDx-Bs-PNy" secondAttribute="width" id="Fmt-4V-tNM"/>
+                            <constraint firstAttribute="height" secondItem="BDx-Bs-PNy" secondAttribute="height" id="c5w-ms-97d"/>
+                            <constraint firstAttribute="centerX" secondItem="BDx-Bs-PNy" secondAttribute="centerX" id="jcC-5A-tSn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menu" id="K74-kQ-xaY">
+                        <barButtonItem key="leftBarButtonItem" title="Left" id="fGM-WU-z5n">
+                            <connections>
+                                <action selector="kittiesTapped:" destination="lUL-uM-tt1" id="2vl-ZD-XSy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Right" id="i9z-Cw-llb">
+                            <connections>
+                                <action selector="puppiesTapped:" destination="lUL-uM-tt1" id="iZL-PA-Hll"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="BDx-Bs-PNy" id="aNQ-EU-hPo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="1055"/>
+        </scene>
+        <!--Left View Controller-->
+        <scene sceneID="jcY-eX-02m">
+            <objects>
+                <viewController storyboardIdentifier="LeftViewController" title="Left View Controller" id="lxf-QL-1e7" customClass="SidePanelViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kE-th-KLG"/>
+                        <viewControllerLayoutGuide type="bottom" id="XhQ-LY-4at"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8CM-Cs-yv8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvK-Z7-53V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="1737"/>
+        </scene>
+        <!--Right View Controller-->
+        <scene sceneID="wfg-vO-2ZL">
+            <objects>
+                <viewController storyboardIdentifier="RightViewController" title="Right View Controller" id="UgS-cf-b8K" customClass="SidePanelViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jrZ-Qt-ztS"/>
+                        <viewControllerLayoutGuide type="bottom" id="bLb-yw-1K4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xIq-fs-4aM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eyB-Yq-gWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1781" y="1737"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QiW-xA-E9O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OlK-F0-LGB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qlX-gO-OVS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lUL-uM-tt1" kind="relationship" relationship="rootViewController" id="8En-e9-3je"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce9-SO-kQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="1055"/>
+        </scene>
     </scenes>
 </document>
