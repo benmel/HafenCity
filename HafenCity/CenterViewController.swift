@@ -24,22 +24,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     
     var delegate: CenterViewControllerDelegate?
     
-    func animalSelected(animal: Animal) {
-        imageView.image = animal.image
-        titleLabel.text = animal.title
-        creatorLabel.text = animal.creator
-        
-        delegate?.collapseSidePanels?()
-    }
-
     // MARK: Button actions
     
-    @IBAction func kittiesTapped(sender: AnyObject) {
+    @IBAction func menuTapped(sender: AnyObject) {
         delegate?.toggleLeftPanel?()
-    }
-    
-    @IBAction func puppiesTapped(sender: AnyObject) {
-        delegate?.toggleRightPanel?()
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -56,5 +44,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

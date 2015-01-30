@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EB1A79B971000A8156 /* CenterViewController.swift */; };
 		B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */; };
-		B50AF10B1A79BD75000A8156 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EF1A79BD75000A8156 /* Animal.swift */; };
 		B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
 		B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		B50AF0EB1A79B971000A8156 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		B50AF0EF1A79BD75000A8156 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B309D51A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				B5B309DB1A770ED6003E143B /* ViewController.swift */,
 				B50AF0EB1A79B971000A8156 /* CenterViewController.swift */,
 				B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */,
-				B50AF0EF1A79BD75000A8156 /* Animal.swift */,
 				B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */,
 				B5B309DD1A770ED6003E143B /* Main.storyboard */,
 				B5B309E01A770ED6003E143B /* Images.xcassets */,
@@ -233,7 +230,6 @@
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
 				B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */,
 				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
-				B50AF10B1A79BD75000A8156 /* Animal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

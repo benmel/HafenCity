@@ -10,7 +10,6 @@ import UIKit
 
 @objc
 protocol SidePanelViewControllerDelegate {
-  func animalSelected(animal: Animal)
 }
 
 class SidePanelViewController: UIViewController  {
@@ -18,7 +17,6 @@ class SidePanelViewController: UIViewController  {
     //UITableViewDataSource, UITableViewDelegate
 //    @IBOutlet weak var tableView: UITableView!
     
-    var animals: Array<Animal>!
 //    
 //    struct TableView {
 //        struct CellIdentifiers {
