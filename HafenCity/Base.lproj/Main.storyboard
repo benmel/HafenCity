@@ -25,7 +25,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="menuTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="Tg9-QT-uQt"/>
+                                    <action selector="menuTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="r99-gH-bnZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -39,7 +39,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aRj-em-27r"/>
                     <connections>
-                        <outlet property="mapView" destination="f3V-LD-sis" id="QXw-0u-ieb"/>
+                        <outlet property="mapView" destination="f3V-LD-sis" id="l5d-cl-ZcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>

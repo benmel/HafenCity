@@ -17,11 +17,7 @@ protocol CenterViewControllerDelegate {
 }
 
 class CenterViewController: UIViewController, SidePanelViewControllerDelegate, MKMapViewDelegate {
-    
-    @IBOutlet weak private var imageView: UIImageView!
-    @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var creatorLabel: UILabel!
-    
+        
     var delegate: CenterViewControllerDelegate?
     
     // MARK: Button actions
@@ -37,13 +33,14 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
         // Do any additional setup after loading the view, typically from a nib.
         
         let location = CLLocationCoordinate2D(
-            latitude: 53.541776,
-            longitude: 9.993810
+            latitude: 53.541,
+            longitude: 9.992
         )
         
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.02, 0.02)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
+        mapView.showsPointsOfInterest = false
     }
     
     override func didReceiveMemoryWarning() {
