@@ -37,7 +37,7 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
             longitude: 9.992
         )
         
-        let span = MKCoordinateSpanMake(0.02, 0.02)
+        let span = MKCoordinateSpanMake(0.022, 0.022)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         mapView.showsPointsOfInterest = false
