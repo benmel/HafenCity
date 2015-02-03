@@ -12,59 +12,41 @@ import UIKit
 protocol SidePanelViewControllerDelegate {
 }
 
-class SidePanelViewController: UIViewController  {
+class SidePanelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //UITableViewDataSource, UITableViewDelegate
-//    @IBOutlet weak var tableView: UITableView!
-    
-//    
-//    struct TableView {
-//        struct CellIdentifiers {
-//            static let AnimalCell = "AnimalCell"
-//        }
-//    }
+    @IBOutlet weak var tableView: UITableView!
     
     var delegate: SidePanelViewControllerDelegate?
+    
+    let items: [String] = ["Map", "Locations", "Tour", "Credits"]
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        tableView.reloadData()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     // MARK: Table View Data Source
     
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return animals.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.AnimalCell, forIndexPath: indexPath) as AnimalCell
-//        cell.configureForAnimal(animals[indexPath.row])
-//        return cell
-//    }
-//    
-//    // Mark: Table View Delegate
-//    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count;
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        cell.textLabel?.text = self.items[indexPath.row]
+        return cell
+    }
+    
+    // Mark: Table View Delegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        let selectedAnimal = animals[indexPath.row]
 //        delegate?.animalSelected(selectedAnimal)
-//    }
+    }
     
 }
-
-//class AnimalCell: UITableViewCell {
-//  @IBOutlet weak var animalImageView: UIImageView!
-//  @IBOutlet weak var imageNameLabel: UILabel!
-//  @IBOutlet weak var imageCreatorLabel: UILabel!
-//  
-//  func configureForAnimal(animal: Animal) {
-//    animalImageView.image = animal.image
-//    imageNameLabel.text = animal.title
-//    imageCreatorLabel.text = animal.creator
-//  }
-//}

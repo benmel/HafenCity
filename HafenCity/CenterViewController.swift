@@ -11,8 +11,7 @@ import MapKit
 
 @objc
 protocol CenterViewControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func toggleRightPanel()
+    optional func toggleLeftPanel() -> Bool
     optional func collapseSidePanels()
 }
 
@@ -23,7 +22,12 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     // MARK: Button actions
     
     @IBAction func menuTapped(sender: AnyObject) {
-        delegate?.toggleLeftPanel?()
+        var showingLeft = delegate?.toggleLeftPanel?()
+        if (showingLeft == true) {
+            disableMap()
+        } else {
+            enableMap()
+        }
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -41,6 +45,18 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         mapView.showsPointsOfInterest = false
+    }
+    
+    func enableMap() {
+        mapView.zoomEnabled = true
+        mapView.scrollEnabled = true
+        mapView.userInteractionEnabled = true
+    }
+    
+    func disableMap() {
+        mapView.zoomEnabled = false
+        mapView.scrollEnabled = false
+        mapView.userInteractionEnabled = false
     }
     
     override func didReceiveMemoryWarning() {

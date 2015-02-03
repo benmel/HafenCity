@@ -14,7 +14,7 @@ enum SlideOutState {
     case LeftPanelExpanded
 }
 
-class ContainerViewController: UIViewController, CenterViewControllerDelegate {
+class ContainerViewController: UIViewController, CenterViewControllerDelegate, UIGestureRecognizerDelegate {
     
     var centerNavigationController: UINavigationController!
     var centerViewController: CenterViewController!
@@ -28,7 +28,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     
     var leftViewController: SidePanelViewController?
     
-    let centerPanelExpandedOffset: CGFloat = 150
+    let centerPanelExpandedOffset: CGFloat = 200
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +44,14 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         
         centerNavigationController.navigationBar.hidden = true
         centerNavigationController.didMoveToParentViewController(self)
+        
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+//        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
   
     // MARK: CenterViewController delegate methods
   
-    func toggleLeftPanel() {
+    func toggleLeftPanel() -> Bool {
         let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
         
         if notAlreadyExpanded {
@@ -56,6 +59,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         }
         
         animateLeftPanel(shouldExpand: notAlreadyExpanded)
+        return notAlreadyExpanded
     }
 
     func collapseSidePanels() {
@@ -113,6 +117,34 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     // MARK: Gesture recognizer
   
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+//        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
+//        
+//        switch(recognizer.state) {
+//        case .Began:
+//            if (currentState == .Collapsed) {
+//                if (gestureIsDraggingFromLeftToRight) {
+//                    addLeftPanelViewController()
+//                } else {
+//                    addRightPanelViewController()
+//                }
+//                
+//                showShadowForCenterViewController(true)
+//            }
+//        case .Changed:
+//            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+//            recognizer.setTranslation(CGPointZero, inView: view)
+//        case .Ended:
+//            if (leftViewController != nil) {
+//                // animate the side panel open or closed based on whether the view has moved more or less than halfway
+//                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
+//                animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
+//            } else if (rightViewController != nil) {
+//                let hasMovedGreaterThanHalfway = recognizer.view!.center.x < 0
+//                animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
+//            }
+//        default:
+//            break
+//        }
     }
 }
 
