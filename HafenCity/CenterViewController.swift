@@ -15,17 +15,25 @@ protocol CenterViewControllerDelegate {
     optional func collapseSidePanels()
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, MKMapViewDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate {
         
     var delegate: CenterViewControllerDelegate?
+    var showingLeft: Bool?
     
     // MARK: Button actions
     
     @IBAction func menuTapped(sender: AnyObject) {
-        var showingLeft = delegate?.toggleLeftPanel?()
+        showingLeft = delegate?.toggleLeftPanel?()
         if (showingLeft == true) {
             disableMap()
         } else {
+            enableMap()
+        }
+    }
+    
+    @IBAction func didTap(sender: UITapGestureRecognizer) {
+        if (showingLeft == true) {
+            showingLeft = delegate?.toggleLeftPanel?()
             enableMap()
         }
     }
