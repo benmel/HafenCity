@@ -1,39 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6pV-Ez-aAj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Center View Controller-->
+        <scene sceneID="q7t-IY-dzg">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CenterViewController" title="Center View Controller" id="lUL-uM-tt1" customClass="CenterViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="DM0-EA-rVH"/>
+                        <viewControllerLayoutGuide type="bottom" id="HSe-aK-dim"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="tjt-Hf-Xif">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="C6l-ON-294">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-LD-sis">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXI-1K-Jqd">
+                                <rect key="frame" x="0.0" y="5" width="64" height="64"/>
+                                <state key="normal" image="menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="r99-gH-bnZ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="C6l-ON-294" secondAttribute="centerX" id="FlY-Vt-llm"/>
-                            <constraint firstAttribute="centerY" secondItem="C6l-ON-294" secondAttribute="centerY" id="n0F-3a-pj9"/>
-                            <constraint firstItem="C6l-ON-294" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="rg4-Zf-5GE"/>
-                            <constraint firstItem="C6l-ON-294" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="zNi-gG-9zP"/>
+                            <constraint firstAttribute="width" secondItem="f3V-LD-sis" secondAttribute="width" id="Nfu-Sq-2N8"/>
+                            <constraint firstAttribute="centerY" secondItem="f3V-LD-sis" secondAttribute="centerY" id="onB-Gc-agG"/>
+                            <constraint firstAttribute="height" secondItem="f3V-LD-sis" secondAttribute="height" id="wZa-6J-l4l"/>
+                            <constraint firstAttribute="centerX" secondItem="f3V-LD-sis" secondAttribute="centerX" id="zzr-DZ-80N"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AqF-LL-weN" appends="YES" id="mCb-ZR-jxB"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="aRj-em-27r"/>
                     <connections>
-                        <outlet property="mapView" destination="C6l-ON-294" id="ruO-QR-T18"/>
+                        <outlet property="mapView" destination="f3V-LD-sis" id="l5d-cl-ZcX"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AqF-LL-weN">
+                    <connections>
+                        <action selector="didTap:" destination="lUL-uM-tt1" id="E1D-uO-rw1"/>
+                        <outlet property="delegate" destination="lUL-uM-tt1" id="ev1-qN-l5d"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="2201" y="1055"/>
+        </scene>
+        <!--Left View Controller-->
+        <scene sceneID="jcY-eX-02m">
+            <objects>
+                <viewController storyboardIdentifier="LeftViewController" title="Left View Controller" id="lxf-QL-1e7" customClass="SidePanelViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kE-th-KLG"/>
+                        <viewControllerLayoutGuide type="bottom" id="XhQ-LY-4at"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8CM-Cs-yv8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PKu-ME-Oaa">
+                                <rect key="frame" x="0.0" y="16" width="600" height="584"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lxf-QL-1e7" id="Uek-Yk-FIz"/>
+                                    <outlet property="delegate" destination="lxf-QL-1e7" id="IC5-m9-Q1f"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PKu-ME-Oaa" id="ZcC-mk-chf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvK-Z7-53V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521" y="1055"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qM9-Ye-mzC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6pV-Ez-aAj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Weq-NU-Jos">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lUL-uM-tt1" kind="relationship" relationship="rootViewController" id="3mI-9p-gOJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xek-K0-5UW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1389" y="1055"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="32" height="32"/>
+    </resources>
 </document>
