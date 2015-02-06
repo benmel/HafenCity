@@ -31,6 +31,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         }
     }
     
+    @IBAction func centerTapped(sender: AnyObject) {
+        setCenter()
+    }
+    
     @IBAction func didTap(sender: UITapGestureRecognizer) {
         if (showingLeft == true) {
             showingLeft = delegate?.toggleLeftPanel?()
@@ -43,16 +47,17 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        setCenter()
+    }
+    
+    func setCenter() {
         let location = CLLocationCoordinate2D(
             latitude: 53.541,
             longitude: 9.992
         )
-        
         let span = MKCoordinateSpanMake(0.022, 0.022)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
-        mapView.showsPointsOfInterest = false
     }
     
     func enableMap() {
