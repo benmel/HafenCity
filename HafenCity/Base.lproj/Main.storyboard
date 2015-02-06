@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6pV-Ez-aAj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Center View Controller-->
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-LD-sis">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-LD-sis">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <gestureRecognizers/>
                             </mapView>
@@ -29,10 +30,21 @@
                                     <action selector="menuTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="r99-gH-bnZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ced-un-54B">
+                                <rect key="frame" x="557" y="558" width="32" height="32"/>
+                                <state key="normal" image="map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="Hzf-va-dEB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="HSe-aK-dim" firstAttribute="top" secondItem="ced-un-54B" secondAttribute="bottom" constant="10" id="7xU-56-cC2"/>
+                            <constraint firstItem="ced-un-54B" firstAttribute="trailing" secondItem="tjt-Hf-Xif" secondAttribute="trailingMargin" constant="5" id="DfV-uZ-9Vr"/>
                             <constraint firstAttribute="width" secondItem="f3V-LD-sis" secondAttribute="width" id="Nfu-Sq-2N8"/>
                             <constraint firstAttribute="centerY" secondItem="f3V-LD-sis" secondAttribute="centerY" id="onB-Gc-agG"/>
                             <constraint firstAttribute="height" secondItem="f3V-LD-sis" secondAttribute="height" id="wZa-6J-l4l"/>
@@ -108,6 +120,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="map" width="32" height="32"/>
         <image name="menu" width="32" height="32"/>
     </resources>
 </document>
