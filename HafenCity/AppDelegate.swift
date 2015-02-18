@@ -24,6 +24,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = containerViewController
         window!.makeKeyAndVisible()
         
+        if NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedOnce") {
+            // app has already launched
+        } else {
+            let dataPath = NSBundle.mainBundle().pathForResource("Locations", ofType: "json")
+            let data = NSData(contentsOfFile: dataPath!)
+            let locations = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers, error: nil) as NSArray
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            locations.enumerateObjectsUsingBlock( { (obj, idx, stop) -> Void in
+                
+                var location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedContext) as Location
+                location.name = obj.objectForKey("name") as String
+                location.coordX = obj.objectForKey("coordX") as NSNumber
+                location.coordY = obj.objectForKey("coordY") as NSNumber
+                location.imagePath = obj.objectForKey("imagePath") as String
+                location.text = obj.objectForKey("text") as String
+                
+                var error: NSError?
+                if (!managedContext.save(&error)) {
+                    println("Could not save \(error), \(error?.userInfo)")
+                }
+            })
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
         return true
     }
 

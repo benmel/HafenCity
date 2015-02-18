@@ -1,0 +1,3 @@
+[{ "coordX": 9.984447, "coordY": 53.541376, "imagePath": "Documents/test1.png", "name": "Elbphilharmonie", "text": "This is the first building" },
+ { "coordX": 9.993400, "coordY": 53.539224, "imagePath": "Documents/test2.png", "name": "Unilever", "text": "This is the second building" },
+ { "coordX": 10.003866, "coordY": 53.545777, "imagePath": "Documents/test3.png", "name": "Spiegel", "text": "This is the third building" }]
