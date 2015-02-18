@@ -69,7 +69,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        performSegueWithIdentifier("DetailsLocation", sender: view)
+        let annotation = view.annotation as CustomAnnotation
+        performSegueWithIdentifier("DetailsLocation", sender: annotation)
     }
         
     override func viewDidLoad() {
@@ -124,9 +125,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
                 longitude: location.coordX as CLLocationDegrees
             )
             
-            let annotation = MKPointAnnotation()
-            annotation.setCoordinate(coordinate)
+            let annotation = CustomAnnotation(location: coordinate)
             annotation.title = location.name
+            annotation.imagePath = location.imagePath
+            annotation.text = location.text
             mapView.addAnnotation(annotation)
         }
     }
@@ -135,8 +137,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            let annotationView = sender as MKAnnotationView
-            controller.testString = annotationView.annotation.title
+            let annotation = sender as CustomAnnotation
+            controller.annotation = annotation
         }
     }
     

@@ -10,14 +10,19 @@ import UIKit
 
 class LocationViewController: UIViewController {
     
-    var testString: String?
+    var annotation: CustomAnnotation?
     
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var imagePathLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        testLabel.text = testString
+        titleLabel.text = annotation?.title
+        imagePathLabel.text = annotation?.imagePath
+        textLabel.text = annotation?.text
     }
     
     override func didReceiveMemoryWarning() {
