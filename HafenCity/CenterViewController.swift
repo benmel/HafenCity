@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 @objc
 protocol CenterViewControllerDelegate {
@@ -19,6 +20,9 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    var locations = [Location]()
     
     // MARK: Button actions
     
@@ -88,6 +92,13 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         annotation.title = "HafenCity"
         annotation.subtitle = "Hamburg"
         mapView.addAnnotation(annotation)
+        
+        let fetchRequest = NSFetchRequest(entityName:"Location")
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Location] {
+            locations = fetchResults
+        }
+        
+        
     }
     
     func setCenter() {

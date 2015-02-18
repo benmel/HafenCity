@@ -10,6 +10,7 @@
 		B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EB1A79B971000A8156 /* CenterViewController.swift */; };
 		B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */; };
 		B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */; };
+		B54BB0A11A9513360084327D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A01A9513360084327D /* Location.swift */; };
 		B57BCB5D1A8453F00078DB96 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 		B50AF0EB1A79B971000A8156 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
+		B54BB0A01A9513360084327D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				B5B309DD1A770ED6003E143B /* Main.storyboard */,
 				B5B309E21A770ED6003E143B /* LaunchScreen.xib */,
 				B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */,
+				B54BB0A01A9513360084327D /* Location.swift */,
 				B5B309D41A770ED6003E143B /* Supporting Files */,
 			);
 			path = HafenCity;
@@ -232,6 +235,7 @@
 				B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */,
 				B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */,
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
+				B54BB0A11A9513360084327D /* Location.swift in Sources */,
 				B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */,
 				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
 			);
