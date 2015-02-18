@@ -135,7 +135,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            controller.testString = "Hello Ben"
+            let annotationView = sender as MKAnnotationView
+            controller.testString = annotationView.annotation.title
         }
     }
     
