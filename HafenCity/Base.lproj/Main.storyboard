@@ -55,8 +55,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aRj-em-27r"/>
+                    <keyCommands/>
                     <connections>
                         <outlet property="mapView" destination="f3V-LD-sis" id="l5d-cl-ZcX"/>
+                        <segue destination="Q07-wc-Bli" kind="show" identifier="DetailsLocation" id="ygA-3R-K9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,7 +69,49 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2201" y="1055"/>
+            <point key="canvasLocation" x="2281" y="1055"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="CAj-cu-klR">
+            <objects>
+                <viewController title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ei0-5X-18z"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Va-T8-aKM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ap1-NG-6Dv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zA4-5G-fqd">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="i6P-EH-NCC" kind="unwind" unwindAction="backToCenterViewController:" id="Khd-gN-9co"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpB-b7-imc">
+                                <rect key="frame" x="16" y="74" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Sb7-Hp-rua"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="testLabel" destination="VpB-b7-imc" id="jI3-AG-arA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eON-Ms-Dcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="i6P-EH-NCC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3845" y="1055"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="jcY-eX-02m">
@@ -117,6 +161,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xek-K0-5UW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1389" y="1055"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1yY-fS-SqM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Q07-wc-Bli" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dyw-Zn-t87">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rnh-Lp-fM2" kind="relationship" relationship="rootViewController" id="grv-CK-vBi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OL0-n0-GET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3033" y="1055"/>
         </scene>
     </scenes>
     <resources>

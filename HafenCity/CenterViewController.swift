@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 @objc
 protocol CenterViewControllerDelegate {
@@ -19,6 +20,9 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    var locations = [Location]()
     
     // MARK: Button actions
     
@@ -44,10 +48,57 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     
     @IBOutlet weak var mapView: MKMapView!
     
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        
+        if anView == nil {
+            anView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            anView!.canShowCallout = true
+            anView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+        }
+        else {
+            //we are re-using a view, update its annotation reference...
+            anView!.annotation = annotation
+        }
+        
+        return anView
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        performSegueWithIdentifier("DetailsLocation", sender: view)
+        
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        mapView.delegate = self
         setCenter()
+        
+        
+        let location = CLLocationCoordinate2D(
+            latitude: 53.541483,
+            longitude: 9.993638
+        )
+        
+        let annotation = MKPointAnnotation()
+        annotation.setCoordinate(location)
+        annotation.title = "HafenCity"
+        annotation.subtitle = "Hamburg"
+        mapView.addAnnotation(annotation)
+        
+        let fetchRequest = NSFetchRequest(entityName:"Location")
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Location] {
+            locations = fetchResults
+        }
+        
+        
     }
     
     func setCenter() {
@@ -70,6 +121,18 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         mapView.zoomEnabled = false
         mapView.scrollEnabled = false
         mapView.userInteractionEnabled = false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DetailsLocation" {
+            let nav = segue.destinationViewController as UINavigationController
+            let controller = nav.topViewController as LocationViewController
+            controller.testString = "Hello Ben"
+        }
+    }
+    
+    @IBAction func backToCenterViewController(segue:UIStoryboardSegue) {
+        
     }
     
     override func didReceiveMemoryWarning() {
