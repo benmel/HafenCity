@@ -42,7 +42,9 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
         
-        centerNavigationController.navigationBar.hidden = true
+        centerNavigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        centerNavigationController.navigationBar.shadowImage = UIImage()
+        centerNavigationController.navigationBar.translucent = true
         centerNavigationController.didMoveToParentViewController(self)
     }
   
