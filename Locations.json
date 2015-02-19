@@ -1,3 +1,19 @@
-[{ "coordX": 9.984447, "coordY": 53.541376, "imagePath": "Documents/test1.png", "name": "Elbphilharmonie", "text": "This is the first building" },
- { "coordX": 9.993400, "coordY": 53.539224, "imagePath": "Documents/test2.png", "name": "Unilever", "text": "This is the second building" },
- { "coordX": 10.003866, "coordY": 53.545777, "imagePath": "Documents/test3.png", "name": "Spiegel", "text": "This is the third building" }]
+[{ "name": "Elbphilharmonie", "coordX": 9.984447, "coordY": 53.541376, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Unilever | Strandkai 1", "coordX": 9.993400, "coordY": 53.539224, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Kaiserkai 35 - 45", "coordX": 9.988912, "coordY": 53.541609, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Kaiserkai 1/ Großer Grasbrook 12", "coordX": 9.993157, "coordY":
+    53.541829, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Kaiserkai 10 - 12", "coordX":  9.990531, "coordY": 53.541810, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Kaiserkai 56", "coordX": 9.987309, "coordY": 53.541668,  "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Sandtorkai 68", "coordX": 9.987428, "coordY": 53.542692, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Ocean's End | Am Sandtorkai 66", "coordX": 9.987990, "coordY": 53.542746, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "H2O | Am Sandtorkai 64", "coordX": 9.988962, "coordY": 53.542804, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "China Shipping | Am Sandtorkai 60", "coordX": 9.990624, "coordY":53.542924, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Harbour Cube | Am Sandtorkai 58", "coordX": 9.991376, "coordY":53.542944, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Am Sandtorkai 48", "coordX": 9.994897, "coordY": 53.543186, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Coffee Plaza | Am Sandtorpark 4", "coordX": 9.995037, "coordY":53.542401, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Hafenliebe | Am Sandtorpark 10 - 14/ Am Dalmannkai 4", "coordX": 9.995672, "coordY": 53.542243, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Marco Polo Tower | Hübenerstraße 1", "coordX": 9.993032, "coordY": 53.539597, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" },
+ { "name": "Sumatra | Überseeboulevard 4 - 10 ", "coordX": 9.997977, "coordY":53.541718, "imagePath": "Documents/placeholder.png", "text": "Placeholder text" }]
+ 
+ 
