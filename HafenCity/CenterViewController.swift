@@ -20,8 +20,6 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
-    
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var locations = [Location]()
     
     // MARK: Button actions
@@ -71,8 +69,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        performSegueWithIdentifier("DetailsLocation", sender: view)
-        
+        let annotation = view.annotation as CustomAnnotation
+        performSegueWithIdentifier("DetailsLocation", sender: annotation)
     }
         
     override func viewDidLoad() {
@@ -81,24 +79,21 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         mapView.delegate = self
         setCenter()
         
+        // get managed context
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
         
-        let location = CLLocationCoordinate2D(
-            latitude: 53.541483,
-            longitude: 9.993638
-        )
-        
-        let annotation = MKPointAnnotation()
-        annotation.setCoordinate(location)
-        annotation.title = "HafenCity"
-        annotation.subtitle = "Hamburg"
-        mapView.addAnnotation(annotation)
-        
+        // get locations
+        var error: NSError?
         let fetchRequest = NSFetchRequest(entityName:"Location")
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Location] {
-            locations = fetchResults
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Location]?
+        if let results = fetchedResults {
+            locations = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
         }
         
-        
+        setAnnotations()
     }
     
     func setCenter() {
@@ -123,11 +118,27 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         mapView.userInteractionEnabled = false
     }
     
+    func setAnnotations() {
+        for location in locations {
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.coordY as CLLocationDegrees,
+                longitude: location.coordX as CLLocationDegrees
+            )
+            
+            let annotation = CustomAnnotation(location: coordinate)
+            annotation.title = location.name
+            annotation.imagePath = location.imagePath
+            annotation.text = location.text
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            controller.testString = "Hello Ben"
+            let annotation = sender as CustomAnnotation
+            controller.annotation = annotation
         }
     }
     

@@ -11,6 +11,9 @@
 		B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */; };
 		B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */; };
 		B54BB0A11A9513360084327D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A01A9513360084327D /* Location.swift */; };
+		B54BB0A31A9515F70084327D /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
+		B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
+		B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A61A954B000084327D /* CustomAnnotation.swift */; };
 		B57BCB5D1A8453F00078DB96 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
@@ -31,11 +34,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B54BB0A41A9518CF0084327D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B50AF0EB1A79B971000A8156 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		B54BB0A01A9513360084327D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B54BB0A21A9515F70084327D /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
+		B54BB0A61A954B000084327D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +89,7 @@
 		B5B309C81A770ED6003E143B = {
 			isa = PBXGroup;
 			children = (
+				B54BB0A21A9515F70084327D /* Locations.json */,
 				B5B309D31A770ED6003E143B /* HafenCity */,
 				B5B309EC1A770ED6003E143B /* HafenCityTests */,
 				B5B309D21A770ED6003E143B /* Products */,
@@ -92,6 +111,7 @@
 				B5B309D61A770ED6003E143B /* AppDelegate.swift */,
 				B5B309DB1A770ED6003E143B /* ViewController.swift */,
 				B50AF0EB1A79B971000A8156 /* CenterViewController.swift */,
+				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
 				B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */,
 				B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */,
 				B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */,
@@ -140,6 +160,7 @@
 				B5B309CD1A770ED6003E143B /* Sources */,
 				B5B309CE1A770ED6003E143B /* Frameworks */,
 				B5B309CF1A770ED6003E143B /* Resources */,
+				B54BB0A41A9518CF0084327D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -179,6 +200,7 @@
 				TargetAttributes = {
 					B5B309D01A770ED6003E143B = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = UVPP4AX2B4;
 					};
 					B5B309E81A770ED6003E143B = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -212,6 +234,7 @@
 			files = (
 				B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */,
 				B5B309DF1A770ED6003E143B /* Main.storyboard in Resources */,
+				B54BB0A31A9515F70084327D /* Locations.json in Resources */,
 				B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +255,7 @@
 			files = (
 				B57BCB5D1A8453F00078DB96 /* LocationViewController.swift in Sources */,
 				B5B309DC1A770ED6003E143B /* ViewController.swift in Sources */,
+				B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */,
 				B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */,
 				B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */,
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
@@ -360,9 +384,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HafenCity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -370,9 +397,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HafenCity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
