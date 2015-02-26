@@ -1,5 +1,5 @@
 //
-//  PageItemControllerViewController.swift
+//  PageItemController.swift
 //  HafenCity
 //
 //  Created by Ben Meline on 2/21/15.
