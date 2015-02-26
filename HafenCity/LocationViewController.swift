@@ -8,10 +8,18 @@
 
 import UIKit
 
+@objc
+protocol LocationViewControllerDelegate {
+    optional func toggleNavBar()
+}
+
 class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     
+    var delegate: LocationViewControllerDelegate?
     var annotation: CustomAnnotation?
     private var pageViewController: UIPageViewController?
+    private var textView: UITextView?
+    private var textViewHidden = false
     
     // Initialize it right away here
     private let contentImages = [
@@ -32,6 +40,8 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         // Do any additional setup after loading the view, typically from a nib.
         createPageViewController()
         setupPageControl()
+        setupTextView()
+        setupHideNavBarAndTextView()
     }
     
     private func createPageViewController() {
@@ -57,6 +67,60 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         appearance.pageIndicatorTintColor = UIColor.darkGrayColor()
         appearance.currentPageIndicatorTintColor = UIColor.whiteColor()
         appearance.backgroundColor = UIColor.blackColor()
+    }
+    
+    private func setupTextView() {
+        // set frame
+        let frame = self.view.frame
+        let x: CGFloat = 10
+        let width = frame.size.width - frame.origin.x - 2*x
+        let height: CGFloat = 150
+        let y = frame.size.height - frame.origin.y - height - 46
+        let frameText = CGRectMake(x, y, width, height)
+        textView = UITextView(frame: frameText)
+//        textView!.frame = frameText
+        
+        // attributes
+        textView!.text = annotation?.text
+        textView!.font = UIFont.systemFontOfSize(18)
+        textView!.textColor = UIColor.whiteColor()
+        textView!.selectable = false
+        textView!.editable = false
+        
+        // background
+        textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        textView!.layer.cornerRadius = 5
+        textView!.clipsToBounds = true
+        
+        self.view.addSubview(textView!)
+    }
+    
+    private func setupHideNavBarAndTextView() {
+        self.navigationController?.navigationBar.topItem?.title = annotation?.title
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func viewTapped() {
+        if (!textViewHidden) {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 0
+                return
+                }, completion: { _ in
+                    self.textViewHidden = true
+                }
+            )
+        } else {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 1
+                return
+                }, completion: { _ in
+                    self.textViewHidden = false
+                }
+            )
+        }
+        delegate?.toggleNavBar?()
+        
     }
     
     // MARK: - UIPageViewControllerDataSource

@@ -66,7 +66,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
             toggleLeftPanel()
         }
     }
-  
+    
     func addLeftPanelViewController() {
         if (leftViewController == nil) {
             leftViewController = UIStoryboard.leftViewController()

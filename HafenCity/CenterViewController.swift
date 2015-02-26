@@ -16,11 +16,12 @@ protocol CenterViewControllerDelegate {
     optional func collapseSidePanels()
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, LocationViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
     var locations = [Location]()
+    var navigationBarHidden = false
     
     // MARK: Button actions
     
@@ -96,6 +97,17 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         setAnnotations()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animateWithDuration(0.25, animations: {
+            self.navigationController?.navigationBar.alpha = 1
+            return
+            }, completion: { _ in
+                self.navigationBarHidden = false
+            }
+        )
+    }
+    
     func setCenter() {
         let location = CLLocationCoordinate2D(
             latitude: 53.541,
@@ -133,19 +145,36 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         }
     }
     
+    func toggleNavBar() {
+        if (!navigationBarHidden) {
+            UIView.animateWithDuration(0.25, animations: {
+                self.navigationController?.navigationBar.alpha = 0
+                return
+                }, completion: { _ in
+                    self.navigationBarHidden = true
+                }
+            )
+        } else {
+            UIView.animateWithDuration(0.25, animations: {
+                self.navigationController?.navigationBar.alpha = 1
+                return
+                }, completion: { _ in
+                    self.navigationBarHidden = false
+                }
+            )
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
+            controller.delegate = self
             let annotation = sender as CustomAnnotation
             controller.annotation = annotation
         }
     }
-    
-    @IBAction func backToCenterViewController(segue:UIStoryboardSegue) {
         
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

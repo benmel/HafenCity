@@ -19,12 +19,12 @@ class PageItemController: UIViewController {
             let newImageView = UIImageView(image: image)
             newImageView.contentMode = .ScaleAspectFill
             var frame = self.view.frame
-            frame.origin.y = 64
+//            frame.origin.y = 64
             newImageView.frame = frame
             self.view.addSubview(newImageView)
         }
     }
-        
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
