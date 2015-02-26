@@ -1,5 +1,5 @@
 //
-//  LeftViewController.swift
+//  SidePanelViewController.swift
 //  SlideOutNavigation
 //
 //  Created by James Frost on 03/08/2014.
