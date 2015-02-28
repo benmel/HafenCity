@@ -10,6 +10,7 @@ import UIKit
 
 @objc
 protocol SidePanelViewControllerDelegate {
+    func viewSelected(view: String)
 }
 
 class SidePanelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -45,8 +46,8 @@ class SidePanelViewController: UIViewController, UITableViewDataSource, UITableV
     // Mark: Table View Delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let selectedAnimal = animals[indexPath.row]
-//        delegate?.animalSelected(selectedAnimal)
+        let selectedView = self.items[indexPath.row]
+        delegate?.viewSelected(selectedView)
     }
     
 }

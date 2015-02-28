@@ -96,7 +96,6 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     private func setupHideNavBarAndTextView() {
-        self.navigationController?.navigationBar.topItem?.title = annotation?.title
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
         self.view.addGestureRecognizer(tapRecognizer)
     }
