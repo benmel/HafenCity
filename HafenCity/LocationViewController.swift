@@ -10,7 +10,7 @@ import UIKit
 
 @objc
 protocol LocationViewControllerDelegate {
-    optional func toggleNavBar()
+    func didTapView()
 }
 
 class LocationViewController: UIViewController, UIPageViewControllerDataSource {
@@ -19,7 +19,6 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     var annotation: CustomAnnotation?
     private var pageViewController: UIPageViewController?
     private var textView: UITextView?
-    private var textViewHidden = false
     
     // Initialize it right away here
     private let contentImages = [
@@ -101,25 +100,20 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func viewTapped() {
-        if (!textViewHidden) {
+        if (self.textView?.alpha == 1) {
             UIView.animateWithDuration(0.25, animations: {
-                self.textView?.alpha = 0
-                return
-                }, completion: { _ in
-                    self.textViewHidden = true
+                    self.textView?.alpha = 0
+                    return
                 }
             )
         } else {
             UIView.animateWithDuration(0.25, animations: {
-                self.textView?.alpha = 1
-                return
-                }, completion: { _ in
-                    self.textViewHidden = false
+                    self.textView?.alpha = 1
+                    return
                 }
             )
         }
-        delegate?.toggleNavBar?()
-        
+        delegate?.didTapView()
     }
     
     // MARK: - UIPageViewControllerDataSource

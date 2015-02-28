@@ -12,15 +12,15 @@ import CoreData
 
 @objc
 protocol CenterViewControllerDelegate {
-    optional func toggleLeftPanel() -> Bool
-    optional func collapseSidePanels()
+    func toggleLeftPanel() -> Bool
+    func collapseSidePanels() -> Bool
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, LocationViewControllerDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
-    var navigationBarHidden = false
+    
     var mapViewController: MapViewController!
     var listViewController: ListViewController!
     var tourViewController = UIViewController()
@@ -29,14 +29,16 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     // MARK: Button actions
     
     @IBAction func menuTapped(sender: AnyObject) {
-        showingLeft = delegate?.toggleLeftPanel?()
+        showingLeft = delegate?.toggleLeftPanel()
+        //disable interaction with child view controller
+        updateChildInteraction()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         mapViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as MapViewController
-        mapViewController.locationDelegate = self
+        mapViewController.delegate = self
         addViewController(mapViewController)
         
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
@@ -45,30 +47,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animateWithDuration(0.25, animations: {
-            self.navigationController?.navigationBar.alpha = 1
-            return
-            }, completion: { _ in
-                self.navigationBarHidden = false
-            }
-        )
-    }
-    
-    func toggleNavBar() {
-        if (!navigationBarHidden) {
+        if (self.navigationController?.navigationBar.alpha == 0) {
             UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 0
-                return
-                }, completion: { _ in
-                    self.navigationBarHidden = true
-                }
-            )
-        } else {
-            UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 1
-                return
-                }, completion: { _ in
-                    self.navigationBarHidden = false
+                    self.navigationController?.navigationBar.alpha = 1
+                    return
                 }
             )
         }
@@ -85,7 +67,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         } else if view == "Credits" {
             cycleViewControllers(creditsViewController)
         }
-        showingLeft = delegate?.toggleLeftPanel?()
+        showingLeft = delegate?.toggleLeftPanel()
+        updateChildInteraction()
     }
     
     func addViewController(viewController: UIViewController) {
@@ -106,10 +89,43 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         addViewController(viewController)
     }
     
-    func toggleMap() {
-        
+    func shouldHideNavBar() {
+        if (self.navigationController?.navigationBar.alpha == 1) {
+            UIView.animateWithDuration(0.25, animations: {
+                    self.navigationController?.navigationBar.alpha = 0
+                    return
+                }
+            )
+        } else {
+            UIView.animateWithDuration(0.25, animations: {
+                    self.navigationController?.navigationBar.alpha = 1
+                    return
+                }
+            )
+        }
     }
-            
+    
+    func shouldCollapseMenu() {
+        showingLeft = delegate?.collapseSidePanels()
+        updateChildInteraction()
+    }
+    
+    func updateChildInteraction() {
+        if (showingLeft == true) {
+            disableChildInteraction()
+        } else {
+            enableChildInteraction()
+        }
+    }
+    
+    func disableChildInteraction() {
+        NSNotificationCenter.defaultCenter().postNotificationName("disableInteraction", object: self)
+    }
+    
+    func enableChildInteraction() {
+        NSNotificationCenter.defaultCenter().postNotificationName("enableInteraction", object: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

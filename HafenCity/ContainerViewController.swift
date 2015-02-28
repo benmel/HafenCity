@@ -41,10 +41,6 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
-        
-//        centerNavigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        centerNavigationController.navigationBar.shadowImage = UIImage()
-//        centerNavigationController.navigationBar.translucent = true
         centerNavigationController.didMoveToParentViewController(self)
     }
   
@@ -61,10 +57,12 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         return notAlreadyExpanded
     }
 
-    func collapseSidePanels() {
+    func collapseSidePanels() -> Bool {
         if (currentState == .LeftPanelExpanded) {
             toggleLeftPanel()
         }
+        let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
+        return notAlreadyExpanded
     }
     
     func addLeftPanelViewController() {

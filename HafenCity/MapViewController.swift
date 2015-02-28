@@ -12,22 +12,45 @@ import CoreData
 
 @objc
 protocol MapViewControllerDelegate {
-    optional func toggleLeftPanel() -> Bool
+//    optional func toggleLeftPanel() -> Bool
+    func shouldHideNavBar()
+    func shouldCollapseMenu()
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationViewControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var locations = [Location]()
-    var navigationBarHidden = false
     var delegate: MapViewControllerDelegate?
-    var locationDelegate: LocationViewControllerDelegate?
-    var mapEnabled = true
+    var tapRecognizer: UITapGestureRecognizer?
+    var swipeRecognizer: UISwipeGestureRecognizer?
+    var edgeRecognizer: UIScreenEdgePanGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // set up interaction notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableMap", name:"disableInteraction", object: self.parentViewController)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableMap", name:"enableInteraction", object: self.parentViewController)
+        
+        // set up tap gestures
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
+        tapRecognizer?.enabled = false
+        self.view.addGestureRecognizer(tapRecognizer!)
+        
+        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
+        swipeRecognizer?.direction = .Left
+        swipeRecognizer?.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer!)
+        
+//        edgeRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "openMenu")
+//        edgeRecognizer?.edges = .Left
+//        edgeRecognizer?.enabled = true
+//        self.view.addGestureRecognizer(edgeRecognizer!)
+        
+        // set up map
         mapView.delegate = self
         setCenter()
         
@@ -44,27 +67,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
-        
+
         setAnnotations()
     }
 
     @IBAction func centerTapped(sender: AnyObject) {
         setCenter()
-    }
-    
-//    @IBAction func didTap(sender: UITapGestureRecognizer) {
-//        if (showingLeft == true) {
-//            showingLeft = delegate?.toggleLeftPanel?()
-//            enableMap()
-//        }
-//    }
-    
-    func toggleMap() {
-        if (mapEnabled) {
-            disableMap()
-        } else {
-            enableMap()
-        }
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -104,18 +112,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
+    func collapseMenu() {
+        delegate?.shouldCollapseMenu()
+    }
+    
     func enableMap() {
         mapView.zoomEnabled = true
         mapView.scrollEnabled = true
         mapView.userInteractionEnabled = true
-        mapEnabled = true
+        tapRecognizer?.enabled = false
+        swipeRecognizer?.enabled = false
     }
     
     func disableMap() {
         mapView.zoomEnabled = false
         mapView.scrollEnabled = false
         mapView.userInteractionEnabled = false
-        mapEnabled = false
+        tapRecognizer?.enabled = true
+        swipeRecognizer?.enabled = true
     }
     
     func setAnnotations() {
@@ -133,31 +147,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func toggleNavBar() {
-        if (!navigationBarHidden) {
-            UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 0
-                return
-                }, completion: { _ in
-                    self.navigationBarHidden = true
-                }
-            )
-        } else {
-            UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 1
-                return
-                }, completion: { _ in
-                    self.navigationBarHidden = false
-                }
-            )
-        }
+    func didTapView() {
+        delegate?.shouldHideNavBar()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            controller.delegate = self.locationDelegate
+            controller.delegate = self
             let annotation = sender as CustomAnnotation
             controller.annotation = annotation
             nav.navigationBar.topItem?.title = annotation.title
