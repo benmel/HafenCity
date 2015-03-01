@@ -9,12 +9,24 @@
 import UIKit
 import CoreData
 
+@objc
+protocol ListViewControllerDelegate {
+    func shouldCollapseMenu()
+}
+
 class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-//    var delegate: ListViewControllerDelegate?
+    // outlets
     @IBOutlet weak var table: UITableView!
-    var locations = [Location]()
+    
+    // delegates
+    var delegate: ListViewControllerDelegate?
     var locationDelegate: LocationViewControllerDelegate?
+    
+    // variables
+    var locations = [Location]()
+    var tapRecognizer: UITapGestureRecognizer?
+    var swipeRecognizer: UISwipeGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +40,20 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         table.dataSource = self
         table.delegate = self
         fetchLocations()
+        
+        // set up interaction notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableTable", name:"disableInteraction", object: self.parentViewController)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableTable", name:"enableInteraction", object: self.parentViewController)
+        
+        // set up tap gestures
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
+        tapRecognizer?.enabled = false
+        self.view.addGestureRecognizer(tapRecognizer!)
+        
+        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
+        swipeRecognizer?.direction = .Left
+        swipeRecognizer?.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer!)
     }
         
     func fetchLocations() {
@@ -55,6 +81,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedView = self.locations[indexPath.row]
         performSegueWithIdentifier("DetailsList", sender: selectedView)
+        table.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     // MARK: - Table view data source
@@ -79,6 +106,24 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         cell.textLabel!.text = person.valueForKey("name") as String?
         return cell
     }
+    
+    func collapseMenu() {
+        delegate?.shouldCollapseMenu()
+    }
+    
+    func enableTable() {
+        table.scrollEnabled = true
+        table.allowsSelection = true
+        tapRecognizer?.enabled = false
+        swipeRecognizer?.enabled = false
+    }
+    
+    func disableTable() {
+        table.scrollEnabled = false
+        table.allowsSelection = false
+        tapRecognizer?.enabled = true
+        swipeRecognizer?.enabled = true
+    }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsList" {
@@ -88,9 +133,6 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
             let location = sender as Location
             controller.text = location.text
             nav.navigationBar.topItem?.title = location.name
-//            let annotation = sender as CustomAnnotation
-//            controller.annotation = annotation
-//            nav.navigationBar.topItem?.title = annotation.title
         }
     }
 

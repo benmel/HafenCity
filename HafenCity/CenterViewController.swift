@@ -16,7 +16,7 @@ protocol CenterViewControllerDelegate {
     func collapseSidePanels() -> Bool
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, LocationViewControllerDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, ListViewControllerDelegate, LocationViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
@@ -44,8 +44,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         
         self.automaticallyAdjustsScrollViewInsets = false
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
+        listViewController.delegate = self
         listViewController.locationDelegate = self
-//        listViewController.view.frame = self.view.frame
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -91,22 +91,6 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         removeViewController(oldViewController)
         addViewController(viewController)
     }
-    
-//    func shouldHideNavBar() {
-//        if (self.navigationController?.navigationBar.alpha == 1) {
-//            UIView.animateWithDuration(0.25, animations: {
-//                    self.navigationController?.navigationBar.alpha = 0
-//                    return
-//                }
-//            )
-//        } else {
-//            UIView.animateWithDuration(0.25, animations: {
-//                    self.navigationController?.navigationBar.alpha = 1
-//                    return
-//                }
-//            )
-//        }
-//    }
     
     func didTapView() {
         if (self.navigationController?.navigationBar.alpha == 1) {
