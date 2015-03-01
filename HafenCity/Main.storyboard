@@ -92,6 +92,7 @@
                     </tableView>
                     <connections>
                         <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
+                        <segue destination="Q07-wc-Bli" kind="show" identifier="DetailsList" id="LiS-at-Hwx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-I0-TEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,4 +279,7 @@
         <image name="map" width="32" height="32"/>
         <image name="menu" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LiS-at-Hwx"/>
+    </inferredMetricsTieBreakers>
 </document>

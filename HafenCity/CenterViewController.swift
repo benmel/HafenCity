@@ -16,7 +16,7 @@ protocol CenterViewControllerDelegate {
     func collapseSidePanels() -> Bool
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, LocationViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
@@ -39,10 +39,13 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         // Do any additional setup after loading the view, typically from a nib.
         mapViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as MapViewController
         mapViewController.delegate = self
+        mapViewController.locationDelegate = self
         addViewController(mapViewController)
         
+        self.automaticallyAdjustsScrollViewInsets = false
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
-        listViewController.view.frame.origin.y = 64
+        listViewController.locationDelegate = self
+//        listViewController.view.frame = self.view.frame
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -89,17 +92,33 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         addViewController(viewController)
     }
     
-    func shouldHideNavBar() {
+//    func shouldHideNavBar() {
+//        if (self.navigationController?.navigationBar.alpha == 1) {
+//            UIView.animateWithDuration(0.25, animations: {
+//                    self.navigationController?.navigationBar.alpha = 0
+//                    return
+//                }
+//            )
+//        } else {
+//            UIView.animateWithDuration(0.25, animations: {
+//                    self.navigationController?.navigationBar.alpha = 1
+//                    return
+//                }
+//            )
+//        }
+//    }
+    
+    func didTapView() {
         if (self.navigationController?.navigationBar.alpha == 1) {
             UIView.animateWithDuration(0.25, animations: {
-                    self.navigationController?.navigationBar.alpha = 0
-                    return
+                self.navigationController?.navigationBar.alpha = 0
+                return
                 }
             )
         } else {
             UIView.animateWithDuration(0.25, animations: {
-                    self.navigationController?.navigationBar.alpha = 1
-                    return
+                self.navigationController?.navigationBar.alpha = 1
+                return
                 }
             )
         }

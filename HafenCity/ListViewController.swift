@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
-class ListViewController: UITableViewController, UITableViewDataSource {
+class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
+//    var delegate: ListViewControllerDelegate?
     @IBOutlet weak var table: UITableView!
     var locations = [Location]()
+    var locationDelegate: LocationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +24,13 @@ class ListViewController: UITableViewController, UITableViewDataSource {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        table.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         table.dataSource = self
         table.delegate = self
+        fetchLocations()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+    func fetchLocations() {
         // get managed context
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -47,6 +49,12 @@ class ListViewController: UITableViewController, UITableViewDataSource {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Mark: Table View Delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedView = self.locations[indexPath.row]
+        performSegueWithIdentifier("DetailsList", sender: selectedView)
     }
 
     // MARK: - Table view data source
@@ -70,6 +78,20 @@ class ListViewController: UITableViewController, UITableViewDataSource {
         let person = locations[indexPath.row]
         cell.textLabel!.text = person.valueForKey("name") as String?
         return cell
+    }
+        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DetailsList" {
+            let nav = segue.destinationViewController as UINavigationController
+            let controller = nav.topViewController as LocationViewController
+            controller.delegate = locationDelegate
+            let location = sender as Location
+            controller.text = location.text
+            nav.navigationBar.topItem?.title = location.name
+//            let annotation = sender as CustomAnnotation
+//            controller.annotation = annotation
+//            nav.navigationBar.topItem?.title = annotation.title
+        }
     }
 
     /*

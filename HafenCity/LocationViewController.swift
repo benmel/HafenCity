@@ -16,7 +16,8 @@ protocol LocationViewControllerDelegate {
 class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     
     var delegate: LocationViewControllerDelegate?
-    var annotation: CustomAnnotation?
+//    var annotation: CustomAnnotation?
+    var text: String?
     private var pageViewController: UIPageViewController?
     private var textView: UITextView?
     
@@ -80,7 +81,8 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
 //        textView!.frame = frameText
         
         // attributes
-        textView!.text = annotation?.text
+//        textView!.text = annotation?.text
+        textView!.text = text
         textView!.font = UIFont.systemFontOfSize(18)
         textView!.textColor = UIColor.whiteColor()
         textView!.selectable = false

@@ -13,15 +13,16 @@ import CoreData
 @objc
 protocol MapViewControllerDelegate {
 //    optional func toggleLeftPanel() -> Bool
-    func shouldHideNavBar()
+//    func shouldHideNavBar()
     func shouldCollapseMenu()
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate, LocationViewControllerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewControllerDelegate*/ {
 
     @IBOutlet weak var mapView: MKMapView!
     var locations = [Location]()
     var delegate: MapViewControllerDelegate?
+    var locationDelegate: LocationViewControllerDelegate?
     var tapRecognizer: UITapGestureRecognizer?
     var swipeRecognizer: UISwipeGestureRecognizer?
     var edgeRecognizer: UIScreenEdgePanGestureRecognizer?
@@ -147,17 +148,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationViewContro
         }
     }
     
-    func didTapView() {
-        delegate?.shouldHideNavBar()
-    }
+//    func didTapView() {
+//        delegate?.shouldHideNavBar()
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            controller.delegate = self
+//            controller.delegate = self
+            controller.delegate = locationDelegate
             let annotation = sender as CustomAnnotation
-            controller.annotation = annotation
+//            controller.annotation = annotation
+            controller.text = annotation.text
             nav.navigationBar.topItem?.title = annotation.title
         }
     }
