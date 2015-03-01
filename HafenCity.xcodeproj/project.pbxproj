@@ -29,6 +29,8 @@
 		B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A61A954B000084327D /* CustomAnnotation.swift */; };
 		B57BCB5D1A8453F00078DB96 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
+		B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */; };
+		B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
 		B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */; };
 		B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B309E21A770ED6003E143B /* LaunchScreen.xib */; };
@@ -80,6 +82,8 @@
 		B54BB0A61A954B000084327D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B309D51A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B309D61A770ED6003E143B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,8 +155,10 @@
 			children = (
 				B5B309D61A770ED6003E143B /* AppDelegate.swift */,
 				B50AF0EB1A79B971000A8156 /* CenterViewController.swift */,
-				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
 				B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */,
+				B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */,
+				B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */,
+				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
 				B57BCB5C1A8453F00078DB96 /* LocationViewController.swift */,
 				B515FFF51A992717001C4AAA /* PageItemController.swift */,
 				B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */,
@@ -305,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */,
 				B57BCB5D1A8453F00078DB96 /* LocationViewController.swift in Sources */,
 				B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */,
 				B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */,
@@ -313,6 +320,7 @@
 				B515FFF61A992717001C4AAA /* PageItemController.swift in Sources */,
 				B54BB0A11A9513360084327D /* Location.swift in Sources */,
 				B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */,
+				B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */,
 				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
