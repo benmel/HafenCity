@@ -17,9 +17,12 @@ class PageItemController: UIViewController {
         didSet {
             self.view.clipsToBounds = true
             let newImageView = UIImageView(image: image)
-            newImageView.contentMode = .ScaleAspectFill
+            if (image?.size.height > image?.size.width) {
+                newImageView.contentMode = .ScaleAspectFill
+            } else {
+                newImageView.contentMode = .ScaleAspectFit
+            }
             var frame = self.view.frame
-//            frame.origin.y = 64
             newImageView.frame = frame
             self.view.addSubview(newImageView)
         }
