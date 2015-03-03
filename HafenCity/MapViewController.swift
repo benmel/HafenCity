@@ -19,13 +19,15 @@ protocol MapViewControllerDelegate {
 
 class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewControllerDelegate*/ {
 
-    @IBOutlet weak var mapView: MKMapView!
+    var mapView: MKMapView!
     var locations = [Location]()
     var delegate: MapViewControllerDelegate?
     var locationDelegate: LocationViewControllerDelegate?
     var tapRecognizer: UITapGestureRecognizer?
     var swipeRecognizer: UISwipeGestureRecognizer?
     var edgeRecognizer: UIScreenEdgePanGestureRecognizer?
+    var annotationsLoaded = false
+    var mapLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +54,22 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
 //        self.view.addGestureRecognizer(edgeRecognizer!)
         
         // set up map
+        mapView = MKMapView(frame: self.view.frame)
         mapView.delegate = self
-        setCenter()
+        mapView.showsPointsOfInterest = false
+        self.view.addSubview(mapView)
+        
+        // set up button
+        let centerImage = UIImage(named: "map")
+        let size = centerImage?.size
+        let x = self.view.frame.width - size!.width - 10
+        let y = self.view.frame.height - size!.height - 10
+        let frame = CGRectMake(x, y, size!.width, size!.height)
+        let button = UIButton.buttonWithType(.Custom) as UIButton
+        button.frame = frame
+        button.setBackgroundImage(centerImage, forState: .Normal)
+        button.addTarget(self, action: "centerTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
         
         // get managed context
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -68,12 +84,24 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
-
-        setAnnotations()
     }
-
-    @IBAction func centerTapped(sender: AnyObject) {
-        setCenter()
+    
+    func mapViewWillStartLoadingMap(mapView: MKMapView!) {
+        if !mapLoaded {
+            setCenter(false)
+            mapLoaded = true
+        }
+    }
+    
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
+        if !annotationsLoaded {
+            setAnnotations()
+            annotationsLoaded = true
+        }
+    }
+    
+    func centerTapped(sender: UIButton!) {
+        setCenter(true)
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -88,6 +116,7 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
         if anView == nil {
             anView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             anView!.canShowCallout = true
+            anView!.animatesDrop = true
             anView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
         }
         else {
@@ -103,14 +132,14 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
         performSegueWithIdentifier("DetailsLocation", sender: annotation)
     }
     
-    func setCenter() {
+    func setCenter(animated: Bool) {
         let location = CLLocationCoordinate2D(
             latitude: 53.541,
             longitude: 9.992
         )
         let span = MKCoordinateSpanMake(0.022, 0.022)
         let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: animated)
     }
     
     func collapseMenu() {
@@ -148,18 +177,12 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
         }
     }
     
-//    func didTapView() {
-//        delegate?.shouldHideNavBar()
-//    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsLocation" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-//            controller.delegate = self
             controller.delegate = locationDelegate
             let annotation = sender as CustomAnnotation
-//            controller.annotation = annotation
             controller.text = annotation.text
             nav.navigationBar.topItem?.title = annotation.title
         }
