@@ -1,25 +1,31 @@
 //
-//  LocationViewController.swift
+//  HistoryViewController.swift
 //  HafenCity
 //
-//  Created by Ben Meline on 2/5/15.
+//  Created by Ben Meline on 3/3/15.
 //  Copyright (c) 2015 Ben Meline. All rights reserved.
 //
 
 import UIKit
 
 @objc
-protocol LocationViewControllerDelegate {
+protocol HistoryViewControllerDelegate {
+    func shouldCollapseMenu()
     func didTapView()
 }
 
-class LocationViewController: UIViewController, UIPageViewControllerDataSource {
+class HistoryViewController: UIViewController, UIPageViewControllerDataSource {
     
-    var delegate: LocationViewControllerDelegate?
-    var text: String?
-    var directory: String?
+    var delegate: HistoryViewControllerDelegate?
+    var directory = "history"
+    var tDirectory = "history_text"
     private var pageViewController: UIPageViewController?
     private var textView: UITextView?
+    
+    var tapRecognizerMenu: UITapGestureRecognizer?
+    var swipeRecognizer: UISwipeGestureRecognizer?
+    var tapRecognizer: UITapGestureRecognizer?
+    var alpha = 1
     
     // Initialize it right away here
     private var contentImages = [String]()
@@ -27,15 +33,31 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = .blackColor()
+        // set up tap gestures
+        tapRecognizerMenu = UITapGestureRecognizer(target: self, action: "collapseMenu")
+        tapRecognizerMenu?.enabled = false
+        self.view.addGestureRecognizer(tapRecognizerMenu!)
+
+        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
+        swipeRecognizer?.direction = .Left
+        swipeRecognizer?.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer!)
+        
+        // set up interaction notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableView", name:"disableInteraction", object: self.parentViewController)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableView", name:"enableInteraction", object: self.parentViewController)
+
+        
         getImagePaths()
         createPageViewController()
         setupPageControl()
-        setupTextView()
+//        setupTextView()
         setupHideNavBarAndTextView()
     }
     
     private func getImagePaths() {
-        let imageDirectory = "Images/" + directory!
+        let imageDirectory = "Images/" + directory
         let path = NSBundle.mainBundle().pathForResource(imageDirectory, ofType: nil)
         var error: NSError? = nil
         let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
@@ -67,51 +89,37 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         appearance.backgroundColor = UIColor.blackColor()
     }
     
-    private func setupTextView() {
-        // set frame
-        let frame = self.view.frame
-        let x: CGFloat = 10
-        let width = frame.size.width - frame.origin.x - 2*x
-        let height: CGFloat = 150
-        let y = frame.size.height - frame.origin.y - height - 46
-        let frameText = CGRectMake(x, y, width, height)
-        textView = UITextView(frame: frameText)
-        
-        // attributes
-        textView!.text = text
-        textView!.font = UIFont.systemFontOfSize(18)
-        textView!.textColor = UIColor.whiteColor()
-        textView!.selectable = false
-        textView!.editable = false
-        
-        // background
-        textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        textView!.layer.cornerRadius = 5
-        textView!.clipsToBounds = true
-        
-        self.view.addSubview(textView!)
-    }
-    
     private func setupHideNavBarAndTextView() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
-        self.view.addGestureRecognizer(tapRecognizer)
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
+        self.view.addGestureRecognizer(tapRecognizer!)
     }
     
     func viewTapped() {
-        if (self.textView?.alpha == 1) {
-            UIView.animateWithDuration(0.25, animations: {
-                    self.textView?.alpha = 0
-                    return
-                }
-            )
+        if (self.alpha == 0) {
+            self.alpha = 1
         } else {
-            UIView.animateWithDuration(0.25, animations: {
-                    self.textView?.alpha = 1
-                    return
-                }
-            )
+            self.alpha = 0
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("toggleTextView", object: self)
         delegate?.didTapView()
+    }
+    
+    func collapseMenu() {
+        delegate?.shouldCollapseMenu()
+    }
+    
+    func enableView() {
+        pageViewController?.view.userInteractionEnabled = true
+        tapRecognizer?.enabled = true
+        tapRecognizerMenu?.enabled = false
+        swipeRecognizer?.enabled = false
+    }
+
+    func disableView() {
+        pageViewController?.view.userInteractionEnabled = false
+        tapRecognizer?.enabled = false
+        tapRecognizerMenu?.enabled = true
+        swipeRecognizer?.enabled = true
     }
     
     // MARK: - UIPageViewControllerDataSource
@@ -145,10 +153,17 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
             pageItemController.itemIndex = itemIndex
             
             let imageName = contentImages[itemIndex]
-            let imageDirectory = "Images/" + directory!
+            let imageDirectory = "Images/" + directory
             let path = NSBundle.mainBundle().pathForResource(imageName, ofType: nil, inDirectory: imageDirectory)
             let image = UIImage(contentsOfFile: path!)
+            
+            let textDirectory = "Images/" + tDirectory
+            let filename = imageName.stringByDeletingPathExtension
+            let pathText = NSBundle.mainBundle().pathForResource(filename, ofType: "txt", inDirectory: textDirectory)
+            let text = String(contentsOfFile: pathText!, encoding: NSUTF8StringEncoding, error: nil)!
             pageItemController.image = image
+            pageItemController.alpha = self.alpha
+            pageItemController.text = text
             
             return pageItemController
         }
@@ -165,9 +180,21 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
-        
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
+
+//    /*
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//    }
+//    */
+//
+//}

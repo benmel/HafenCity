@@ -15,6 +15,7 @@ class CustomAnnotation: NSObject, MKAnnotation {
     var subtitle: String = ""
     var imagePath: String = ""
     var text: String = ""
+    var directory: String = ""
     init(location coord:CLLocationCoordinate2D) {
         self.coordinate = coord
         super.init()

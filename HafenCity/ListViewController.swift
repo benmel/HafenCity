@@ -134,6 +134,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
             controller.delegate = locationDelegate
             let location = sender as Location
             controller.text = location.text
+            controller.directory = location.directory
             nav.navigationBar.topItem?.title = location.name
         }
     }

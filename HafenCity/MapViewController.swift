@@ -12,12 +12,10 @@ import CoreData
 
 @objc
 protocol MapViewControllerDelegate {
-//    optional func toggleLeftPanel() -> Bool
-//    func shouldHideNavBar()
     func shouldCollapseMenu()
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewControllerDelegate*/ {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
     var mapView: MKMapView!
     var locations = [Location]()
@@ -171,7 +169,7 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
             
             let annotation = CustomAnnotation(location: coordinate)
             annotation.title = location.name
-            annotation.imagePath = location.imagePath
+            annotation.directory = location.directory
             annotation.text = location.text
             mapView.addAnnotation(annotation)
         }
@@ -184,6 +182,7 @@ class MapViewController: UIViewController, MKMapViewDelegate/*, LocationViewCont
             controller.delegate = locationDelegate
             let annotation = sender as CustomAnnotation
             controller.text = annotation.text
+            controller.directory = annotation.directory
             nav.navigationBar.topItem?.title = annotation.title
         }
     }

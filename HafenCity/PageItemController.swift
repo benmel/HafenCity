@@ -28,10 +28,59 @@ class PageItemController: UIViewController {
         }
     }
     
+    var text: String? {
+        didSet {
+            // set frame
+            let frame = self.view.frame
+            let x: CGFloat = 10
+            let width = frame.size.width - frame.origin.x - 2*x
+            let height: CGFloat = 150
+            let y = frame.size.height - frame.origin.y - height - 46
+            let frameText = CGRectMake(x, y, width, height)
+            textView = UITextView(frame: frameText)
+            
+            // attributes
+            textView!.text = text
+            textView!.alpha = CGFloat(self.alpha)
+            textView!.font = UIFont.systemFontOfSize(18)
+            textView!.textColor = UIColor.whiteColor()
+            textView!.selectable = false
+            textView!.editable = false
+            
+            // background
+            textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            textView!.layer.cornerRadius = 5
+            textView!.clipsToBounds = true
+            
+            self.view.addSubview(textView!)
+        }
+    }
+    
+    var alpha = 1
+    
+    var textView: UITextView?
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blackColor()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewTapped", name:"toggleTextView", object: self.parentViewController)
+    }
+    
+    func viewTapped() {
+        if (self.textView?.alpha == 1) {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 0
+                return
+                }
+            )
+        } else {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 1
+                return
+                }
+            )
+        }
     }
 
     override func didReceiveMemoryWarning() {

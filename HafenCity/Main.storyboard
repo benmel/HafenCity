@@ -74,10 +74,46 @@
             </objects>
             <point key="canvasLocation" x="2201" y="1873"/>
         </scene>
+        <!--History View Controller-->
+        <scene sceneID="aEZ-Jy-9hw">
+            <objects>
+                <viewController storyboardIdentifier="HistoryViewController" id="kO0-gC-Db1" customClass="HistoryViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yCz-2j-9RA"/>
+                        <viewControllerLayoutGuide type="bottom" id="SCO-cw-M4f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ara-ed-CdP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NfC-eS-Iiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2201" y="2761"/>
+        </scene>
+        <!--Credits View Controller-->
+        <scene sceneID="tLj-Mh-4wR">
+            <objects>
+                <viewController storyboardIdentifier="CreditsViewController" title="Credits View Controller" id="DHi-a0-Y63" customClass="CreditsViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yza-Jf-VhE"/>
+                        <viewControllerLayoutGuide type="bottom" id="L8B-lv-PEb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dQJ-FW-YeO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2201" y="3589"/>
+        </scene>
         <!--Location View Controller-->
         <scene sceneID="CAj-cu-klR">
             <objects>
-                <viewController title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationViewController" title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ei0-5X-18z"/>
                         <viewControllerLayoutGuide type="bottom" id="8Va-T8-aKM"/>

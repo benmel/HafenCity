@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 location.name = obj.objectForKey("name") as String
                 location.coordX = obj.objectForKey("coordX") as NSNumber
                 location.coordY = obj.objectForKey("coordY") as NSNumber
-                location.imagePath = obj.objectForKey("imagePath") as String
+                location.directory = obj.objectForKey("directory") as String
                 location.text = obj.objectForKey("text") as String
                 
                 var error: NSError?

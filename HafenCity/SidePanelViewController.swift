@@ -19,7 +19,7 @@ class SidePanelViewController: UIViewController, UITableViewDataSource, UITableV
     
     var delegate: SidePanelViewControllerDelegate?
     
-    let items: [String] = ["Map", "Locations", "Tour", "Credits"]
+    let items: [String] = ["Map", "Locations", "History", "Credits"]
   
     override func viewDidLoad() {
         super.viewDidLoad()
