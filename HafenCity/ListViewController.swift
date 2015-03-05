@@ -64,6 +64,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         // get locations
         var error: NSError?
         let fetchRequest = NSFetchRequest(entityName:"Location")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Location]?
         if let results = fetchedResults {
             locations = results
@@ -132,6 +134,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
             controller.delegate = locationDelegate
             let location = sender as Location
             controller.text = location.text
+            controller.directory = location.directory
             nav.navigationBar.topItem?.title = location.name
         }
     }

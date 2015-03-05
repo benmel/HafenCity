@@ -13,7 +13,7 @@ class Location: NSManagedObject {
 
     @NSManaged var coordX: NSNumber
     @NSManaged var coordY: NSNumber
-    @NSManaged var imagePath: String
+    @NSManaged var directory: String
     @NSManaged var name: String
     @NSManaged var text: String
 

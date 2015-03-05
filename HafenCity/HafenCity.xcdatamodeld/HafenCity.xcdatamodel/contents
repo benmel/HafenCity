@@ -3,7 +3,7 @@
     <entity name="Location" representedClassName="HafenCity.Location" syncable="YES">
         <attribute name="coordX" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="coordY" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="directory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

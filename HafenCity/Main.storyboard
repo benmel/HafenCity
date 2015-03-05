@@ -2,13 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eW7-Pu-PQS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Center View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="q7t-IY-dzg">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="Center View Controller" id="lUL-uM-tt1" customClass="MapViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="Map View Controller" id="lUL-uM-tt1" customClass="MapViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DM0-EA-rVH"/>
                         <viewControllerLayoutGuide type="bottom" id="HSe-aK-dim"/>
@@ -16,31 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="tjt-Hf-Xif">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-LD-sis">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <gestureRecognizers/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ced-un-54B">
-                                <rect key="frame" x="557" y="558" width="32" height="32"/>
-                                <state key="normal" image="map">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="centerTapped:" destination="lUL-uM-tt1" eventType="touchUpInside" id="Hzf-va-dEB"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="HSe-aK-dim" firstAttribute="top" secondItem="ced-un-54B" secondAttribute="bottom" constant="10" id="7xU-56-cC2"/>
-                            <constraint firstItem="ced-un-54B" firstAttribute="trailing" secondItem="tjt-Hf-Xif" secondAttribute="trailingMargin" constant="5" id="DfV-uZ-9Vr"/>
-                            <constraint firstAttribute="width" secondItem="f3V-LD-sis" secondAttribute="width" id="Nfu-Sq-2N8"/>
-                            <constraint firstAttribute="centerY" secondItem="f3V-LD-sis" secondAttribute="centerY" id="onB-Gc-agG"/>
-                            <constraint firstAttribute="height" secondItem="f3V-LD-sis" secondAttribute="height" id="wZa-6J-l4l"/>
-                            <constraint firstAttribute="centerX" secondItem="f3V-LD-sis" secondAttribute="centerX" id="zzr-DZ-80N"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="AqF-LL-weN" appends="YES" id="mCb-ZR-jxB"/>
                         </connections>
@@ -55,7 +31,6 @@
                     </navigationItem>
                     <keyCommands/>
                     <connections>
-                        <outlet property="mapView" destination="f3V-LD-sis" id="l5d-cl-ZcX"/>
                         <segue destination="Q07-wc-Bli" kind="show" identifier="DetailsLocation" id="ygA-3R-K9v"/>
                     </connections>
                 </viewController>
@@ -99,10 +74,46 @@
             </objects>
             <point key="canvasLocation" x="2201" y="1873"/>
         </scene>
+        <!--History View Controller-->
+        <scene sceneID="aEZ-Jy-9hw">
+            <objects>
+                <viewController storyboardIdentifier="HistoryViewController" id="kO0-gC-Db1" customClass="HistoryViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yCz-2j-9RA"/>
+                        <viewControllerLayoutGuide type="bottom" id="SCO-cw-M4f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ara-ed-CdP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NfC-eS-Iiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2201" y="2761"/>
+        </scene>
+        <!--Credits View Controller-->
+        <scene sceneID="tLj-Mh-4wR">
+            <objects>
+                <viewController storyboardIdentifier="CreditsViewController" title="Credits View Controller" id="DHi-a0-Y63" customClass="CreditsViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yza-Jf-VhE"/>
+                        <viewControllerLayoutGuide type="bottom" id="L8B-lv-PEb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dQJ-FW-YeO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2201" y="3589"/>
+        </scene>
         <!--Location View Controller-->
         <scene sceneID="CAj-cu-klR">
             <objects>
-                <viewController title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationViewController" title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ei0-5X-18z"/>
                         <viewControllerLayoutGuide type="bottom" id="8Va-T8-aKM"/>
@@ -211,10 +222,10 @@
             </objects>
             <point key="canvasLocation" x="-503" y="1055"/>
         </scene>
-        <!--HafenCity-->
+        <!--Center View Controller-->
         <scene sceneID="ZIg-mY-UTq">
             <objects>
-                <viewController storyboardIdentifier="CenterViewController" id="Adb-jY-adP" customClass="CenterViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CenterViewController" title="Center View Controller" id="Adb-jY-adP" customClass="CenterViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZId-6n-zsn"/>
                         <viewControllerLayoutGuide type="bottom" id="IcX-7a-zPn"/>
@@ -276,10 +287,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map" width="32" height="32"/>
         <image name="menu" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LiS-at-Hwx"/>
+        <segue reference="ygA-3R-K9v"/>
     </inferredMetricsTieBreakers>
 </document>

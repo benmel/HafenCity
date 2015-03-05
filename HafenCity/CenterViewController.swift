@@ -16,15 +16,15 @@ protocol CenterViewControllerDelegate {
     func collapseSidePanels() -> Bool
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, ListViewControllerDelegate, LocationViewControllerDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, ListViewControllerDelegate, LocationViewControllerDelegate, HistoryViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
     
     var mapViewController: MapViewController!
     var listViewController: ListViewController!
-    var tourViewController = UIViewController()
-    var creditsViewController = UIViewController()
+    var historyViewController: HistoryViewController!
+    var creditsViewController: CreditsViewController!
     
     // MARK: Button actions
     
@@ -46,6 +46,11 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
         listViewController.delegate = self
         listViewController.locationDelegate = self
+        
+        historyViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HistoryViewController") as HistoryViewController
+        historyViewController.delegate = self
+        
+        creditsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreditsViewController") as CreditsViewController
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,8 +70,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
             cycleViewControllers(mapViewController)
         } else if view == "Locations" {
             cycleViewControllers(listViewController)
-        } else if view == "Tour" {
-            cycleViewControllers(tourViewController)
+        } else if view == "History" {
+            cycleViewControllers(historyViewController)
         } else if view == "Credits" {
             cycleViewControllers(creditsViewController)
         }

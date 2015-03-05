@@ -16,36 +16,34 @@ protocol LocationViewControllerDelegate {
 class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     
     var delegate: LocationViewControllerDelegate?
-//    var annotation: CustomAnnotation?
     var text: String?
+    var directory: String?
     private var pageViewController: UIPageViewController?
     private var textView: UITextView?
     
     // Initialize it right away here
-    private let contentImages = [
-        "DSC_0257_s",
-        "DSC_0258_s",
-        "DSC_0259_s",
-        "DSC_0260_s",
-        "DSC_0261_s",
-        "DSC_0262_s",
-        "DSC_0263_s",
-        "DSC_0264_s",
-        "DSC_0265_s",
-        "DSC_0266_s",
-        "DSC_0267_s"]
+    private var contentImages = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        getImagePaths()
         createPageViewController()
         setupPageControl()
         setupTextView()
         setupHideNavBarAndTextView()
     }
     
+    private func getImagePaths() {
+        let imageDirectory = "Images/" + directory!
+        let path = NSBundle.mainBundle().pathForResource(imageDirectory, ofType: nil)
+        var error: NSError? = nil
+        let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
+        let imageList = directoryContents as [String]
+        contentImages += imageList
+    }
+    
     private func createPageViewController() {
-        
         let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("PageController") as UIPageViewController
         pageController.dataSource = self
         pageController.view.frame = self.view.frame
@@ -74,14 +72,12 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         let frame = self.view.frame
         let x: CGFloat = 10
         let width = frame.size.width - frame.origin.x - 2*x
-        let height: CGFloat = 150
+        let height: CGFloat = 170
         let y = frame.size.height - frame.origin.y - height - 46
         let frameText = CGRectMake(x, y, width, height)
         textView = UITextView(frame: frameText)
-//        textView!.frame = frameText
         
         // attributes
-//        textView!.text = annotation?.text
         textView!.text = text
         textView!.font = UIFont.systemFontOfSize(18)
         textView!.textColor = UIColor.whiteColor()
@@ -149,7 +145,8 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
             pageItemController.itemIndex = itemIndex
             
             let imageName = contentImages[itemIndex]
-            let path = NSBundle.mainBundle().pathForResource(imageName, ofType: ".JPG")
+            let imageDirectory = "Images/" + directory!
+            let path = NSBundle.mainBundle().pathForResource(imageName, ofType: nil, inDirectory: imageDirectory)
             let image = UIImage(contentsOfFile: path!)
             pageItemController.image = image
             
