@@ -34,7 +34,7 @@ class PageItemController: UIViewController {
             let frame = self.view.frame
             let x: CGFloat = 10
             let width = frame.size.width - frame.origin.x - 2*x
-            let height: CGFloat = 150
+            let height: CGFloat = 125
             let y = frame.size.height - frame.origin.y - height - 46
             let frameText = CGRectMake(x, y, width, height)
             textView = UITextView(frame: frameText)
