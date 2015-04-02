@@ -19,7 +19,6 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         imageView.frame = CGRect(origin: CGPointMake(0.0, 0.0), size:image.size)
         
         // Initialize scroll view
-        self.automaticallyAdjustsScrollViewInsets = false
         scrollView = UIScrollView(frame: self.view.frame)
         self.view.addSubview(scrollView)
         scrollView.delegate = self

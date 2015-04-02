@@ -14,8 +14,8 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
     var pageControl: UIPageControl!
     
     var pageImages: [UIImage] = []
-    var pageViews: [UIImageView?] = []
-//    var pageViews: [ImageScrollViewController?] = []
+//    var pageViews: [UIImageView?] = []
+    var pageViews: [ImageScrollViewController?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +77,16 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
             frame.origin.y = 0.0
             
             // 3
-            let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .ScaleAspectFit
-            newPageView.frame = frame
-            scrollView.addSubview(newPageView)
+//            let newPageView = UIImageView(image: pageImages[page])
+//            newPageView.contentMode = .ScaleAspectFit
+//            newPageView.frame = frame
+//            scrollView.addSubview(newPageView)
+            let newPageView = ImageScrollViewController()
+            newPageView.image = pageImages[page]
+            self.addChildViewController(newPageView)
+            newPageView.view.frame = frame
+            self.scrollView.addSubview(newPageView.view)
+            newPageView.didMoveToParentViewController(self)
             
             // 4
             pageViews[page] = newPageView
@@ -96,7 +102,11 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         // Remove a page from the scroll view and reset the container array
         if let pageView = pageViews[page] {
-            pageView.removeFromSuperview()
+//            pageView.removeFromSuperview()
+//            pageView.view.removeFromSuperview()
+            pageView.willMoveToParentViewController(nil)
+            pageView.view.removeFromSuperview()
+            pageView.removeFromParentViewController()
             pageViews[page] = nil
         }
         
