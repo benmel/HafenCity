@@ -14,27 +14,25 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
     var pageControl: UIPageControl!
     
     var pageImages: [UIImage] = []
-//    var pageViews: [UIImageView?] = []
-    var pageViews: [ImageScrollViewController?] = []
+    var pageControllers: [ImageScrollViewController?] = []
+    let pageSpacing:CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize scroll view
-        self.automaticallyAdjustsScrollViewInsets = false
-        scrollView = UIScrollView(frame: self.view.frame)
-        self.view.addSubview(scrollView)
-        scrollView.delegate = self
-        scrollView.pagingEnabled = true
-        scrollView.backgroundColor = .blackColor()
-        
         // Initialize page control
-        let pageControlHeight = CGFloat(50)
-        pageControl = UIPageControl(frame: CGRectMake(0, self.view.frame.size.height-pageControlHeight, self.view.frame.size.width, pageControlHeight))
-        self.view.addSubview(pageControl)
+        pageControl = UIPageControl()
         UIPageControl.appearance().backgroundColor = .blackColor()
         
-        // 1
+        // Initialize scroll view
+//        self.automaticallyAdjustsScrollViewInsets = false
+        scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.pagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .blackColor()
+        
         pageImages = [UIImage(named:"1.png")!,
             UIImage(named:"2.png")!,
             UIImage(named:"3.png")!,
@@ -43,20 +41,31 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         let pageCount = pageImages.count
         
-        // 2
         pageControl.currentPage = 0
         pageControl.numberOfPages = pageCount
         
-        // 3
         for _ in 0..<pageCount {
-            pageViews.append(nil)
+            pageControllers.append(nil)
         }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        // 4
+        let pageControlHeight = CGFloat(50)
+        pageControl.frame = CGRectMake(0, self.view.frame.size.height-pageControlHeight, self.view.frame.size.width, pageControlHeight)
+        self.view.addSubview(pageControl)
+        
+        var frame = self.view.frame
+        frame.origin.x -= pageSpacing
+        frame.size.width += 2 * pageSpacing
+        frame.size.height -= pageControlHeight
+        scrollView.frame = frame
+        self.view.addSubview(scrollView)
+        
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
         
-        // 5
         loadVisiblePages()
     }
     
@@ -68,28 +77,25 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // 1
-        if let pageView = pageViews[page] {
+        if let pageController = pageControllers[page] {
             // Do nothing. The view is already loaded.
         } else {
             // 2
             var frame = scrollView.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.x = frame.size.width * CGFloat(page) + pageSpacing
             frame.origin.y = 0.0
+            frame.size.width -= 2 * pageSpacing
             
             // 3
-//            let newPageView = UIImageView(image: pageImages[page])
-//            newPageView.contentMode = .ScaleAspectFit
-//            newPageView.frame = frame
-//            scrollView.addSubview(newPageView)
-            let newPageView = ImageScrollViewController()
-            newPageView.image = pageImages[page]
-            self.addChildViewController(newPageView)
-            newPageView.view.frame = frame
-            self.scrollView.addSubview(newPageView.view)
-            newPageView.didMoveToParentViewController(self)
+            let newPageController = ImageScrollViewController()
+            newPageController.image = pageImages[page]
+            self.addChildViewController(newPageController)
+            newPageController.view.frame = frame
+            scrollView.addSubview(newPageController.view)
+            newPageController.didMoveToParentViewController(self)
             
             // 4
-            pageViews[page] = newPageView
+            pageControllers[page] = newPageController
         }
     }
     
@@ -101,22 +107,46 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // Remove a page from the scroll view and reset the container array
-        if let pageView = pageViews[page] {
-//            pageView.removeFromSuperview()
-//            pageView.view.removeFromSuperview()
-            pageView.willMoveToParentViewController(nil)
-            pageView.view.removeFromSuperview()
-            pageView.removeFromParentViewController()
-            pageViews[page] = nil
+        if let pageController = pageControllers[page] {
+            pageController.willMoveToParentViewController(nil)
+            pageController.view.removeFromSuperview()
+            pageController.removeFromParentViewController()
+            pageControllers[page] = nil
         }
         
+    }
+    
+    func resetPage(page: Int) {
+        if page < 0 || page >= pageImages.count {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        if let pageController = pageControllers[page] {
+            pageController.scrollView.zoomScale = 0.1
+            pageController.centerScrollViewContents()
+            
+            pageController.resetScrollViewContents()
+        }
+    }
+    
+    func resetHiddenPages() {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+        
+        let firstPage = page - 1
+        let lastPage = page + 1
+        
+        resetPage(firstPage)
+        resetPage(lastPage)
     }
     
     func loadVisiblePages() {
         
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+//        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         
         // Update the page control
         pageControl.currentPage = page
@@ -146,7 +176,11 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         // Load the pages that are now on screen
         loadVisiblePages()
     }
-
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        resetHiddenPages()
+    }
+    
     /*
     // MARK: - Navigation
 

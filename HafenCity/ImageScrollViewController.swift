@@ -14,39 +14,37 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 1
         imageView = UIImageView(image: image)
         imageView.frame = CGRect(origin: CGPointMake(0.0, 0.0), size:image.size)
         
-        // Initialize scroll view
-        scrollView = UIScrollView(frame: self.view.frame)
+        scrollView = UIScrollView()
         self.view.addSubview(scrollView)
         scrollView.delegate = self
+        scrollView.indicatorStyle = .White
         
-        // 2
-        scrollView.addSubview(imageView)
-        scrollView.contentSize = image.size
-        
-        // 3
         var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(doubleTapRecognizer)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        // 4
+        scrollView.frame = self.view.bounds
+        scrollView.addSubview(imageView)
+        scrollView.contentSize = image.size
+        
         let scrollViewFrame = scrollView.frame
         let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
         let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
         let minScale = min(scaleWidth, scaleHeight);
         scrollView.minimumZoomScale = minScale;
         
-        // 5
         scrollView.maximumZoomScale = 2.0
         scrollView.zoomScale = minScale
         
-        // 6
         centerScrollViewContents()
-        
     }
     
     func centerScrollViewContents() {
@@ -67,6 +65,11 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         
         imageView.frame = contentsFrame
         
+    }
+    
+    func resetScrollViewContents() {
+        scrollView.zoomScale = scrollView.minimumZoomScale
+        centerScrollViewContents()
     }
     
     func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
