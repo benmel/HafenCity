@@ -23,6 +23,8 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         // Initialize page control
         pageControl = UIPageControl()
         UIPageControl.appearance().backgroundColor = .blackColor()
+        pageControl.addTarget(self, action: "pageControlTapped:", forControlEvents: .ValueChanged)
+        pageControl.defersCurrentPageDisplay = true
         
         // Initialize scroll view
 //        self.automaticallyAdjustsScrollViewInsets = false
@@ -123,9 +125,6 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         }
         
         if let pageController = pageControllers[page] {
-            pageController.scrollView.zoomScale = 0.1
-            pageController.centerScrollViewContents()
-            
             pageController.resetScrollViewContents()
         }
     }
@@ -170,6 +169,16 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         for var index = lastPage+1; index < pageImages.count; ++index {
             purgePage(index)
         }
+    }
+    
+    func pageControlTapped(control: UIPageControl) {
+        // Change scroll view to this page
+        let page = control.currentPage
+        var frame = scrollView.bounds
+        frame.origin.x = frame.size.width * CGFloat(page)
+        frame.origin.y = 0.0
+        scrollView.scrollRectToVisible(frame, animated: true)
+        resetHiddenPages()
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView!) {
