@@ -17,6 +17,11 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
     var pageControllers: [ImageScrollViewController?] = []
     let pageSpacing:CGFloat = 10
     
+    var text: String?
+    var textView: UITextView?
+    var directory: String?
+    var imageNames = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,14 +40,10 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .blackColor()
         
-        pageImages = [UIImage(named:"1.png")!,
-            UIImage(named:"2.png")!,
-            UIImage(named:"3.png")!,
-            UIImage(named:"4.png")!,
-            UIImage(named:"5.png")!]
+        getImageNames()
+        setPageImages()
         
         let pageCount = pageImages.count
-        
         pageControl.currentPage = 0
         pageControl.numberOfPages = pageCount
         
@@ -69,6 +70,50 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
         
         loadVisiblePages()
+        setupTextView()
+    }
+    
+    func getImageNames() {
+        let imageDirectory = "Images/" + directory!
+        let path = NSBundle.mainBundle().pathForResource(imageDirectory, ofType: nil)
+        var error: NSError? = nil
+        let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
+        let list = directoryContents as [String]
+        imageNames += list
+    }
+    
+    func setPageImages() {
+        let imageDirectory = "Images/" + directory!
+        for name in imageNames {
+            let path = NSBundle.mainBundle().pathForResource(name, ofType: nil, inDirectory: imageDirectory)
+            let image = UIImage(contentsOfFile: path!)
+            pageImages.append(image!)
+        }
+    }
+    
+    func setupTextView() {
+        // set frame
+        let frame = self.view.frame
+        let x: CGFloat = 10
+        let width = frame.size.width - frame.origin.x - 2*x
+        let height: CGFloat = 170
+        let y = frame.size.height - frame.origin.y - height - 46
+        let frameText = CGRectMake(x, y, width, height)
+        textView = UITextView(frame: frameText)
+        
+        // attributes
+        textView!.text = text
+        textView!.font = UIFont.systemFontOfSize(18)
+        textView!.textColor = UIColor.whiteColor()
+        textView!.selectable = false
+        textView!.editable = false
+        
+        // background
+        textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        textView!.layer.cornerRadius = 5
+        textView!.clipsToBounds = true
+        
+        self.view.addSubview(textView!)
     }
     
     func loadPage(page: Int) {
