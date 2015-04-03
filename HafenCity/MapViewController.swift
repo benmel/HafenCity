@@ -18,14 +18,14 @@ protocol MapViewControllerDelegate {
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     var mapView: MKMapView!
+    var button: UIButton!
     var locations = [Location]()
-    var delegate: MapViewControllerDelegate?
-    var locationDelegate: LocationViewControllerDelegate?
-    var tapRecognizer: UITapGestureRecognizer?
-    var swipeRecognizer: UISwipeGestureRecognizer?
-    var edgeRecognizer: UIScreenEdgePanGestureRecognizer?
-    var annotationsLoaded = false
+    var delegate: MapViewControllerDelegate!
+    var tapRecognizer: UITapGestureRecognizer!
+    var swipeRecognizer: UISwipeGestureRecognizer!
+//    var edgeRecognizer: UIScreenEdgePanGestureRecognizer!
     var mapLoaded = false
+    var annotationsLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,34 +38,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // set up tap gestures
         tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizer?.enabled = false
-        self.view.addGestureRecognizer(tapRecognizer!)
+        tapRecognizer.enabled = false
+        self.view.addGestureRecognizer(tapRecognizer)
         
         swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer?.direction = .Left
-        swipeRecognizer?.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer!)
+        swipeRecognizer.direction = .Left
+        swipeRecognizer.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer)
         
 //        edgeRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "openMenu")
-//        edgeRecognizer?.edges = .Left
-//        edgeRecognizer?.enabled = true
-//        self.view.addGestureRecognizer(edgeRecognizer!)
+//        edgeRecognizer.edges = .Left
+//        edgeRecognizer.enabled = true
+//        self.view.addGestureRecognizer(edgeRecognizer)
         
         // set up map
-        mapView = MKMapView(frame: self.view.frame)
+        mapView = MKMapView()
         mapView.delegate = self
         mapView.showsPointsOfInterest = false
         self.view.addSubview(mapView)
         
         // set up button
-        let centerImage = UIImage(named: "map")
-        let size = centerImage?.size
-        let x = self.view.frame.width - size!.width - 10
-        let y = self.view.frame.height - size!.height - 10
-        let frame = CGRectMake(x, y, size!.width, size!.height)
-        let button = UIButton.buttonWithType(.Custom) as UIButton
-        button.frame = frame
-        button.setBackgroundImage(centerImage, forState: .Normal)
+        button = UIButton.buttonWithType(.Custom) as UIButton
         button.addTarget(self, action: "centerTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
         
@@ -84,13 +77,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapViewWillStartLoadingMap(mapView: MKMapView!) {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        // set up button
+        let centerImage = UIImage(named: "map")
+        let size = centerImage?.size
+        let x = self.view.frame.width - size!.width - 10
+        let y = self.view.frame.height - size!.height - 10
+        let frame = CGRectMake(x, y, size!.width, size!.height)
+        button.frame = frame
+        button.setBackgroundImage(centerImage, forState: .Normal)
+        
+        // set up map
+        mapView.frame = self.view.frame
         if !mapLoaded {
             setCenter(false)
             mapLoaded = true
         }
     }
-    
+        
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
         if !annotationsLoaded {
             setAnnotations()
@@ -127,7 +133,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         let annotation = view.annotation as CustomAnnotation
-        performSegueWithIdentifier("DetailsLocation", sender: annotation)
+        performSegueWithIdentifier("Gallery", sender: annotation)
     }
     
     func setCenter(animated: Bool) {
@@ -141,23 +147,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func collapseMenu() {
-        delegate?.shouldCollapseMenu()
+        delegate.shouldCollapseMenu()
     }
     
     func enableMap() {
         mapView.zoomEnabled = true
         mapView.scrollEnabled = true
         mapView.userInteractionEnabled = true
-        tapRecognizer?.enabled = false
-        swipeRecognizer?.enabled = false
+        tapRecognizer.enabled = false
+        swipeRecognizer.enabled = false
     }
     
     func disableMap() {
         mapView.zoomEnabled = false
         mapView.scrollEnabled = false
         mapView.userInteractionEnabled = false
-        tapRecognizer?.enabled = true
-        swipeRecognizer?.enabled = true
+        tapRecognizer.enabled = true
+        swipeRecognizer.enabled = true
     }
     
     func setAnnotations() {
@@ -174,33 +180,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(annotation)
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "DetailsLocation" {
-            let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as LocationViewController
-            controller.delegate = locationDelegate
-            let annotation = sender as CustomAnnotation
-            controller.text = annotation.text
-            controller.directory = annotation.directory
-            nav.navigationBar.topItem?.title = annotation.title
-        }
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "Gallery" {
+            let nav = segue.destinationViewController as UINavigationController
+            let controller = nav.topViewController as GalleryViewController
+            let annotation = sender as CustomAnnotation
+            controller.text = annotation.text
+            controller.directory = annotation.directory
+            nav.navigationBar.topItem?.title = annotation.title
+        }
     }
-    */
-
 }
