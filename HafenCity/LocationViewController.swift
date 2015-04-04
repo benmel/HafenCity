@@ -11,6 +11,7 @@ import UIKit
 class LocationViewController: UIViewController {
 
     var galleryViewController: GalleryViewController!
+    var textViewController: TextViewController!
     var text: String?
     var directory: String?
     
@@ -22,13 +23,22 @@ class LocationViewController: UIViewController {
         let imageNames = getImageNames()
         let images = getImages(imageNames)
         galleryViewController.pageImages = images
+        
+        textViewController = TextViewController()
+        textViewController.text = text
+        textViewController.view.userInteractionEnabled = false
     }
     
     override func viewWillLayoutSubviews() {
         self.addChildViewController(galleryViewController)
         galleryViewController.view.frame = self.view.frame
         self.view.addSubview(galleryViewController.view)
-        galleryViewController.didMoveToParentViewController(self)        
+        galleryViewController.didMoveToParentViewController(self)
+        
+        self.addChildViewController(textViewController)
+        textViewController.view.frame = self.view.frame
+        self.view.addSubview(textViewController.view)
+        textViewController.didMoveToParentViewController(self)
     }
     
     func getImageNames() -> [String] {

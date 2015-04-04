@@ -17,9 +17,6 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
     var pageControllers: [ImageScrollViewController?] = []
     let pageSpacing:CGFloat = 10
     
-//    var text: String?
-//    var textView: UITextView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,33 +61,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
         
         loadVisiblePages()
-//        setupTextView()
     }
-    
-//    func setupTextView() {
-//        // set frame
-//        let frame = self.view.frame
-//        let x: CGFloat = 10
-//        let width = frame.size.width - frame.origin.x - 2*x
-//        let height: CGFloat = 170
-//        let y = frame.size.height - frame.origin.y - height - 46
-//        let frameText = CGRectMake(x, y, width, height)
-//        textView = UITextView(frame: frameText)
-//        
-//        // attributes
-//        textView!.text = text
-//        textView!.font = UIFont.systemFontOfSize(18)
-//        textView!.textColor = UIColor.whiteColor()
-//        textView!.selectable = false
-//        textView!.editable = false
-//        
-//        // background
-//        textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
-//        textView!.layer.cornerRadius = 5
-//        textView!.clipsToBounds = true
-//        
-//        self.view.addSubview(textView!)
-//    }
     
     func loadPage(page: Int) {
         
