@@ -33,18 +33,18 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        centerViewController = UIStoryboard.centerViewController()
-        centerViewController.delegate = self
-        
         // TODO: possible remove navigation controller from storyboard or from here
         // wrap the centerViewController in a navigation controller, so we can push views to it
         // and display bar button items in the navigation bar
+        
+        centerViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CenterViewController") as CenterViewController
+        centerViewController.delegate = self
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
         centerNavigationController.didMoveToParentViewController(self)
     }
-  
+    
     // MARK: CenterViewController delegate methods
   
     func toggleLeftPanel() -> Bool {

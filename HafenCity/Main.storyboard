@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eW7-Pu-PQS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Usq-He-1bA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -23,7 +23,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="HafenCity" id="aRj-em-27r">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="sIf-dK-Hmz">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="menuTapped:" destination="lUL-uM-tt1" id="z10-ad-sGm"/>
                             </connections>
@@ -42,7 +42,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2201" y="1055"/>
+            <point key="canvasLocation" x="2157" y="238"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="2uE-Jl-6Yv">
@@ -67,12 +67,12 @@
                     </tableView>
                     <connections>
                         <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
-                        <segue destination="Q07-wc-Bli" kind="show" identifier="DetailsList" id="LiS-at-Hwx"/>
+                        <segue destination="HJc-P8-ohi" kind="show" identifier="Gallery" id="M66-KY-dlL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-I0-TEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="1873"/>
+            <point key="canvasLocation" x="2157" y="1055"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="zl9-I0-Cob">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75Q-VV-qRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3845" y="1873"/>
+            <point key="canvasLocation" x="3925" y="1055"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="aEZ-Jy-9hw">
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfC-eS-Iiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="2761"/>
+            <point key="canvasLocation" x="2157" y="1921"/>
         </scene>
         <!--Credits View Controller-->
         <scene sceneID="tLj-Mh-4wR">
@@ -129,68 +129,13 @@
             </objects>
             <point key="canvasLocation" x="2201" y="3589"/>
         </scene>
-        <!--Location View Controller-->
-        <scene sceneID="CAj-cu-klR">
-            <objects>
-                <viewController storyboardIdentifier="LocationViewController" title="Location View Controller" id="rnh-Lp-fM2" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ei0-5X-18z"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Va-T8-aKM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ap1-NG-6Dv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpB-b7-imc">
-                                <rect key="frame" x="21" y="74" width="557" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-7I-SEm">
-                                <rect key="frame" x="21" y="128" width="557" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5h-ri-eeK">
-                                <rect key="frame" x="21" y="192" width="557" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="orE-Ok-rMq">
-                                <rect key="frame" x="16" y="511" width="568" height="37"/>
-                            </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4A-S4-cGV">
-                                <rect key="frame" x="0.0" y="64" width="600" height="447"/>
-                            </scrollView>
-                        </subviews>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="VpB-b7-imc"/>
-                                <exclude reference="ugU-7I-SEm"/>
-                                <exclude reference="A5h-ri-eeK"/>
-                                <exclude reference="orE-Ok-rMq"/>
-                                <exclude reference="D4A-S4-cGV"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Sb7-Hp-rua"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eON-Ms-Dcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3845" y="1055"/>
-        </scene>
         <!--Page View Controller-->
         <scene sceneID="Tdh-oR-U2u">
             <objects>
                 <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="QcB-La-GxO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iz-uc-FuI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4595" y="1055"/>
+            <point key="canvasLocation" x="3103" y="1921"/>
         </scene>
         <!--Page Item Controller-->
         <scene sceneID="Xer-cE-Wma">
@@ -208,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-lK-8bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5359" y="1055"/>
+            <point key="canvasLocation" x="3925" y="1921"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="jcY-eX-02m">
@@ -239,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvK-Z7-53V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-503" y="1055"/>
+            <point key="canvasLocation" x="453" y="1921"/>
         </scene>
         <!--Center View Controller-->
         <scene sceneID="ZIg-mY-UTq">
@@ -250,14 +195,14 @@
                         <viewControllerLayoutGuide type="bottom" id="IcX-7a-zPn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sqc-aT-xG5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="HafenCity" id="VLM-vr-760">
                         <barButtonItem key="backBarButtonItem" title="Back" id="owB-uT-Lby"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="x9h-9n-Ywk">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="menuTapped:" destination="Adb-jY-adP" id="cLh-YO-CFm"/>
                             </connections>
@@ -268,28 +213,28 @@
             </objects>
             <point key="canvasLocation" x="1265" y="1055"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1yY-fS-SqM">
+        <!--Container View Controller-->
+        <scene sceneID="FoN-RT-EM8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q07-wc-Bli" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dyw-Zn-t87">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rnh-Lp-fM2" kind="relationship" relationship="rootViewController" id="grv-CK-vBi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OL0-n0-GET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ContainerViewController" id="Usq-He-1bA" customClass="ContainerViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="32o-oc-lcd"/>
+                        <viewControllerLayoutGuide type="bottom" id="OlH-AJ-uje"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GYB-V2-mgi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIi-ai-YEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3087" y="1055"/>
+            <point key="canvasLocation" x="453" y="238"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cc9-HE-54l">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eW7-Pu-PQS" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CenterNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="eW7-Pu-PQS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WJs-Om-oBe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -307,7 +252,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OOW-bL-O6f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HJc-P8-ohi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GalleryNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="HJc-P8-ohi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEr-oD-edt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -320,10 +265,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25f-Ep-WTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3087" y="1873"/>
+            <point key="canvasLocation" x="3103" y="1055"/>
         </scene>
     </scenes>
     <resources>
         <image name="menu" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="M66-KY-dlL"/>
+    </inferredMetricsTieBreakers>
 </document>
