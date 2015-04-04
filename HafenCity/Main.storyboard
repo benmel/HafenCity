@@ -31,7 +31,7 @@
                     </navigationItem>
                     <keyCommands/>
                     <connections>
-                        <segue destination="HJc-P8-ohi" kind="show" identifier="Gallery" id="R2m-7X-bcA"/>
+                        <segue destination="hT9-bB-coQ" kind="show" identifier="Location" id="J8A-M1-GXL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,31 +67,31 @@
                     </tableView>
                     <connections>
                         <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
-                        <segue destination="HJc-P8-ohi" kind="show" identifier="Gallery" id="M66-KY-dlL"/>
+                        <segue destination="hT9-bB-coQ" kind="show" identifier="Location" id="x31-dQ-k4j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-I0-TEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2157" y="1055"/>
         </scene>
-        <!--Gallery View Controller-->
-        <scene sceneID="zl9-I0-Cob">
+        <!--Location View Controller-->
+        <scene sceneID="2oa-TH-Ck6">
             <objects>
-                <viewController storyboardIdentifier="GalleryViewController" id="kqI-5e-8Ln" customClass="GalleryViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationViewController" id="8AG-eZ-byx" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="59i-Xc-Zza"/>
-                        <viewControllerLayoutGuide type="bottom" id="cLK-kH-2fS"/>
+                        <viewControllerLayoutGuide type="top" id="s3b-du-HGy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lbs-1X-gSv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GIK-QM-8cD">
+                    <view key="view" contentMode="scaleToFill" id="s2i-ek-zgr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HjS-cG-1ue"/>
+                    <navigationItem key="navigationItem" id="YiZ-NU-bBf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="75Q-VV-qRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgu-LK-7Uf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3925" y="1055"/>
+            <point key="canvasLocation" x="3925" y="238"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="aEZ-Jy-9hw">
@@ -250,28 +250,28 @@
             <point key="canvasLocation" x="453" y="1055"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="OOW-bL-O6f">
+        <scene sceneID="QiR-oX-Jlr">
             <objects>
-                <navigationController storyboardIdentifier="GalleryNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="HJc-P8-ohi" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hT9-bB-coQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEr-oD-edt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vaY-1x-Kgc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kqI-5e-8Ln" kind="relationship" relationship="rootViewController" id="feN-cI-Raf"/>
+                        <segue destination="8AG-eZ-byx" kind="relationship" relationship="rootViewController" id="A8g-fO-7tj"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="25f-Ep-WTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wYO-G4-aS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3103" y="1055"/>
+            <point key="canvasLocation" x="3103" y="238"/>
         </scene>
     </scenes>
     <resources>
         <image name="menu" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M66-KY-dlL"/>
+        <segue reference="x31-dQ-k4j"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -81,7 +81,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     // Mark: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedView = self.locations[indexPath.row]
-        performSegueWithIdentifier("Gallery", sender: selectedView)
+        performSegueWithIdentifier("Location", sender: selectedView)
         table.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
@@ -127,9 +127,9 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Gallery" {
+        if segue.identifier == "Location" {
             let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as GalleryViewController
+            let controller = nav.topViewController as LocationViewController
             let location = sender as Location
             controller.text = location.text
             controller.directory = location.directory
