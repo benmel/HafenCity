@@ -20,13 +20,12 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var table: UITableView!
     
     // delegates
-    var delegate: ListViewControllerDelegate?
-    var locationDelegate: LocationViewControllerDelegate?
+    var delegate: ListViewControllerDelegate!
     
     // variables
     var locations = [Location]()
-    var tapRecognizer: UITapGestureRecognizer?
-    var swipeRecognizer: UISwipeGestureRecognizer?
+    var tapRecognizer: UITapGestureRecognizer!
+    var swipeRecognizer: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +46,13 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         
         // set up tap gestures
         tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizer?.enabled = false
-        self.view.addGestureRecognizer(tapRecognizer!)
+        tapRecognizer.enabled = false
+        self.view.addGestureRecognizer(tapRecognizer)
         
         swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer?.direction = .Left
-        swipeRecognizer?.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer!)
+        swipeRecognizer.direction = .Left
+        swipeRecognizer.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer)
     }
         
     func fetchLocations() {
@@ -110,28 +109,27 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     }
     
     func collapseMenu() {
-        delegate?.shouldCollapseMenu()
+        delegate.shouldCollapseMenu()
     }
     
     func enableTable() {
         table.scrollEnabled = true
         table.allowsSelection = true
-        tapRecognizer?.enabled = false
-        swipeRecognizer?.enabled = false
+        tapRecognizer.enabled = false
+        swipeRecognizer.enabled = false
     }
     
     func disableTable() {
         table.scrollEnabled = false
         table.allowsSelection = false
-        tapRecognizer?.enabled = true
-        swipeRecognizer?.enabled = true
+        tapRecognizer.enabled = true
+        swipeRecognizer.enabled = true
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailsList" {
             let nav = segue.destinationViewController as UINavigationController
             let controller = nav.topViewController as LocationViewController
-            controller.delegate = locationDelegate
             let location = sender as Location
             controller.text = location.text
             controller.directory = location.directory

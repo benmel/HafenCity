@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import MapKit
-import CoreData
 
 @objc
 protocol CenterViewControllerDelegate {
@@ -16,7 +14,7 @@ protocol CenterViewControllerDelegate {
     func collapseSidePanels() -> Bool
 }
 
-class CenterViewController: UIViewController, SidePanelViewControllerDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate, MapViewControllerDelegate, ListViewControllerDelegate, LocationViewControllerDelegate, HistoryViewControllerDelegate {
+class CenterViewController: UIViewController, SidePanelViewControllerDelegate, MapViewControllerDelegate, ListViewControllerDelegate, HistoryViewControllerDelegate {
         
     var delegate: CenterViewControllerDelegate?
     var showingLeft: Bool?
@@ -39,29 +37,16 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
         // Do any additional setup after loading the view, typically from a nib.
         mapViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as MapViewController
         mapViewController.delegate = self
-        mapViewController.locationDelegate = self
         addViewController(mapViewController)
         
         self.automaticallyAdjustsScrollViewInsets = false
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
         listViewController.delegate = self
-        listViewController.locationDelegate = self
         
         historyViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HistoryViewController") as HistoryViewController
         historyViewController.delegate = self
         
         creditsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreditsViewController") as CreditsViewController
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if (self.navigationController?.navigationBar.alpha == 0) {
-            UIView.animateWithDuration(0.25, animations: {
-                    self.navigationController?.navigationBar.alpha = 1
-                    return
-                }
-            )
-        }
     }
     
     func viewSelected(view: String) {
@@ -92,25 +77,10 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, U
     }
         
     func cycleViewControllers(viewController: UIViewController) {
+        let temp = self.childViewControllers
         let oldViewController = self.childViewControllers.last as UIViewController
         removeViewController(oldViewController)
         addViewController(viewController)
-    }
-    
-    func didTapView() {
-        if (self.navigationController?.navigationBar.alpha == 1) {
-            UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 0
-                return
-                }
-            )
-        } else {
-            UIView.animateWithDuration(0.25, animations: {
-                self.navigationController?.navigationBar.alpha = 1
-                return
-                }
-            )
-        }
     }
     
     func shouldCollapseMenu() {

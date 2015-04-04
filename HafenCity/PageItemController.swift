@@ -12,19 +12,20 @@ class PageItemController: UIViewController {
 
     // MARK: - Variables
     var itemIndex: Int = 0 // ***
-
+    var imageView: UIImageView!
+    var textView: UITextView!
+    
     var image: UIImage? {
         didSet {
             self.view.clipsToBounds = true
-            let newImageView = UIImageView(image: image)
-            if (image?.size.height > image?.size.width) {
-                newImageView.contentMode = .ScaleAspectFill
+            imageView = UIImageView(image: image)
+            if (image!.size.height > image!.size.width) {
+                imageView.contentMode = .ScaleAspectFill
             } else {
-                newImageView.contentMode = .ScaleAspectFit
+                imageView.contentMode = .ScaleAspectFit
             }
-            var frame = self.view.frame
-            newImageView.frame = frame
-            self.view.addSubview(newImageView)
+            imageView.frame = self.view.frame
+            self.view.addSubview(imageView)
         }
     }
     
@@ -41,7 +42,6 @@ class PageItemController: UIViewController {
             
             // attributes
             textView!.text = text
-            textView!.alpha = CGFloat(self.alpha)
             textView!.font = UIFont.systemFontOfSize(18)
             textView!.textColor = UIColor.whiteColor()
             textView!.selectable = false
@@ -56,38 +56,17 @@ class PageItemController: UIViewController {
         }
     }
     
-    var alpha = 1
-    
-    var textView: UITextView?
-    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blackColor()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewTapped", name:"toggleTextView", object: self.parentViewController)
     }
     
-    func viewTapped() {
-        if (self.textView?.alpha == 1) {
-            UIView.animateWithDuration(0.25, animations: {
-                self.textView?.alpha = 0
-                return
-                }
-            )
-        } else {
-            UIView.animateWithDuration(0.25, animations: {
-                self.textView?.alpha = 1
-                return
-                }
-            )
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     /*
     // MARK: - Navigation
 

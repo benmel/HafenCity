@@ -8,14 +8,8 @@
 
 import UIKit
 
-@objc
-protocol LocationViewControllerDelegate {
-    func didTapView()
-}
-
 class LocationViewController: UIViewController, UIPageViewControllerDataSource {
     
-    var delegate: LocationViewControllerDelegate?
     var text: String?
     var directory: String?
     private var pageViewController: UIPageViewController?
@@ -31,7 +25,6 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         createPageViewController()
         setupPageControl()
         setupTextView()
-        setupHideNavBarAndTextView()
     }
     
     private func getImagePaths() {
@@ -90,28 +83,6 @@ class LocationViewController: UIViewController, UIPageViewControllerDataSource {
         textView!.clipsToBounds = true
         
         self.view.addSubview(textView!)
-    }
-    
-    private func setupHideNavBarAndTextView() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
-        self.view.addGestureRecognizer(tapRecognizer)
-    }
-    
-    func viewTapped() {
-        if (self.textView?.alpha == 1) {
-            UIView.animateWithDuration(0.25, animations: {
-                    self.textView?.alpha = 0
-                    return
-                }
-            )
-        } else {
-            UIView.animateWithDuration(0.25, animations: {
-                    self.textView?.alpha = 1
-                    return
-                }
-            )
-        }
-        delegate?.didTapView()
     }
     
     // MARK: - UIPageViewControllerDataSource

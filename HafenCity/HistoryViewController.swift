@@ -11,21 +11,18 @@ import UIKit
 @objc
 protocol HistoryViewControllerDelegate {
     func shouldCollapseMenu()
-    func didTapView()
 }
 
 class HistoryViewController: UIViewController, UIPageViewControllerDataSource {
     
-    var delegate: HistoryViewControllerDelegate?
+    var delegate: HistoryViewControllerDelegate!
     var directory = "history"
     var tDirectory = "history_text"
     private var pageViewController: UIPageViewController?
-    private var textView: UITextView?
+    private var textView: UITextView!
     
-    var tapRecognizerMenu: UITapGestureRecognizer?
-    var swipeRecognizer: UISwipeGestureRecognizer?
-    var tapRecognizer: UITapGestureRecognizer?
-    var alpha = 1
+    var tapRecognizerMenu: UITapGestureRecognizer!
+    var swipeRecognizer: UISwipeGestureRecognizer!
     
     // Initialize it right away here
     private var contentImages = [String]()
@@ -36,24 +33,26 @@ class HistoryViewController: UIViewController, UIPageViewControllerDataSource {
         self.view.backgroundColor = .blackColor()
         // set up tap gestures
         tapRecognizerMenu = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizerMenu?.enabled = false
-        self.view.addGestureRecognizer(tapRecognizerMenu!)
+        tapRecognizerMenu.enabled = false
+        self.view.addGestureRecognizer(tapRecognizerMenu)
 
         swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer?.direction = .Left
-        swipeRecognizer?.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer!)
+        swipeRecognizer.direction = .Left
+        swipeRecognizer.enabled = false
+        self.view.addGestureRecognizer(swipeRecognizer)
         
         // set up interaction notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableView", name:"disableInteraction", object: self.parentViewController)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableView", name:"enableInteraction", object: self.parentViewController)
 
-        
         getImagePaths()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         createPageViewController()
         setupPageControl()
-//        setupTextView()
-        setupHideNavBarAndTextView()
     }
     
     private func getImagePaths() {
@@ -89,37 +88,20 @@ class HistoryViewController: UIViewController, UIPageViewControllerDataSource {
         appearance.backgroundColor = UIColor.blackColor()
     }
     
-    private func setupHideNavBarAndTextView() {
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "viewTapped")
-        self.view.addGestureRecognizer(tapRecognizer!)
-    }
-    
-    func viewTapped() {
-        if (self.alpha == 0) {
-            self.alpha = 1
-        } else {
-            self.alpha = 0
-        }
-        NSNotificationCenter.defaultCenter().postNotificationName("toggleTextView", object: self)
-        delegate?.didTapView()
-    }
-    
     func collapseMenu() {
-        delegate?.shouldCollapseMenu()
+        delegate.shouldCollapseMenu()
     }
     
     func enableView() {
         pageViewController?.view.userInteractionEnabled = true
-        tapRecognizer?.enabled = true
-        tapRecognizerMenu?.enabled = false
-        swipeRecognizer?.enabled = false
+        tapRecognizerMenu.enabled = false
+        swipeRecognizer.enabled = false
     }
 
     func disableView() {
         pageViewController?.view.userInteractionEnabled = false
-        tapRecognizer?.enabled = false
-        tapRecognizerMenu?.enabled = true
-        swipeRecognizer?.enabled = true
+        tapRecognizerMenu.enabled = true
+        swipeRecognizer.enabled = true
     }
     
     // MARK: - UIPageViewControllerDataSource
@@ -162,7 +144,6 @@ class HistoryViewController: UIViewController, UIPageViewControllerDataSource {
             let pathText = NSBundle.mainBundle().pathForResource(filename, ofType: "txt", inDirectory: textDirectory)
             let text = String(contentsOfFile: pathText!, encoding: NSUTF8StringEncoding, error: nil)!
             pageItemController.image = image
-            pageItemController.alpha = self.alpha
             pageItemController.text = text
             
             return pageItemController
