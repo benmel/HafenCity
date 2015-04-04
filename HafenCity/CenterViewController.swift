@@ -24,6 +24,8 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     var historyViewController: HistoryViewController!
     var creditsViewController: CreditsViewController!
     
+    var mapViewControllerLoaded = false
+    
     // MARK: Button actions
     
     @IBAction func menuTapped(sender: AnyObject) {
@@ -37,16 +39,23 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
         // Do any additional setup after loading the view, typically from a nib.
         mapViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as MapViewController
         mapViewController.delegate = self
-        addViewController(mapViewController)
         
-        self.automaticallyAdjustsScrollViewInsets = false
         listViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ListViewController") as ListViewController
         listViewController.delegate = self
+        addViewController(listViewController)
         
         historyViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HistoryViewController") as HistoryViewController
         historyViewController.delegate = self
         
         creditsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreditsViewController") as CreditsViewController
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if !mapViewControllerLoaded {
+            addViewController(mapViewController)
+            mapViewControllerLoaded = true
+        }
     }
     
     func viewSelected(view: String) {
@@ -66,6 +75,7 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     
     func addViewController(viewController: UIViewController) {
         self.addChildViewController(viewController)
+        viewController.view.frame = self.view.frame
         self.view.addSubview(viewController.view)
         viewController.didMoveToParentViewController(self)
     }
