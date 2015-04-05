@@ -8,10 +8,16 @@
 
 import UIKit
 
+@objc
+protocol GalleryViewControllerDelegate {
+    func pageDidChange(page: Int)
+}
+
 class GalleryViewController: UIViewController, UIScrollViewDelegate {
 
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
+    var delegate: GalleryViewControllerDelegate!
     
     var pageImages: [UIImage] = []
     var pageControllers: [ImageScrollViewController?] = []
@@ -173,9 +179,16 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         resetHiddenPages()
     }
     
+    func updatePage() {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+        delegate.pageDidChange(page)
+    }
+    
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         // Load the pages that are now on screen
         loadVisiblePages()
+        updatePage()
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
