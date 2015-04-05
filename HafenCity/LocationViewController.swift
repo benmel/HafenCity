@@ -8,12 +8,13 @@
 
 import UIKit
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, GalleryViewControllerDelegate {
 
     var galleryViewController: GalleryViewController!
     var textViewController: TextViewController!
     var text: String?
     var directory: String?
+    var textDirectory: String? = "history_text"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +23,18 @@ class LocationViewController: UIViewController {
         galleryViewController = GalleryViewController()
         let imageNames = getImageNames()
         let images = getImages(imageNames)
+        
         galleryViewController.pageImages = images
+        galleryViewController.delegate = self
         
         textViewController = TextViewController()
-        textViewController.text = text
+        if textDirectory != nil {
+            let textList = getTextNames(imageNames)
+            textViewController.textList = textList
+        } else {
+            textViewController.text = text
+        }
+        
         textViewController.view.userInteractionEnabled = false
     }
     
@@ -43,8 +52,8 @@ class LocationViewController: UIViewController {
     
     func getImageNames() -> [String] {
         var imageNames = [String]()
-        let imageDirectory = "Images/" + directory!
-        let path = NSBundle.mainBundle().pathForResource(imageDirectory, ofType: nil)
+        let imageFullDirectory = "Images/" + directory!
+        let path = NSBundle.mainBundle().pathForResource(imageFullDirectory, ofType: nil)
         var error: NSError? = nil
         let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
         let list = directoryContents as [String]
@@ -54,13 +63,28 @@ class LocationViewController: UIViewController {
     
     func getImages(imageNames: [String]) -> [UIImage] {
         var images = [UIImage]()
-        let imageDirectory = "Images/" + directory!
+        let imageFullDirectory = "Images/" + directory!
         for name in imageNames {
-            let path = NSBundle.mainBundle().pathForResource(name, ofType: nil, inDirectory: imageDirectory)
+            let path = NSBundle.mainBundle().pathForResource(name, ofType: nil, inDirectory: imageFullDirectory)
             let image = UIImage(contentsOfFile: path!)
             images.append(image!)
         }
         return images
+    }
+    
+    func getTextNames(imageNames: [String]) -> [String?] {
+        var textList = [String?]()
+        let textFullDirectory = "Images/" + textDirectory!
+        for name in imageNames {
+            let filename = name.stringByDeletingPathExtension
+            let textPath = NSBundle.mainBundle().pathForResource(filename, ofType: "txt", inDirectory: textFullDirectory)
+            let text = String(contentsOfFile: textPath!, encoding: NSUTF8StringEncoding, error: nil)!
+            textList.append(text)
+        }
+        return textList
+    }
+    
+    func pageDidChange(page: Int) {        
     }
 
     override func didReceiveMemoryWarning() {

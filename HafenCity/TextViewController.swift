@@ -11,6 +11,7 @@ import UIKit
 class TextViewController: UIViewController {
 
     var text: String?
+    var textList: [String?] = []
     var textView: UITextView?
     
     override func viewDidLoad() {
