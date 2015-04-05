@@ -14,7 +14,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
     var textViewController: TextViewController!
     var text: String?
     var directory: String?
-    var textDirectory: String? = "history_text"
+    var textDirectory: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,10 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         return textList
     }
     
-    func pageDidChange(page: Int) {        
+    func pageDidChange(page: Int) {
+        if textDirectory != nil {
+            textViewController.changeTextFromList(page)
+        }
     }
 
     override func didReceiveMemoryWarning() {
