@@ -35,9 +35,8 @@ class TextViewController: UIViewController {
         // background
         textView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         textView.layer.cornerRadius = 5
-        textView.clipsToBounds = true
         
-        self.view.addSubview(textView!)
+        self.view.addSubview(textView)
     }
     
     override func viewWillLayoutSubviews() {

@@ -59,7 +59,6 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     }
     
     func viewSelected(view: String) {
-        let oldvc = self.childViewControllers.last as UIViewController
         if view == "Map" {
             cycleViewControllers(mapViewController)
         } else if view == "Locations" {
@@ -87,7 +86,6 @@ class CenterViewController: UIViewController, SidePanelViewControllerDelegate, M
     }
         
     func cycleViewControllers(viewController: UIViewController) {
-        let temp = self.childViewControllers
         let oldViewController = self.childViewControllers.last as UIViewController
         removeViewController(oldViewController)
         addViewController(viewController)

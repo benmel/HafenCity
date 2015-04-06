@@ -31,6 +31,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         UIPageControl.appearance().backgroundColor = .blackColor()
         pageControl.addTarget(self, action: "pageControlTapped:", forControlEvents: .ValueChanged)
         pageControl.defersCurrentPageDisplay = true
+        self.view.addSubview(pageControl)
         
         // Initialize scroll view
         scrollView = UIScrollView()
@@ -39,6 +40,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .blackColor()
+        self.view.addSubview(scrollView)
                 
         let pageCount = pageImages.count
         pageControl.currentPage = 0
@@ -54,14 +56,12 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         let pageControlHeight = CGFloat(50)
         pageControl.frame = CGRectMake(0, self.view.frame.size.height-pageControlHeight, self.view.frame.size.width, pageControlHeight)
-        self.view.addSubview(pageControl)
         
         var frame = self.view.frame
         frame.origin.x -= pageSpacing
         frame.size.width += 2 * pageSpacing
         frame.size.height -= pageControlHeight
         scrollView.frame = frame
-        self.view.addSubview(scrollView)
         
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
@@ -142,7 +142,6 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
-//        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         
         // Update the page control

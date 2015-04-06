@@ -36,18 +36,21 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         }
         
         textViewController.view.userInteractionEnabled = false
-    }
-    
-    override func viewWillLayoutSubviews() {
+        
         self.addChildViewController(galleryViewController)
-        galleryViewController.view.frame = self.view.frame
         self.view.addSubview(galleryViewController.view)
         galleryViewController.didMoveToParentViewController(self)
         
         self.addChildViewController(textViewController)
-        textViewController.view.frame = self.view.frame
         self.view.addSubview(textViewController.view)
         textViewController.didMoveToParentViewController(self)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        galleryViewController.view.frame = self.view.frame
+        textViewController.view.frame = self.view.frame
     }
     
     func getImageNames() -> [String] {

@@ -14,13 +14,14 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView = UIImageView(image: image)
-        imageView.frame = CGRect(origin: CGPointMake(0.0, 0.0), size:image.size)
-        
         scrollView = UIScrollView()
-        self.view.addSubview(scrollView)
         scrollView.delegate = self
         scrollView.indicatorStyle = .White
+        self.view.addSubview(scrollView)
+        
+        imageView = UIImageView(image: image)
+        imageView.frame = CGRect(origin: CGPointMake(0.0, 0.0), size:image.size)
+        scrollView.addSubview(imageView)
         
         var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2
@@ -32,7 +33,6 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillLayoutSubviews()
         
         scrollView.frame = self.view.bounds
-        scrollView.addSubview(imageView)
         scrollView.contentSize = image.size
         
         let scrollViewFrame = scrollView.frame

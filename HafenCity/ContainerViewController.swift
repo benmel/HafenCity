@@ -40,7 +40,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         centerViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CenterViewController") as CenterViewController
         centerViewController.delegate = self
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
-        view.addSubview(centerNavigationController.view)
+        self.view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
         centerNavigationController.didMoveToParentViewController(self)
     }
