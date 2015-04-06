@@ -133,7 +133,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         let annotation = view.annotation as CustomAnnotation
-        performSegueWithIdentifier("Gallery", sender: annotation)
+        performSegueWithIdentifier("Location", sender: annotation)
     }
     
     func setCenter(animated: Bool) {
@@ -192,9 +192,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "Gallery" {
+        if segue.identifier == "Location" {
             let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as GalleryViewController
+            let controller = nav.topViewController as LocationViewController
             let annotation = sender as CustomAnnotation
             controller.text = annotation.text
             controller.directory = annotation.directory

@@ -8,19 +8,20 @@
 
 import UIKit
 
+@objc
+protocol GalleryViewControllerDelegate {
+    func pageDidChange(page: Int)
+}
+
 class GalleryViewController: UIViewController, UIScrollViewDelegate {
 
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
+    var delegate: GalleryViewControllerDelegate!
     
     var pageImages: [UIImage] = []
     var pageControllers: [ImageScrollViewController?] = []
     let pageSpacing:CGFloat = 10
-    
-    var text: String?
-    var textView: UITextView?
-    var directory: String?
-    var imageNames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +31,17 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         UIPageControl.appearance().backgroundColor = .blackColor()
         pageControl.addTarget(self, action: "pageControlTapped:", forControlEvents: .ValueChanged)
         pageControl.defersCurrentPageDisplay = true
+        self.view.addSubview(pageControl)
         
         // Initialize scroll view
-//        self.automaticallyAdjustsScrollViewInsets = false
         scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .blackColor()
-        
-        getImageNames()
-        setPageImages()
-        
+        self.view.addSubview(scrollView)
+                
         let pageCount = pageImages.count
         pageControl.currentPage = 0
         pageControl.numberOfPages = pageCount
@@ -57,63 +56,17 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         let pageControlHeight = CGFloat(50)
         pageControl.frame = CGRectMake(0, self.view.frame.size.height-pageControlHeight, self.view.frame.size.width, pageControlHeight)
-        self.view.addSubview(pageControl)
         
         var frame = self.view.frame
         frame.origin.x -= pageSpacing
         frame.size.width += 2 * pageSpacing
         frame.size.height -= pageControlHeight
         scrollView.frame = frame
-        self.view.addSubview(scrollView)
         
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
         
         loadVisiblePages()
-        setupTextView()
-    }
-    
-    func getImageNames() {
-        let imageDirectory = "Images/" + directory!
-        let path = NSBundle.mainBundle().pathForResource(imageDirectory, ofType: nil)
-        var error: NSError? = nil
-        let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
-        let list = directoryContents as [String]
-        imageNames += list
-    }
-    
-    func setPageImages() {
-        let imageDirectory = "Images/" + directory!
-        for name in imageNames {
-            let path = NSBundle.mainBundle().pathForResource(name, ofType: nil, inDirectory: imageDirectory)
-            let image = UIImage(contentsOfFile: path!)
-            pageImages.append(image!)
-        }
-    }
-    
-    func setupTextView() {
-        // set frame
-        let frame = self.view.frame
-        let x: CGFloat = 10
-        let width = frame.size.width - frame.origin.x - 2*x
-        let height: CGFloat = 170
-        let y = frame.size.height - frame.origin.y - height - 46
-        let frameText = CGRectMake(x, y, width, height)
-        textView = UITextView(frame: frameText)
-        
-        // attributes
-        textView!.text = text
-        textView!.font = UIFont.systemFontOfSize(18)
-        textView!.textColor = UIColor.whiteColor()
-        textView!.selectable = false
-        textView!.editable = false
-        
-        // background
-        textView!.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        textView!.layer.cornerRadius = 5
-        textView!.clipsToBounds = true
-        
-        self.view.addSubview(textView!)
     }
     
     func loadPage(page: Int) {
@@ -189,7 +142,6 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
-//        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         
         // Update the page control
@@ -226,9 +178,16 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         resetHiddenPages()
     }
     
+    func updatePage() {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+        delegate.pageDidChange(page)
+    }
+    
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         // Load the pages that are now on screen
         loadVisiblePages()
+        updatePage()
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
