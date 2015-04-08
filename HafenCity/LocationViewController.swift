@@ -21,6 +21,8 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = .Top
+        
         galleryViewController = GalleryViewController()
         let imageNames = getImageNames()
         let images = getImages(imageNames)

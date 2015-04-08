@@ -36,6 +36,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        self.edgesForExtendedLayout = .Top
+        
         table.dataSource = self
         table.delegate = self
         fetchLocations()
@@ -125,17 +127,6 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         tapRecognizer.enabled = true
         swipeRecognizer.enabled = true
     }
-        
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Location" {
-            let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as LocationViewController
-            let location = sender as Location
-            controller.text = location.text
-            controller.directory = location.directory
-            nav.navigationBar.topItem?.title = location.name
-        }
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -172,14 +163,17 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "Location" {
+            let controller = segue.destinationViewController as LocationViewController
+            let location = sender as Location
+            controller.text = location.text
+            controller.directory = location.directory
+        }
     }
-    */
-
 }

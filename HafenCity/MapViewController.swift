@@ -31,6 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = .Top
         
         // set up interaction notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableMap", name:"disableInteraction", object: self.parentViewController)
@@ -74,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             locations = results
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
-        }
+        }        
     }
     
     override func viewWillLayoutSubviews() {
@@ -193,12 +194,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "Location" {
-            let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as LocationViewController
+            let controller = segue.destinationViewController as LocationViewController
             let annotation = sender as CustomAnnotation
             controller.text = annotation.text
             controller.directory = annotation.directory
-            nav.navigationBar.topItem?.title = annotation.title
         }
     }
 }

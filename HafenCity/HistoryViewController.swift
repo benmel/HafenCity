@@ -24,6 +24,8 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.edgesForExtendedLayout = .Top
+        
         // set up tap gestures
         tapRecognizerMenu = UITapGestureRecognizer(target: self, action: "collapseMenu")
         tapRecognizerMenu.enabled = false

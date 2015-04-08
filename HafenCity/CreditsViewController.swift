@@ -16,6 +16,8 @@ class CreditsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = .Top
+        
         textView = UITextView()
         textView.font = UIFont.systemFontOfSize(18)
         textView.selectable = false
@@ -29,7 +31,7 @@ class CreditsViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         var frame = self.view.frame
-        frame.origin.y = 64
+//        frame.origin.y = 64
         textView.frame = frame
     }
 
