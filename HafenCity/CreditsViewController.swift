@@ -31,7 +31,6 @@ class CreditsViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         var frame = self.view.frame
-//        frame.origin.y = 64
         textView.frame = frame
     }
 

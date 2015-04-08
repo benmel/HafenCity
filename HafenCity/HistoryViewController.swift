@@ -8,37 +8,14 @@
 
 import UIKit
 
-@objc
-protocol HistoryViewControllerDelegate {
-    func shouldCollapseMenu()
-}
-
 class HistoryViewController: UIViewController {
     
-    var delegate: HistoryViewControllerDelegate!
     var locationViewController: LocationViewController!
-    
-    var tapRecognizerMenu: UITapGestureRecognizer!
-    var swipeRecognizer: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.edgesForExtendedLayout = .Top
-        
-        // set up tap gestures
-        tapRecognizerMenu = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizerMenu.enabled = false
-        self.view.addGestureRecognizer(tapRecognizerMenu)
-
-        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer.direction = .Left
-        swipeRecognizer.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer)
-        
-        // set up interaction notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableView", name:"disableInteraction", object: self.parentViewController)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableView", name:"enableInteraction", object: self.parentViewController)
         
         locationViewController = LocationViewController()
         locationViewController.directory = "history"
@@ -53,22 +30,6 @@ class HistoryViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         locationViewController.view.frame = self.view.frame
-    }
-    
-    func collapseMenu() {
-        delegate.shouldCollapseMenu()
-    }
-    
-    func enableView() {
-        locationViewController.view.userInteractionEnabled = true
-        tapRecognizerMenu.enabled = false
-        swipeRecognizer.enabled = false
-    }
-
-    func disableView() {
-        locationViewController.view.userInteractionEnabled = false
-        tapRecognizerMenu.enabled = true
-        swipeRecognizer.enabled = true
     }
     
     override func didReceiveMemoryWarning() {

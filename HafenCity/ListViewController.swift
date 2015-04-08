@@ -9,23 +9,10 @@
 import UIKit
 import CoreData
 
-@objc
-protocol ListViewControllerDelegate {
-    func shouldCollapseMenu()
-}
-
 class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    // outlets
     @IBOutlet weak var table: UITableView!
-    
-    // delegates
-    var delegate: ListViewControllerDelegate!
-    
-    // variables
     var locations = [Location]()
-    var tapRecognizer: UITapGestureRecognizer!
-    var swipeRecognizer: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +28,6 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         table.dataSource = self
         table.delegate = self
         fetchLocations()
-        
-        // set up interaction notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableTable", name:"disableInteraction", object: self.parentViewController)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableTable", name:"enableInteraction", object: self.parentViewController)
-        
-        // set up tap gestures
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizer.enabled = false
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer.direction = .Left
-        swipeRecognizer.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer)
     }
     
     func fetchLocations() {
@@ -110,24 +83,6 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    func collapseMenu() {
-        delegate.shouldCollapseMenu()
-    }
-    
-    func enableTable() {
-        table.scrollEnabled = true
-        table.allowsSelection = true
-        tapRecognizer.enabled = false
-        swipeRecognizer.enabled = false
-    }
-    
-    func disableTable() {
-        table.scrollEnabled = false
-        table.allowsSelection = false
-        tapRecognizer.enabled = true
-        swipeRecognizer.enabled = true
-    }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
