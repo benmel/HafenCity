@@ -52,15 +52,29 @@ class TextViewController: UIViewController {
         textView.frame = frameText
     }
     
+    func changeTextFromList(index: Int) {
+        textView.text = textList[index]
+    }
+    
+    func toggleTextView() {
+        if textView.alpha == 1 {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 0
+                return
+            })
+        } else {
+            UIView.animateWithDuration(0.25, animations: {
+                self.textView?.alpha = 1
+                return
+            })
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func changeTextFromList(index: Int) {
-        textView.text = textList[index]
-    }
-
     /*
     // MARK: - Navigation
 
