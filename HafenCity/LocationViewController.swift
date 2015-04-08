@@ -15,6 +15,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
     var text: String?
     var directory: String?
     var textDirectory: String?
+    var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +36,21 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
             textViewController.text = text
         }
         
-        textViewController.view.userInteractionEnabled = false
-        
         self.addChildViewController(galleryViewController)
+        textViewController.view.frame = self.view.frame
         self.view.addSubview(galleryViewController.view)
         galleryViewController.didMoveToParentViewController(self)
         
+        textViewController.view.userInteractionEnabled = false
         self.addChildViewController(textViewController)
         self.view.addSubview(textViewController.view)
         textViewController.didMoveToParentViewController(self)
+                
+        button = UIButton.buttonWithType(.InfoLight) as UIButton
+        button.tintColor = .whiteColor()
+        button.alpha = 0.8
+        button.addTarget(self, action: "infoButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
     }
     
     override func viewWillLayoutSubviews() {
@@ -51,6 +58,10 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         
         galleryViewController.view.frame = self.view.frame
         textViewController.view.frame = self.view.frame
+        
+        let buttonSize: CGFloat = 44
+        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize)
+        button.frame = frameButton
     }
     
     func getImageNames() -> [String] {
@@ -92,7 +103,11 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
             textViewController.changeTextFromList(page)
         }
     }
-
+    
+    func infoButtonTapped(sender: UIButton!) {
+        textViewController.toggleTextView()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
