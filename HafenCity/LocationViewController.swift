@@ -38,8 +38,8 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
             textViewController.text = text
         }
         
+        galleryViewController.view.clipsToBounds = true
         self.addChildViewController(galleryViewController)
-        textViewController.view.frame = self.view.frame
         self.view.addSubview(galleryViewController.view)
         galleryViewController.didMoveToParentViewController(self)
         
