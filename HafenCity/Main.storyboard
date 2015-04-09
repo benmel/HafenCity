@@ -21,7 +21,7 @@
                             <outletCollection property="gestureRecognizers" destination="AqF-LL-weN" appends="YES" id="mCb-ZR-jxB"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="aRj-em-27r"/>
+                    <navigationItem key="navigationItem" title="Map of the HafenCity" id="aRj-em-27r"/>
                     <keyCommands/>
                     <connections>
                         <segue destination="hn1-nm-huz" kind="show" identifier="Location" id="j1w-pm-b7C"/>
@@ -37,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="3781" y="238"/>
         </scene>
-        <!--List View Controller-->
+        <!--List of Buildings-->
         <scene sceneID="2uE-Jl-6Yv">
             <objects>
                 <tableViewController storyboardIdentifier="ListViewController" id="cNS-X3-Oka" customClass="ListViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,9 @@
                             <outlet property="delegate" destination="cNS-X3-Oka" id="OIz-Xp-9f8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FZW-yM-36X"/>
+                    <navigationItem key="navigationItem" title="List of Buildings" id="FZW-yM-36X">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="1A0-Xm-7ZG"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
                         <segue destination="hn1-nm-huz" kind="show" identifier="Location" id="lx6-RO-joI"/>
@@ -68,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="3781" y="1055"/>
         </scene>
-        <!--History View Controller-->
+        <!--History-->
         <scene sceneID="aEZ-Jy-9hw">
             <objects>
                 <viewController storyboardIdentifier="HistoryViewController" id="kO0-gC-Db1" customClass="HistoryViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="u3n-np-EKe"/>
+                    <navigationItem key="navigationItem" title="History" id="u3n-np-EKe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfC-eS-Iiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EaA-xn-hyf"/>
+                    <navigationItem key="navigationItem" title="About" id="EaA-xn-hyf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,11 +126,11 @@
             </objects>
             <point key="canvasLocation" x="4869" y="651"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="eOl-bA-XlM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wuw-Ak-tH0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="73C-ok-iSw"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="73C-ok-iSw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kAD-Wm-SqD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -143,11 +145,11 @@
             </objects>
             <point key="canvasLocation" x="2969" y="238"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="v7w-Lb-rTn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JQA-Xf-RYm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7gV-fe-MAF"/>
+                    <tabBarItem key="tabBarItem" title="List" id="7gV-fe-MAF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4yc-6q-lAI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -162,11 +164,11 @@
             </objects>
             <point key="canvasLocation" x="2969" y="1055"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="NVt-6c-b2Z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YOi-Yf-6bh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cOa-ud-OBk"/>
+                    <tabBarItem key="tabBarItem" title="History" id="cOa-ud-OBk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oTZ-Is-vJL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -181,11 +183,11 @@
             </objects>
             <point key="canvasLocation" x="2969" y="1921"/>
         </scene>
-        <!--Item-->
+        <!--About-->
         <scene sceneID="ti8-tq-1kt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kNM-b3-S49" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oEH-hT-yak"/>
+                    <tabBarItem key="tabBarItem" title="About" id="oEH-hT-yak"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Tj-BB-yIo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -209,6 +211,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="PkX-he-c2h">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Wuw-Ak-tH0" kind="relationship" relationship="viewControllers" id="MSJ-9p-hyJ"/>
@@ -223,6 +226,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j1w-pm-b7C"/>
+        <segue reference="lx6-RO-joI"/>
     </inferredMetricsTieBreakers>
 </document>
