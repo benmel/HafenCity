@@ -62,7 +62,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         textViewController.view.frame = self.view.frame
         
         let buttonSize: CGFloat = 44
-        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize)
+        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize + 4)
         button.frame = frameButton
     }
     
