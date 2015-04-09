@@ -21,6 +21,8 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = .Top
+        
         galleryViewController = GalleryViewController()
         let imageNames = getImageNames()
         let images = getImages(imageNames)
@@ -36,8 +38,8 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
             textViewController.text = text
         }
         
+        galleryViewController.view.clipsToBounds = true
         self.addChildViewController(galleryViewController)
-        textViewController.view.frame = self.view.frame
         self.view.addSubview(galleryViewController.view)
         galleryViewController.didMoveToParentViewController(self)
         
@@ -60,7 +62,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         textViewController.view.frame = self.view.frame
         
         let buttonSize: CGFloat = 44
-        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize)
+        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize + 4)
         button.frame = frameButton
     }
     

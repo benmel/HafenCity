@@ -10,20 +10,11 @@ import UIKit
 import MapKit
 import CoreData
 
-@objc
-protocol MapViewControllerDelegate {
-    func shouldCollapseMenu()
-}
-
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     var mapView: MKMapView!
     var button: UIButton!
     var locations = [Location]()
-    var delegate: MapViewControllerDelegate!
-    var tapRecognizer: UITapGestureRecognizer!
-    var swipeRecognizer: UISwipeGestureRecognizer!
-//    var edgeRecognizer: UIScreenEdgePanGestureRecognizer!
     var mapLoaded = false
     var annotationsLoaded = false
     
@@ -31,25 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        // set up interaction notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "disableMap", name:"disableInteraction", object: self.parentViewController)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableMap", name:"enableInteraction", object: self.parentViewController)
-        
-        // set up tap gestures
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "collapseMenu")
-        tapRecognizer.enabled = false
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "collapseMenu")
-        swipeRecognizer.direction = .Left
-        swipeRecognizer.enabled = false
-        self.view.addGestureRecognizer(swipeRecognizer)
-        
-//        edgeRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "openMenu")
-//        edgeRecognizer.edges = .Left
-//        edgeRecognizer.enabled = true
-//        self.view.addGestureRecognizer(edgeRecognizer)
+        self.edgesForExtendedLayout = .Top
         
         // set up map
         mapView = MKMapView()
@@ -74,7 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             locations = results
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
-        }
+        }        
     }
     
     override func viewWillLayoutSubviews() {
@@ -145,27 +118,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: animated)
     }
-    
-    func collapseMenu() {
-        delegate.shouldCollapseMenu()
-    }
-    
-    func enableMap() {
-        mapView.zoomEnabled = true
-        mapView.scrollEnabled = true
-        mapView.userInteractionEnabled = true
-        tapRecognizer.enabled = false
-        swipeRecognizer.enabled = false
-    }
-    
-    func disableMap() {
-        mapView.zoomEnabled = false
-        mapView.scrollEnabled = false
-        mapView.userInteractionEnabled = false
-        tapRecognizer.enabled = true
-        swipeRecognizer.enabled = true
-    }
-    
+        
     func setAnnotations() {
         for location in locations {
             let coordinate = CLLocationCoordinate2D(
@@ -193,12 +146,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "Location" {
-            let nav = segue.destinationViewController as UINavigationController
-            let controller = nav.topViewController as LocationViewController
+            let controller = segue.destinationViewController as LocationViewController
             let annotation = sender as CustomAnnotation
             controller.text = annotation.text
             controller.directory = annotation.directory
-            nav.navigationBar.topItem?.title = annotation.title
+            controller.navigationItem.title = annotation.title
         }
     }
 }

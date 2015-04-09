@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EB1A79B971000A8156 /* CenterViewController.swift */; };
-		B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */; };
-		B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */; };
 		B52DEA631ACCC35C001D0E5C /* ImageScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */; };
 		B52DFC1A1AA578BC00E7BED0 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = B52DFC191AA578BC00E7BED0 /* Images */; };
 		B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F63121AA890B500B6CF0A /* CreditsViewController.swift */; };
@@ -55,9 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B50AF0EB1A79B971000A8156 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
-		B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollViewController.swift; sourceTree = "<group>"; };
 		B52DFC191AA578BC00E7BED0 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		B52F63121AA890B500B6CF0A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
@@ -124,15 +118,12 @@
 			isa = PBXGroup;
 			children = (
 				B5B309D61A770ED6003E143B /* AppDelegate.swift */,
-				B50AF0EC1A79B971000A8156 /* ContainerViewController.swift */,
-				B50AF0EB1A79B971000A8156 /* CenterViewController.swift */,
 				B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */,
 				B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */,
 				B5D5847F1AA6006A004C2D0E /* HistoryViewController.swift */,
 				B52F63121AA890B500B6CF0A /* CreditsViewController.swift */,
 				B5BFF58C1AD06C2700292D12 /* TextViewController.swift */,
 				B5BFF58E1AD06C5200292D12 /* LocationViewController.swift */,
-				B50AF10A1A79BD75000A8156 /* SidePanelViewController.swift */,
 				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
 				B57C24DD1ACC65EB0059ECB7 /* GalleryViewController.swift */,
 				B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */,
@@ -281,12 +272,9 @@
 				B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */,
 				B5D584801AA6006A004C2D0E /* HistoryViewController.swift in Sources */,
 				B5BFF58D1AD06C2800292D12 /* TextViewController.swift in Sources */,
-				B50AF0ED1A79B971000A8156 /* CenterViewController.swift in Sources */,
 				B52DEA631ACCC35C001D0E5C /* ImageScrollViewController.swift in Sources */,
-				B50AF0EE1A79B971000A8156 /* ContainerViewController.swift in Sources */,
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
 				B54BB0A11A9513360084327D /* Location.swift in Sources */,
-				B50AF1231A79BD75000A8156 /* SidePanelViewController.swift in Sources */,
 				B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */,
 				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
 				B5BFF58F1AD06C5200292D12 /* LocationViewController.swift in Sources */,
