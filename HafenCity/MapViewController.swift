@@ -150,6 +150,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let annotation = sender as CustomAnnotation
             controller.text = annotation.text
             controller.directory = annotation.directory
+            controller.navigationItem.title = annotation.title
         }
     }
 }

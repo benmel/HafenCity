@@ -129,6 +129,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
             let location = sender as Location
             controller.text = location.text
             controller.directory = location.directory
+            controller.navigationItem.title = location.name
         }
     }
 }
