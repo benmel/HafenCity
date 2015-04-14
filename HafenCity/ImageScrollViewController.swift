@@ -10,6 +10,7 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var image: UIImage!
     var imageView: UIImageView!
+    var index: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,14 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         doubleTapRecognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(doubleTapRecognizer)
     }
+    
+//    override func viewDidDisappear(animated: Bool) {
+//        super.viewDidDisappear(animated)
+//    }
+//    
+//    override func viewWillDisappear(animated: Bool) {
+//        super.viewWillDisappear(animated)
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -93,11 +102,11 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         scrollView.zoomToRect(rectToZoomTo, animated: true)
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView!) {
+    func scrollViewDidZoom(scrollView: UIScrollView) {
         centerScrollViewContents()
     }
 
