@@ -32,7 +32,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     
     func fetchLocations() {
         // get managed context
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         // get locations
@@ -40,7 +40,7 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let fetchRequest = NSFetchRequest(entityName:"Location")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Location]?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [Location]?
         if let results = fetchedResults {
             locations = results
         } else {
@@ -75,11 +75,11 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         let person = locations[indexPath.row]
-        cell.textLabel!.text = person.valueForKey("name") as String?
+        cell.textLabel!.text = person.valueForKey("name") as! String?
         return cell
     }
     
@@ -125,8 +125,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "Location" {
-            let controller = segue.destinationViewController as LocationViewController
-            let location = sender as Location
+            let controller = segue.destinationViewController as! LocationViewController
+            let location = sender as! Location
             controller.text = location.text
             controller.directory = location.directory
             controller.navigationItem.title = location.name

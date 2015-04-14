@@ -23,19 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let dataPath = NSBundle.mainBundle().pathForResource("Locations", ofType: "json")
             let data = NSData(contentsOfFile: dataPath!)
-            let locations = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers, error: nil) as NSArray
+            let locations = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers, error: nil) as! NSArray
             
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             locations.enumerateObjectsUsingBlock( { (obj, idx, stop) -> Void in
                 
-                var location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedContext) as Location
-                location.name = obj.objectForKey("name") as String
-                location.coordX = obj.objectForKey("coordX") as NSNumber
-                location.coordY = obj.objectForKey("coordY") as NSNumber
-                location.directory = obj.objectForKey("directory") as String
-                location.text = obj.objectForKey("text") as String
+                var location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedContext) as! Location
+                location.name = obj.objectForKey("name") as! String
+                location.coordX = obj.objectForKey("coordX") as! NSNumber
+                location.coordY = obj.objectForKey("coordY") as! NSNumber
+                location.directory = obj.objectForKey("directory") as! String
+                location.text = obj.objectForKey("text") as! String
                 
                 var error: NSError?
                 if (!managedContext.save(&error)) {
@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "ben.HafenCity" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

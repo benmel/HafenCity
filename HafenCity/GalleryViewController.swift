@@ -184,7 +184,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         delegate.pageDidChange(page)
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         // Load the pages that are now on screen
         loadVisiblePages()
         updatePage()
