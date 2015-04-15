@@ -67,6 +67,7 @@ class NewGalleryViewController: UIViewController, UIPageViewControllerDataSource
             newImageScrollViewController.image = images[index]
             newImageScrollViewController.index = index
             imageScrollViewControllers[index] = newImageScrollViewController
+            
             return newImageScrollViewController
         }
     }
@@ -82,7 +83,7 @@ class NewGalleryViewController: UIViewController, UIPageViewControllerDataSource
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         if completed {
             let previousViewController = previousViewControllers.first as! ImageScrollViewController
-            previousViewController.resetScrollViewContents()
+//            previousViewController.resetScrollViewContents()
             let index = (pageViewController.viewControllers.first as! ImageScrollViewController).index
             delegate.pageDidChange(index)
         }

@@ -123,7 +123,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
         }
         
         if let pageController = pageControllers[page] {
-            pageController.resetScrollViewContents()
+//            pageController.resetScrollViewContents()
         }
     }
     

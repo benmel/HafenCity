@@ -11,6 +11,7 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
     var image: UIImage!
     var imageView: UIImageView!
     var index: Int = 0
+    var zoomSet = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,6 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(scrollView)
         
         imageView = UIImageView(image: image)
-        imageView.frame = CGRect(origin: CGPointMake(0.0, 0.0), size:image.size)
         scrollView.addSubview(imageView)
         
         var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
@@ -30,30 +30,32 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addGestureRecognizer(doubleTapRecognizer)
     }
     
-//    override func viewDidDisappear(animated: Bool) {
-//        super.viewDidDisappear(animated)
-//    }
-//    
-//    override func viewWillDisappear(animated: Bool) {
-//        super.viewWillDisappear(animated)
-//    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        scrollView.zoomScale = scrollView.minimumZoomScale
+    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        scrollView.frame = self.view.frame
         
-        scrollView.frame = self.view.bounds
-        scrollView.contentSize = image.size
-        
-        let scrollViewFrame = scrollView.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
-        let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
-        let minScale = min(scaleWidth, scaleHeight);
-        scrollView.minimumZoomScale = minScale;
-        
-        scrollView.maximumZoomScale = 2.0
-        scrollView.zoomScale = minScale
-        
-        centerScrollViewContents()
+        if !zoomSet {
+            let scrollViewFrame = scrollView.frame
+            let scaleWidth = scrollViewFrame.size.width / image.size.width
+            let scaleHeight = scrollViewFrame.size.height / image.size.height
+            let minScale = min(scaleWidth, scaleHeight)
+            
+            
+            let width = image.size.width * minScale
+            let height = image.size.height * minScale
+            
+            imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            scrollView.contentSize = imageView.frame.size
+            scrollView.maximumZoomScale = 4.0
+            
+            zoomSet = true
+            centerScrollViewContents()
+        }
     }
     
     func centerScrollViewContents() {
@@ -73,14 +75,8 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
         }
         
         imageView.frame = contentsFrame
+    }
         
-    }
-    
-    func resetScrollViewContents() {
-        scrollView.zoomScale = scrollView.minimumZoomScale
-        centerScrollViewContents()
-    }
-    
     func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
         // 1
         let pointInView = recognizer.locationInView(imageView)
@@ -105,9 +101,13 @@ class ImageScrollViewController: UIViewController, UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-    
+
     func scrollViewDidZoom(scrollView: UIScrollView) {
-        centerScrollViewContents()
+        let contentSize = scrollView.contentSize
+        let frame = self.view.frame
+        if (contentSize.width >= frame.size.width) || (contentSize.height >= frame.size.height) {
+            centerScrollViewContents()
+        }
     }
 
     override func didReceiveMemoryWarning() {
