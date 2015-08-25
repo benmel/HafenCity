@@ -20,7 +20,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
     var delegate: GalleryViewControllerDelegate!
     
     var pageImages: [UIImage] = []
-    var pageControllers: [ImageScrollViewController?] = []
+    var pageControllers: [ImageViewController?] = []
     let pageSpacing:CGFloat = 10
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class GalleryViewController: UIViewController, UIScrollViewDelegate {
             frame.size.width -= 2 * pageSpacing
             
             // 3
-            let newPageController = ImageScrollViewController()
+            let newPageController = ImageViewController()
             newPageController.image = pageImages[page]
             self.addChildViewController(newPageController)
             newPageController.view.frame = frame
