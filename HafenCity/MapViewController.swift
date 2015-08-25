@@ -31,18 +31,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.view.addSubview(mapView)
         
         // set up button
-        button = UIButton.buttonWithType(.Custom) as UIButton
+        button = UIButton.buttonWithType(.Custom) as! UIButton
         button.addTarget(self, action: "centerTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
         
         // get managed context
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         // get locations
         var error: NSError?
         let fetchRequest = NSFetchRequest(entityName:"Location")
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Location]?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [Location]?
         if let results = fetchedResults {
             locations = results
         } else {
@@ -94,7 +94,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             anView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             anView!.canShowCallout = true
             anView!.animatesDrop = true
-            anView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+            anView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
         }
         else {
             //we are re-using a view, update its annotation reference...
@@ -105,7 +105,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        let annotation = view.annotation as CustomAnnotation
+        let annotation = view.annotation as! CustomAnnotation
         performSegueWithIdentifier("Location", sender: annotation)
     }
     
@@ -146,8 +146,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "Location" {
-            let controller = segue.destinationViewController as LocationViewController
-            let annotation = sender as CustomAnnotation
+            let controller = segue.destinationViewController as! LocationViewController
+            let annotation = sender as! CustomAnnotation
             controller.text = annotation.text
             controller.directory = annotation.directory
             controller.navigationItem.title = annotation.title

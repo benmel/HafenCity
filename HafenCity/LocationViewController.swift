@@ -23,11 +23,11 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = .Top
         
-        galleryViewController = GalleryViewController()
         let imageNames = getImageNames()
         let images = getImages(imageNames)
         
-        galleryViewController.pageImages = images
+        galleryViewController = GalleryViewController()
+        galleryViewController.images = images
         galleryViewController.delegate = self
         
         textViewController = TextViewController()
@@ -38,7 +38,6 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
             textViewController.text = text
         }
         
-        galleryViewController.view.clipsToBounds = true
         self.addChildViewController(galleryViewController)
         self.view.addSubview(galleryViewController.view)
         galleryViewController.didMoveToParentViewController(self)
@@ -48,7 +47,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         self.view.addSubview(textViewController.view)
         textViewController.didMoveToParentViewController(self)
                 
-        button = UIButton.buttonWithType(.InfoLight) as UIButton
+        button = UIButton.buttonWithType(.InfoLight) as! UIButton
         button.tintColor = .whiteColor()
         button.alpha = 0.8
         button.addTarget(self, action: "infoButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -62,7 +61,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         textViewController.view.frame = self.view.frame
         
         let buttonSize: CGFloat = 44
-        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize - 4, buttonSize, buttonSize + 4)
+        let frameButton = CGRectMake(self.view.frame.size.width - buttonSize, self.view.frame.size.height - buttonSize , buttonSize, buttonSize)
         button.frame = frameButton
     }
     
@@ -72,7 +71,7 @@ class LocationViewController: UIViewController, GalleryViewControllerDelegate {
         let path = NSBundle.mainBundle().pathForResource(imageFullDirectory, ofType: nil)
         var error: NSError? = nil
         let directoryContents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path!, error: &error)
-        let list = directoryContents as [String]
+        let list = directoryContents as! [String]
         imageNames += list
         return imageNames
     }

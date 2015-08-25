@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B52DEA631ACCC35C001D0E5C /* ImageScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */; };
+		B52DEA631ACCC35C001D0E5C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */; };
 		B52DFC1A1AA578BC00E7BED0 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = B52DFC191AA578BC00E7BED0 /* Images */; };
 		B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F63121AA890B500B6CF0A /* CreditsViewController.swift */; };
 		B5499F6C1A9E92020092F316 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5499F6B1A9E92020092F316 /* Main.storyboard */; };
@@ -15,8 +15,8 @@
 		B54BB0A31A9515F70084327D /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
 		B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
 		B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A61A954B000084327D /* CustomAnnotation.swift */; };
+		B54BCB7E1ADB18B70090F416 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
-		B57C24DE1ACC65EB0059ECB7 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C24DD1ACC65EB0059ECB7 /* GalleryViewController.swift */; };
 		B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */; };
 		B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
@@ -52,15 +52,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollViewController.swift; sourceTree = "<group>"; };
+		B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B52DFC191AA578BC00E7BED0 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		B52F63121AA890B500B6CF0A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		B5499F6B1A9E92020092F316 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B54BB0A01A9513360084327D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B54BB0A21A9515F70084327D /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		B54BB0A61A954B000084327D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B57C24DD1ACC65EB0059ECB7 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,8 +125,8 @@
 				B5BFF58C1AD06C2700292D12 /* TextViewController.swift */,
 				B5BFF58E1AD06C5200292D12 /* LocationViewController.swift */,
 				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
-				B57C24DD1ACC65EB0059ECB7 /* GalleryViewController.swift */,
-				B52DEA621ACCC35C001D0E5C /* ImageScrollViewController.swift */,
+				B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */,
+				B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */,
 				B54BB0A01A9513360084327D /* Location.swift */,
 				B57BD0FA1A7B2F3700290665 /* Images.xcassets */,
 				B5B309E21A770ED6003E143B /* LaunchScreen.xib */,
@@ -267,12 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */,
-				B57C24DE1ACC65EB0059ECB7 /* GalleryViewController.swift in Sources */,
 				B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */,
 				B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */,
 				B5D584801AA6006A004C2D0E /* HistoryViewController.swift in Sources */,
+				B54BCB7E1ADB18B70090F416 /* GalleryViewController.swift in Sources */,
 				B5BFF58D1AD06C2800292D12 /* TextViewController.swift in Sources */,
-				B52DEA631ACCC35C001D0E5C /* ImageScrollViewController.swift in Sources */,
+				B52DEA631ACCC35C001D0E5C /* ImageViewController.swift in Sources */,
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
 				B54BB0A11A9513360084327D /* Location.swift in Sources */,
 				B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */,
@@ -395,7 +395,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HafenCity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -410,7 +410,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HafenCity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
