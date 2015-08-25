@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LocationViewController: UIViewController, NewGalleryViewControllerDelegate {
+class LocationViewController: UIViewController, GalleryViewControllerDelegate {
 
-    var newGalleryViewController: NewGalleryViewController!
+    var galleryViewController: GalleryViewController!
     var textViewController: TextViewController!
     var text: String?
     var directory: String?
@@ -26,9 +26,9 @@ class LocationViewController: UIViewController, NewGalleryViewControllerDelegate
         let imageNames = getImageNames()
         let images = getImages(imageNames)
         
-        newGalleryViewController = NewGalleryViewController()
-        newGalleryViewController.images = images
-        newGalleryViewController.delegate = self
+        galleryViewController = GalleryViewController()
+        galleryViewController.images = images
+        galleryViewController.delegate = self
         
         textViewController = TextViewController()
         if textDirectory != nil {
@@ -38,9 +38,9 @@ class LocationViewController: UIViewController, NewGalleryViewControllerDelegate
             textViewController.text = text
         }
         
-        self.addChildViewController(newGalleryViewController)
-        self.view.addSubview(newGalleryViewController.view)
-        newGalleryViewController.didMoveToParentViewController(self)
+        self.addChildViewController(galleryViewController)
+        self.view.addSubview(galleryViewController.view)
+        galleryViewController.didMoveToParentViewController(self)
         
         textViewController.view.userInteractionEnabled = false
         self.addChildViewController(textViewController)
@@ -57,7 +57,7 @@ class LocationViewController: UIViewController, NewGalleryViewControllerDelegate
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        newGalleryViewController.view.frame = self.view.frame
+        galleryViewController.view.frame = self.view.frame
         textViewController.view.frame = self.view.frame
         
         let buttonSize: CGFloat = 44
