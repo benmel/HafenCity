@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
-class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, MWPhotoBrowserDelegate {
 
     @IBOutlet weak var table: UITableView!
     var locations = [Location]()
+    
+    var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +58,16 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     // Mark: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedView = self.locations[indexPath.row]
-        performSegueWithIdentifier("Location", sender: selectedView)
+        
+        let imageNames = MWHelper.getImageNames(selectedView.directory)
+        let images = MWHelper.getImages(selectedView.directory, imageNames: imageNames)
+        //      let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
+        galleryImages = MWHelper.getGalleryImages(images)
+        let browser = MWPhotoBrowser(delegate: self)
+        MWHelper.configureBrowser(browser)
+        self.navigationController?.pushViewController(browser, animated: true)
+        
+//        performSegueWithIdentifier("Location", sender: selectedView)
         table.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
@@ -81,6 +92,18 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let person = locations[indexPath.row]
         cell.textLabel!.text = person.valueForKey("name") as! String?
         return cell
+    }
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(galleryImages.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if index < UInt(galleryImages.count) {
+            return galleryImages.objectAtIndex(Int(index)) as! MWPhoto
+        }
+        
+        return nil
     }
     
     /*

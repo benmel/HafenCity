@@ -10,13 +10,15 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDelegate {
 
     var mapView: MKMapView!
     var button: UIButton!
     var locations = [Location]()
     var mapLoaded = false
     var annotationsLoaded = false
+    
+    var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             locations = results
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
-        }        
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -106,7 +108,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         let annotation = view.annotation as! CustomAnnotation
-        performSegueWithIdentifier("Location", sender: annotation)
+        let imageNames = MWHelper.getImageNames(annotation.directory)
+        let images = MWHelper.getImages(annotation.directory, imageNames: imageNames)
+//      let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
+        galleryImages = MWHelper.getGalleryImages(images)
+        let browser = MWPhotoBrowser(delegate: self)
+        MWHelper.configureBrowser(browser)
+        self.navigationController?.pushViewController(browser, animated: true)
+//        performSegueWithIdentifier("Location", sender: annotation)
     }
     
     func setCenter(animated: Bool) {
@@ -133,6 +142,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(annotation)
         }
     }
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(galleryImages.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if index < UInt(galleryImages.count) {
+            return galleryImages.objectAtIndex(Int(index)) as! MWPhoto
+        }
+        
+        return nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -146,11 +167,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "Location" {
-            let controller = segue.destinationViewController as! LocationViewController
+//            let controller = segue.destinationViewController as! LocationViewController
             let annotation = sender as! CustomAnnotation
-            controller.text = annotation.text
-            controller.directory = annotation.directory
-            controller.navigationItem.title = annotation.title
+//            controller.text = annotation.text
+//            controller.directory = annotation.directory
+//            controller.navigationItem.title = annotation.title
+            
+            let imageNames = MWHelper.getImageNames(annotation.directory)
+            let images = MWHelper.getImages(annotation.directory, imageNames: imageNames)
+//            let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
+            galleryImages = MWHelper.getGalleryImages(images)
         }
     }
 }

@@ -6,4 +6,9 @@
 //  Copyright (c) 2015 Ben Meline. All rights reserved.
 //
 
-import Foundation
+class BMPhotoBrowser: MWPhotoBrowser {    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
+    }
+}
