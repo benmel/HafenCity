@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
-class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, MWPhotoBrowserDelegate {
 
     @IBOutlet weak var table: UITableView!
     var locations = [Location]()
+    
+    var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,16 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.edgesForExtendedLayout = .Top
-        
         table.dataSource = self
         table.delegate = self
         fetchLocations()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Stop flashing scroll indicator
+        table.showsVerticalScrollIndicator = false
+        super.viewDidAppear(animated)
+        table.showsVerticalScrollIndicator = true
     }
     
     func fetchLocations() {
@@ -56,7 +63,14 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
     // Mark: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedView = self.locations[indexPath.row]
-        performSegueWithIdentifier("Location", sender: selectedView)
+        
+        let imageNames = MWHelper.getImageNames(selectedView.directory)
+        let images = MWHelper.getImages(selectedView.directory, imageNames: imageNames)
+        galleryImages = MWHelper.getGalleryImages(images, text: selectedView.text)
+        let browser = MWPhotoBrowser(delegate: self)
+        MWHelper.configureBrowser(browser)
+        self.navigationController?.pushViewController(browser, animated: true)
+        
         table.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
@@ -81,6 +95,18 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let person = locations[indexPath.row]
         cell.textLabel!.text = person.valueForKey("name") as! String?
         return cell
+    }
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(galleryImages.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if index < UInt(galleryImages.count) {
+            return galleryImages.objectAtIndex(Int(index)) as! MWPhoto
+        }
+        
+        return nil
     }
     
     /*
@@ -117,19 +143,4 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         return true
     }
     */
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "Location" {
-            let controller = segue.destinationViewController as! LocationViewController
-            let location = sender as! Location
-            controller.text = location.text
-            controller.directory = location.directory
-            controller.navigationItem.title = location.name
-        }
-    }
 }

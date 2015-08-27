@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B52DEA631ACCC35C001D0E5C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */; };
+		7193BEB1BE469DB140BBF731 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13A0979BF38FFDD866CEDD /* libPods.a */; };
 		B52DFC1A1AA578BC00E7BED0 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = B52DFC191AA578BC00E7BED0 /* Images */; };
 		B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F63121AA890B500B6CF0A /* CreditsViewController.swift */; };
 		B5499F6C1A9E92020092F316 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5499F6B1A9E92020092F316 /* Main.storyboard */; };
@@ -15,16 +15,15 @@
 		B54BB0A31A9515F70084327D /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
 		B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
 		B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A61A954B000084327D /* CustomAnnotation.swift */; };
-		B54BCB7E1ADB18B70090F416 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
 		B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */; };
 		B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */; };
+		B5A8FF3D1B8D72A100D1E08B /* MWHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A8FF3C1B8D72A100D1E08B /* MWHelper.swift */; };
+		B5A8FF3F1B8D883700D1E08B /* BMPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A8FF3E1B8D883700D1E08B /* BMPhotoBrowser.swift */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
 		B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D81A770ED6003E143B /* HafenCity.xcdatamodeld */; };
 		B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B309E21A770ED6003E143B /* LaunchScreen.xib */; };
 		B5B309F01A770ED6003E143B /* HafenCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309EF1A770ED6003E143B /* HafenCityTests.swift */; };
-		B5BFF58D1AD06C2800292D12 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BFF58C1AD06C2700292D12 /* TextViewController.swift */; };
-		B5BFF58F1AD06C5200292D12 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BFF58E1AD06C5200292D12 /* LocationViewController.swift */; };
 		B5D584801AA6006A004C2D0E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5847F1AA6006A004C2D0E /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,17 +51,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		5C13A0979BF38FFDD866CEDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		85A64A00A18CA8E9B390B3EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AC876A7CEE33C0D65A522EBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B52DFC191AA578BC00E7BED0 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		B52F63121AA890B500B6CF0A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		B5499F6B1A9E92020092F316 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B54BB0A01A9513360084327D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B54BB0A21A9515F70084327D /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		B54BB0A61A954B000084327D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
-		B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B5A8FF3C1B8D72A100D1E08B /* MWHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWHelper.swift; sourceTree = "<group>"; };
+		B5A8FF3E1B8D883700D1E08B /* BMPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPhotoBrowser.swift; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B309D51A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B309D61A770ED6003E143B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,8 +73,7 @@
 		B5B309E91A770ED6003E143B /* HafenCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HafenCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B309EE1A770ED6003E143B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B309EF1A770ED6003E143B /* HafenCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HafenCityTests.swift; sourceTree = "<group>"; };
-		B5BFF58C1AD06C2700292D12 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
-		B5BFF58E1AD06C5200292D12 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		B5B61AC61B8D18DB00E84CAF /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		B5D5847F1AA6006A004C2D0E /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7193BEB1BE469DB140BBF731 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +96,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7DF5C1D960914976966CA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85A64A00A18CA8E9B390B3EB /* Pods.debug.xcconfig */,
+				AC876A7CEE33C0D65A522EBF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A39099A67B009E513DEB3217 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C13A0979BF38FFDD866CEDD /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5B309C81A770ED6003E143B = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +121,8 @@
 				B5B309D31A770ED6003E143B /* HafenCity */,
 				B5B309EC1A770ED6003E143B /* HafenCityTests */,
 				B5B309D21A770ED6003E143B /* Products */,
+				1F7DF5C1D960914976966CA4 /* Pods */,
+				A39099A67B009E513DEB3217 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,12 +142,11 @@
 				B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */,
 				B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */,
 				B5D5847F1AA6006A004C2D0E /* HistoryViewController.swift */,
+				B5A8FF3E1B8D883700D1E08B /* BMPhotoBrowser.swift */,
 				B52F63121AA890B500B6CF0A /* CreditsViewController.swift */,
-				B5BFF58C1AD06C2700292D12 /* TextViewController.swift */,
-				B5BFF58E1AD06C5200292D12 /* LocationViewController.swift */,
+				B5A8FF3C1B8D72A100D1E08B /* MWHelper.swift */,
 				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
-				B54BCB7D1ADB18B70090F416 /* GalleryViewController.swift */,
-				B52DEA621ACCC35C001D0E5C /* ImageViewController.swift */,
+				B5B61AC61B8D18DB00E84CAF /* BridgingHeader.h */,
 				B54BB0A01A9513360084327D /* Location.swift */,
 				B57BD0FA1A7B2F3700290665 /* Images.xcassets */,
 				B5B309E21A770ED6003E143B /* LaunchScreen.xib */,
@@ -169,10 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5B309F31A770ED6003E143B /* Build configuration list for PBXNativeTarget "HafenCity" */;
 			buildPhases = (
+				3DD6EDC5959E11371AB07A86 /* Check Pods Manifest.lock */,
 				B5B309CD1A770ED6003E143B /* Sources */,
 				B5B309CE1A770ED6003E143B /* Frameworks */,
 				B5B309CF1A770ED6003E143B /* Resources */,
 				B54BB0A41A9518CF0084327D /* CopyFiles */,
+				B7559909D97EE786E2B851AA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,6 +283,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3DD6EDC5959E11371AB07A86 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7559909D97EE786E2B851AA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5B309CD1A770ED6003E143B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -269,15 +324,13 @@
 				B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */,
 				B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */,
 				B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */,
+				B5A8FF3F1B8D883700D1E08B /* BMPhotoBrowser.swift in Sources */,
 				B5D584801AA6006A004C2D0E /* HistoryViewController.swift in Sources */,
-				B54BCB7E1ADB18B70090F416 /* GalleryViewController.swift in Sources */,
-				B5BFF58D1AD06C2800292D12 /* TextViewController.swift in Sources */,
-				B52DEA631ACCC35C001D0E5C /* ImageViewController.swift in Sources */,
+				B5A8FF3D1B8D72A100D1E08B /* MWHelper.swift in Sources */,
 				B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */,
 				B54BB0A11A9513360084327D /* Location.swift in Sources */,
 				B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */,
 				B5B309DA1A770ED6003E143B /* HafenCity.xcdatamodeld in Sources */,
-				B5BFF58F1AD06C5200292D12 /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +443,7 @@
 		};
 		B5B309F41A770ED6003E143B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85A64A00A18CA8E9B390B3EB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -399,12 +453,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = HafenCity/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		B5B309F51A770ED6003E143B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC876A7CEE33C0D65A522EBF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -414,6 +470,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = HafenCity/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
