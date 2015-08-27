@@ -8,35 +8,36 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, MWPhotoBrowserDelegate {
+class HistoryViewController: UIViewController, MWPhotoBrowserDelegate, UITabBarControllerDelegate {
     
-//    var locationViewController: LocationViewController!
+    let directory = "history"
+    let textDirectory = "history_text"
     var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        self.edgesForExtendedLayout = .Top
-        
-//        locationViewController = LocationViewController()
-//        locationViewController.directory = "history"
-//        locationViewController.textDirectory = "history_text"
-        
-//        self.addChildViewController(locationViewController)
-//        self.view.addSubview(locationViewController.view)
-//        locationViewController.didMoveToParentViewController(self)
-        
-        let directory = "history"
-        let textDirectory = "history_text"
+        // Do any additional setup after loading the view, typically from a nib.        
         
         let imageNames = MWHelper.getImageNames(directory)
         let images = MWHelper.getImages(directory, imageNames: imageNames)
-        //      let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
-        galleryImages = MWHelper.getGalleryImages(images)
+        let textArray = MWHelper.getTextArray(textDirectory, imageNames: imageNames)
+        galleryImages = MWHelper.getGalleryImages(images, textArray: textArray)
         let browser = BMPhotoBrowser(delegate: self)
         MWHelper.configureBrowser(browser)
+        browser.alwaysShowControls = true
         
         self.navigationController?.pushViewController(browser, animated: false)
+        self.tabBarController?.delegate = self
+    }
+ 
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        // Prevent popping view controller
+        if self.tabBarController?.selectedViewController == viewController && self.navigationController == viewController  {
+            return false
+        } else {
+            return true
+        }
     }
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {

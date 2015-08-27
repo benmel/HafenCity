@@ -110,12 +110,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         let annotation = view.annotation as! CustomAnnotation
         let imageNames = MWHelper.getImageNames(annotation.directory)
         let images = MWHelper.getImages(annotation.directory, imageNames: imageNames)
-//      let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
-        galleryImages = MWHelper.getGalleryImages(images)
+        galleryImages = MWHelper.getGalleryImages(images, text: annotation.text)
         let browser = MWPhotoBrowser(delegate: self)
         MWHelper.configureBrowser(browser)
         self.navigationController?.pushViewController(browser, animated: true)
-//        performSegueWithIdentifier("Location", sender: annotation)
     }
     
     func setCenter(animated: Bool) {
@@ -154,29 +152,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         
         return nil
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "Location" {
-//            let controller = segue.destinationViewController as! LocationViewController
-            let annotation = sender as! CustomAnnotation
-//            controller.text = annotation.text
-//            controller.directory = annotation.directory
-//            controller.navigationItem.title = annotation.title
-            
-            let imageNames = MWHelper.getImageNames(annotation.directory)
-            let images = MWHelper.getImages(annotation.directory, imageNames: imageNames)
-//            let textNames = MWHelper.getTextNames(annotation.directory, imageNames: imageNames)
-            galleryImages = MWHelper.getGalleryImages(images)
-        }
     }
 }

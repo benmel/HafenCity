@@ -8,21 +8,33 @@
 
 class MWHelper {
         
-    static func getGalleryImages(images: [UIImage]) -> NSMutableArray {
+    static func getGalleryImages(images: [UIImage], text: String) -> NSMutableArray {
         let array: NSMutableArray = []
         for image in images {
-            array.addObject(MWPhoto(image: image))
+            let mwphoto = MWPhoto(image: image)
+            mwphoto.caption = text
+            array.addObject(mwphoto)
+        }
+        return array
+    }
+    
+    static func getGalleryImages(images: [UIImage], textArray: [String?]) -> NSMutableArray {
+        let array: NSMutableArray = []
+        for var index = 0; index < images.count; index++ {
+            let mwphoto = MWPhoto(image: images[index])
+            mwphoto.caption = textArray[index]
+            array.addObject(mwphoto)
         }
         return array
     }
     
     static func configureBrowser(browser: MWPhotoBrowser) {
         browser.hidesBottomBarWhenPushed = false
+        browser.edgesForExtendedLayout = .Top
         browser.displayActionButton = false
         browser.enableGrid = false
         browser.enableSwipeToDismiss = false
         browser.zoomPhotosToFill = false
-        browser.edgesForExtendedLayout = .Top
     }
     
     static func getImageNames(directory: String) -> [String] {
@@ -47,16 +59,16 @@ class MWHelper {
         return images
     }
     
-    static func getTextNames(directory: String, imageNames: [String]) -> [String?] {
-        var textList = [String?]()
+    static func getTextArray(directory: String, imageNames: [String]) -> [String?] {
+        var textArray = [String?]()
         let textFullDirectory = "Images/" + directory
         for name in imageNames {
             let filename = name.stringByDeletingPathExtension
             let textPath = NSBundle.mainBundle().pathForResource(filename, ofType: "txt", inDirectory: textFullDirectory)
             let text = String(contentsOfFile: textPath!, encoding: NSUTF8StringEncoding, error: nil)!
-            textList.append(text)
+            textArray.append(text)
         }
-        return textList
+        return textArray
     }
     
 }
