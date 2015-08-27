@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map of the HafenCity-->
         <scene sceneID="q7t-IY-dzg">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="Map View Controller" id="lUL-uM-tt1" customClass="MapViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="lUL-uM-tt1" customClass="MapViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DM0-EA-rVH"/>
                         <viewControllerLayoutGuide type="bottom" id="HSe-aK-dim"/>
@@ -21,7 +21,9 @@
                             <outletCollection property="gestureRecognizers" destination="AqF-LL-weN" appends="YES" id="mCb-ZR-jxB"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Map of the HafenCity" id="aRj-em-27r"/>
+                    <navigationItem key="navigationItem" title="Map of the HafenCity" id="aRj-em-27r">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="KVF-a7-tc0"/>
+                    </navigationItem>
                     <keyCommands/>
                     <connections>
                         <segue destination="hn1-nm-huz" kind="show" identifier="Location" id="j1w-pm-b7C"/>
@@ -89,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="3781" y="1921"/>
         </scene>
-        <!--Credits View Controller-->
+        <!--About-->
         <scene sceneID="tLj-Mh-4wR">
             <objects>
-                <viewController storyboardIdentifier="CreditsViewController" title="Credits View Controller" id="DHi-a0-Y63" customClass="CreditsViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreditsViewController" id="DHi-a0-Y63" customClass="CreditsViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yza-Jf-VhE"/>
                         <viewControllerLayoutGuide type="bottom" id="L8B-lv-PEb"/>
