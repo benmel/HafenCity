@@ -10,7 +10,7 @@
 #import "MWCaptionView.h"
 #import "MWPhoto.h"
 
-static const CGFloat labelPadding = 10;
+static const CGFloat labelPadding = 20;
 
 // Private
 @interface MWCaptionView () {
@@ -44,7 +44,7 @@ static const CGFloat labelPadding = 10;
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_label.font}
                                                 context:nil].size;
-    return CGSizeMake(size.width, textSize.height + labelPadding * 2);
+    return CGSizeMake(size.width, textSize.height + labelPadding);
 }
 
 - (void)setupCaption {
@@ -54,7 +54,7 @@ static const CGFloat labelPadding = 10;
     _label.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _label.opaque = NO;
     _label.backgroundColor = [UIColor clearColor];
-    _label.textAlignment = NSTextAlignmentCenter;
+    _label.textAlignment = NSTextAlignmentLeft;
     _label.lineBreakMode = NSLineBreakByWordWrapping;
 
     _label.numberOfLines = 0;
