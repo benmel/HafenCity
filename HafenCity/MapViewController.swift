@@ -13,7 +13,8 @@ import CoreData
 class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDelegate {
 
     var mapView: MKMapView!
-    var button: UIButton!
+    var centerButton: UIButton!
+    var satelliteButton: UIButton!
     var locations:[Location] = []
     var mapLoaded = false
     var annotationsLoaded = false
@@ -33,10 +34,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         
         self.view.addSubview(mapView)
         
-        // set up button
-        button = UIButton.buttonWithType(.Custom) as! UIButton
-        button.addTarget(self, action: "centerTapped:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
+        // set up buttons
+        centerButton = UIButton.buttonWithType(.Custom) as! UIButton
+        centerButton.addTarget(self, action: "centerTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(centerButton)
+        
+        satelliteButton = UIButton.buttonWithType(.Custom) as! UIButton
+        satelliteButton.addTarget(self, action: "satelliteTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(satelliteButton)
         
         // get managed context
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -55,14 +60,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        // set up button
+        // set up buttons
         let centerImage = UIImage(named: "Center")!
-        let size = centerImage.size
-        let x = self.view.frame.width - size.width - 10
-        let y = self.view.frame.height - size.height - 10
-        let frame = CGRectMake(x, y, size.width, size.height)
-        button.frame = frame
-        button.setBackgroundImage(centerImage, forState: .Normal)
+        let centerImageFocus = centerImage.imageWithRenderingMode(.AlwaysTemplate)
+        let sizeCenter = centerImage.size
+        let xCenter = self.view.frame.width - sizeCenter.width - 10
+        let yCenter = self.view.frame.height - sizeCenter.height - 15
+        let frameCenter = CGRectMake(xCenter, yCenter, sizeCenter.width, sizeCenter.height)
+        centerButton.frame = frameCenter
+        centerButton.setImage(centerImage, forState: .Normal)
+        centerButton.setImage(centerImageFocus, forState: .Highlighted)
+
+        let satelliteImage = UIImage(named: "Satellite")!
+        let satelliteImageFocus = satelliteImage.imageWithRenderingMode(.AlwaysTemplate)
+        let sizeSatellite = satelliteImage.size
+        let xSatellite = xCenter
+        let ySatellite = yCenter - sizeSatellite.height - 15
+        let frameSatellite = CGRectMake(xSatellite, ySatellite, sizeSatellite.width, sizeSatellite.height)
+        satelliteButton.frame = frameSatellite
+        satelliteButton.setImage(satelliteImage, forState: .Normal)
+        satelliteButton.setImage(satelliteImageFocus, forState: .Selected)
+        satelliteButton.setImage(satelliteImageFocus, forState: .Highlighted)
         
         // set up map
         mapView.frame = self.view.frame
@@ -87,6 +105,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
     
     func centerTapped(sender: UIButton!) {
         setCenter(true)
+    }
+    
+    func satelliteTapped(sender: UIButton!) {
+        if mapView.mapType == .Standard {
+            mapView.mapType = .Satellite
+            sender.selected = true
+        } else {
+            mapView.mapType = .Standard
+            sender.selected = false
+        }
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
