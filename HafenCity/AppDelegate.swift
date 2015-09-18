@@ -17,35 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        if NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedOnce") {
-            // app has already launched
-        } else {
-            let dataPath = NSBundle.mainBundle().pathForResource("Locations", ofType: "json")
-            let data = NSData(contentsOfFile: dataPath!)
-            let locations = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers, error: nil) as! NSArray
-            
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedContext = appDelegate.managedObjectContext!
-            
-            locations.enumerateObjectsUsingBlock( { (obj, idx, stop) -> Void in
-                
-                var location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedContext) as! Location
-                location.name = obj.objectForKey("name") as! String
-                location.coordX = obj.objectForKey("coordX") as! NSNumber
-                location.coordY = obj.objectForKey("coordY") as! NSNumber
-                location.directory = obj.objectForKey("directory") as! String
-                location.text = obj.objectForKey("text") as! String
-                
-                var error: NSError?
-                if (!managedContext.save(&error)) {
-                    println("Could not save \(error), \(error?.userInfo)")
-                }
-            })
-            
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
         return true
     }
 
@@ -92,6 +63,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("HafenCity.sqlite")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+            let sourceSqliteURLs = [NSBundle.mainBundle().URLForResource("HafenCity", withExtension: "sqlite")!, NSBundle.mainBundle().URLForResource("HafenCity", withExtension: "sqlite-wal")!, NSBundle.mainBundle().URLForResource("HafenCity", withExtension: "sqlite-shm")!]
+            
+            let destSqliteURLs = [self.applicationDocumentsDirectory.URLByAppendingPathComponent("HafenCity.sqlite"),
+                self.applicationDocumentsDirectory.URLByAppendingPathComponent("HafenCity.sqlite-wal"),
+                self.applicationDocumentsDirectory.URLByAppendingPathComponent("HafenCity.sqlite-shm")]
+            
+            var error: NSError? = nil
+            for var index = 0; index < sourceSqliteURLs.count; index++ {
+                NSFileManager.defaultManager().copyItemAtURL(sourceSqliteURLs[index], toURL: destSqliteURLs[index], error: &error)
+            }
+        }
+        
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {

@@ -25,9 +25,6 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="KVF-a7-tc0"/>
                     </navigationItem>
                     <keyCommands/>
-                    <connections>
-                        <segue destination="hn1-nm-huz" kind="show" identifier="Location" id="j1w-pm-b7C"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer enabled="NO" id="AqF-LL-weN">
@@ -65,7 +62,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
-                        <segue destination="hn1-nm-huz" kind="show" identifier="Location" id="lx6-RO-joI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-I0-TEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,24 +105,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3781" y="2821"/>
-        </scene>
-        <!--Location View Controller-->
-        <scene sceneID="W3R-qv-nks">
-            <objects>
-                <viewController storyboardIdentifier="LocationViewController" id="hn1-nm-huz" customClass="LocationViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eFf-Wp-M0i"/>
-                        <viewControllerLayoutGuide type="bottom" id="vmL-4l-Hep"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fuA-VU-JtR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eu9-2F-i47" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4869" y="651"/>
         </scene>
         <!--Map-->
         <scene sceneID="eOl-bA-XlM">
@@ -227,7 +205,4 @@
             <point key="canvasLocation" x="1293" y="1497"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="j1w-pm-b7C"/>
-    </inferredMetricsTieBreakers>
 </document>

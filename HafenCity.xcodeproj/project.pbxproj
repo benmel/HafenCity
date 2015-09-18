@@ -12,12 +12,13 @@
 		B52F63131AA890B500B6CF0A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F63121AA890B500B6CF0A /* CreditsViewController.swift */; };
 		B5499F6C1A9E92020092F316 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5499F6B1A9E92020092F316 /* Main.storyboard */; };
 		B54BB0A11A9513360084327D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A01A9513360084327D /* Location.swift */; };
-		B54BB0A31A9515F70084327D /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
-		B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = B54BB0A21A9515F70084327D /* Locations.json */; };
 		B54BB0A71A954B000084327D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54BB0A61A954B000084327D /* CustomAnnotation.swift */; };
 		B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BD0FA1A7B2F3700290665 /* Images.xcassets */; };
 		B591749C1A9EF3AB0005C1F3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */; };
 		B591749E1A9EF9CF0005C1F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */; };
+		B59EF8101BAB8DA900955702 /* HafenCity.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B59EF80D1BAB8DA900955702 /* HafenCity.sqlite */; };
+		B59EF8111BAB8DA900955702 /* HafenCity.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = B59EF80E1BAB8DA900955702 /* HafenCity.sqlite-shm */; };
+		B59EF8121BAB8DA900955702 /* HafenCity.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = B59EF80F1BAB8DA900955702 /* HafenCity.sqlite-wal */; };
 		B5A8FF3D1B8D72A100D1E08B /* MWHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A8FF3C1B8D72A100D1E08B /* MWHelper.swift */; };
 		B5A8FF3F1B8D883700D1E08B /* BMPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A8FF3E1B8D883700D1E08B /* BMPhotoBrowser.swift */; };
 		B5B309D71A770ED6003E143B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B309D61A770ED6003E143B /* AppDelegate.swift */; };
@@ -44,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				B54BB0A51A9518F80084327D /* Locations.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,11 +58,13 @@
 		B52F63121AA890B500B6CF0A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		B5499F6B1A9E92020092F316 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B54BB0A01A9513360084327D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		B54BB0A21A9515F70084327D /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		B54BB0A61A954B000084327D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		B57BD0FA1A7B2F3700290665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B591749B1A9EF3AB0005C1F3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B591749D1A9EF9CF0005C1F3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B59EF80D1BAB8DA900955702 /* HafenCity.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = HafenCity.sqlite; sourceTree = "<group>"; };
+		B59EF80E1BAB8DA900955702 /* HafenCity.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HafenCity.sqlite-shm"; sourceTree = "<group>"; };
+		B59EF80F1BAB8DA900955702 /* HafenCity.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HafenCity.sqlite-wal"; sourceTree = "<group>"; };
 		B5A8FF3C1B8D72A100D1E08B /* MWHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWHelper.swift; sourceTree = "<group>"; };
 		B5A8FF3E1B8D883700D1E08B /* BMPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPhotoBrowser.swift; sourceTree = "<group>"; };
 		B5B309D11A770ED6003E143B /* HafenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HafenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				B52DFC191AA578BC00E7BED0 /* Images */,
-				B54BB0A21A9515F70084327D /* Locations.json */,
 				B5B309D31A770ED6003E143B /* HafenCity */,
 				B5B309EC1A770ED6003E143B /* HafenCityTests */,
 				B5B309D21A770ED6003E143B /* Products */,
@@ -148,6 +149,9 @@
 				B54BB0A61A954B000084327D /* CustomAnnotation.swift */,
 				B5B61AC61B8D18DB00E84CAF /* BridgingHeader.h */,
 				B54BB0A01A9513360084327D /* Location.swift */,
+				B59EF80D1BAB8DA900955702 /* HafenCity.sqlite */,
+				B59EF80E1BAB8DA900955702 /* HafenCity.sqlite-shm */,
+				B59EF80F1BAB8DA900955702 /* HafenCity.sqlite-wal */,
 				B57BD0FA1A7B2F3700290665 /* Images.xcassets */,
 				B5B309E21A770ED6003E143B /* LaunchScreen.xib */,
 				B5499F6B1A9E92020092F316 /* Main.storyboard */,
@@ -266,10 +270,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59EF8121BAB8DA900955702 /* HafenCity.sqlite-wal in Resources */,
+				B59EF8111BAB8DA900955702 /* HafenCity.sqlite-shm in Resources */,
 				B52DFC1A1AA578BC00E7BED0 /* Images in Resources */,
+				B59EF8101BAB8DA900955702 /* HafenCity.sqlite in Resources */,
 				B57BD0FB1A7B2F3700290665 /* Images.xcassets in Resources */,
 				B5499F6C1A9E92020092F316 /* Main.storyboard in Resources */,
-				B54BB0A31A9515F70084327D /* Locations.json in Resources */,
 				B5B309E41A770ED6003E143B /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

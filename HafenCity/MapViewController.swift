@@ -23,9 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.edgesForExtendedLayout = .Top
-        
+        // Do any additional setup after loading the view.        
         // set up map
         mapView = MKMapView()
         mapView.delegate = self
