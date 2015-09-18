@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, MWPhotoBrowserDelegate, UITabBarControllerDelegate {
+class HistoryViewController: UIViewController, MWPhotoBrowserDelegate {
     
     let directory = "history"
     let textDirectory = "history_text"
@@ -25,19 +25,7 @@ class HistoryViewController: UIViewController, MWPhotoBrowserDelegate, UITabBarC
         let browser = BMPhotoBrowser(delegate: self)
         MWHelper.configureBrowser(browser)
         browser.alwaysShowControls = true
-        
         self.navigationController?.pushViewController(browser, animated: false)
-        self.tabBarController?.delegate = self
-    }
- 
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        
-        // Prevent popping view controller
-        if self.tabBarController?.selectedViewController == viewController && self.navigationController == viewController  {
-            return false
-        } else {
-            return true
-        }
     }
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {

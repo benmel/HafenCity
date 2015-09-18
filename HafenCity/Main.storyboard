@@ -87,6 +87,7 @@
         <!--About-->
         <scene sceneID="tLj-Mh-4wR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CreditsViewController" id="DHi-a0-Y63" customClass="CreditsViewController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yza-Jf-VhE"/>
@@ -99,7 +100,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="About" id="EaA-xn-hyf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-p3-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3781" y="2821"/>
         </scene>
@@ -163,6 +163,7 @@
         <!--About-->
         <scene sceneID="ti8-tq-1kt">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5b-Ga-cJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kNM-b3-S49" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" id="oEH-hT-yak"/>
                     <toolbarItems/>
@@ -175,14 +176,13 @@
                         <segue destination="DHi-a0-Y63" kind="relationship" relationship="rootViewController" id="u3e-Gl-Osh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e5b-Ga-cJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2969" y="2821"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kp9-cJ-QPk">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="v5P-qR-erR" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="v5P-qR-erR" customClass="TabBarController" customModule="HafenCity" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="PkX-he-c2h">
