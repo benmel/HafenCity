@@ -229,7 +229,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
         [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
         _previousViewControllerBackButton = previousViewController.navigationItem.backBarButtonItem; // remember previous
-        previousViewController.navigationItem.backBarButtonItem = newBackButton;
+        // Commented next line because it caused three dots in place of back button
+        //previousViewController.navigationItem.backBarButtonItem = newBackButton;
     }
 
     // Toolbar items

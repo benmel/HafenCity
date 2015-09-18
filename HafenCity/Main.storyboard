@@ -17,22 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="AqF-LL-weN" appends="YES" id="mCb-ZR-jxB"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Map of the HafenCity" id="aRj-em-27r">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="KVF-a7-tc0"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="MGi-qc-T8p"/>
                     </navigationItem>
                     <keyCommands/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwR-yC-Aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="AqF-LL-weN">
-                    <connections>
-                        <action selector="didTap:" destination="lUL-uM-tt1" id="E1D-uO-rw1"/>
-                        <outlet property="delegate" destination="lUL-uM-tt1" id="ev1-qN-l5d"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3781" y="238"/>
         </scene>
