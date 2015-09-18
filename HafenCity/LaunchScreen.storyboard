@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NE8-oX-LWo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="BVd-aU-8tz">
+            <objects>
+                <viewController id="3Cs-9b-aP3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YZG-MD-bI0"/>
+                        <viewControllerLayoutGuide type="bottom" id="gbQ-4u-lKG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fm9-Ch-PUq">
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fz9-qT-c41"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qa-xP-hwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1675" y="860"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FRD-Gd-lRx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ex-Gv-WcG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="d3k-SH-oEA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dyh-Yl-Qis">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3Cs-9b-aP3" kind="relationship" relationship="rootViewController" id="1ga-Zw-knn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vR-IB-iP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="860"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Sow-UL-hEM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NE8-oX-LWo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="lIw-Rm-VIQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5ex-Gv-WcG" kind="relationship" relationship="viewControllers" id="EAE-Bf-tkj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFO-bt-amI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="860"/>
+        </scene>
+    </scenes>
+</document>
