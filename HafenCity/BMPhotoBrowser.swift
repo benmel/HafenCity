@@ -11,4 +11,9 @@ class BMPhotoBrowser: MWPhotoBrowser {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.hidesBackButton = false
+    }
 }

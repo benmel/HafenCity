@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-class ListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, MWPhotoBrowserDelegate {
+class ListViewController: UITableViewController, MWPhotoBrowserDelegate {
 
-    @IBOutlet weak var table: UITableView!
-    var locations = [Location]()
-    
+    var locations: [Location] = []
     var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
@@ -25,16 +23,14 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        table.dataSource = self
-        table.delegate = self
         fetchLocations()
     }
     
     override func viewDidAppear(animated: Bool) {
         // Stop flashing scroll indicator
-        table.showsVerticalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         super.viewDidAppear(animated)
-        table.showsVerticalScrollIndicator = true
+        tableView.showsVerticalScrollIndicator = true
     }
     
     func fetchLocations() {
@@ -47,9 +43,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let fetchRequest = NSFetchRequest(entityName:"Location")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [Location]?
-        if let results = fetchedResults {
-            locations = results
+        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [Location] {
+            locations = fetchedResults
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
@@ -70,8 +65,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let browser = MWPhotoBrowser(delegate: self)
         MWHelper.configureBrowser(browser)
         self.navigationController?.pushViewController(browser, animated: true)
-        
-        table.deselectRowAtIndexPath(indexPath, animated: true)
+
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     // MARK: - Table view data source
@@ -92,8 +87,8 @@ class ListViewController: UITableViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
-        let person = locations[indexPath.row]
-        cell.textLabel!.text = person.valueForKey("name") as! String?
+        let location = locations[indexPath.row]
+        cell.textLabel?.text = location.name
         return cell
     }
     

@@ -14,10 +14,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
 
     var mapView: MKMapView!
     var button: UIButton!
-    var locations = [Location]()
+    var locations:[Location] = []
     var mapLoaded = false
     var annotationsLoaded = false
-    
     var galleryImages: NSMutableArray = []
     
     override func viewDidLoad() {
@@ -28,6 +27,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         mapView = MKMapView()
         mapView.delegate = self
         mapView.showsPointsOfInterest = false
+        setCenter(false)
+        
         self.view.addSubview(mapView)
         
         // set up button
@@ -42,9 +43,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         // get locations
         var error: NSError?
         let fetchRequest = NSFetchRequest(entityName:"Location")
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [Location]?
-        if let results = fetchedResults {
-            locations = results
+        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [Location] {
+            locations = fetchedResults
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
@@ -54,18 +54,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         super.viewWillLayoutSubviews()
 
         // set up button
-        let centerImage = UIImage(named: "map")
-        let size = centerImage?.size
-        let x = self.view.frame.width - size!.width - 10
-        let y = self.view.frame.height - size!.height - 10
-        let frame = CGRectMake(x, y, size!.width, size!.height)
+        let centerImage = UIImage(named: "map")!
+        let size = centerImage.size
+        let x = self.view.frame.width - size.width - 10
+        let y = self.view.frame.height - size.height - 60
+        let frame = CGRectMake(x, y, size.width, size.height)
         button.frame = frame
         button.setBackgroundImage(centerImage, forState: .Normal)
         
         // set up map
         mapView.frame = self.view.frame
         if !mapLoaded {
-            setCenter(false)
+            setCenter(true)
             mapLoaded = true
         }
     }

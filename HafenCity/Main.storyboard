@@ -60,9 +60,6 @@
                     <navigationItem key="navigationItem" title="List of Buildings" id="FZW-yM-36X">
                         <barButtonItem key="backBarButtonItem" title="Back" id="1A0-Xm-7ZG"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="table" destination="GNR-dB-Dx3" id="7Ji-0F-j6h"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-I0-TEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
