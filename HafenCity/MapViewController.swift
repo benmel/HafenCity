@@ -23,6 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.        
+        setupNavBar()
+        
         // set up map
         mapView = MKMapView()
         mapView.delegate = self
@@ -54,10 +56,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
         super.viewWillLayoutSubviews()
 
         // set up button
-        let centerImage = UIImage(named: "map")!
+        let centerImage = UIImage(named: "Center")!
         let size = centerImage.size
         let x = self.view.frame.width - size.width - 10
-        let y = self.view.frame.height - size.height - 60
+        let y = self.view.frame.height - size.height - 10
         let frame = CGRectMake(x, y, size.width, size.height)
         button.frame = frame
         button.setBackgroundImage(centerImage, forState: .Normal)
@@ -68,6 +70,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, MWPhotoBrowserDele
             setCenter(true)
             mapLoaded = true
         }
+    }
+    
+    func setupNavBar() {
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 1)
     }
         
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {

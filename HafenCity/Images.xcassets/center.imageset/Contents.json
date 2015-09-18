@@ -3,17 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ic_map.png"
+      "filename" : "gps1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ic_map_2x.png"
+      "filename" : "gps2.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "ic_map_3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

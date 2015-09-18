@@ -16,13 +16,20 @@ class CreditsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupNavBar()
         textView = UITextView()
         textView.font = UIFont.systemFontOfSize(18)
         textView.selectable = false
         textView.editable = false
-        textView.text = "This project was made possible thanks to support from the following organizations:\nHamburg University\nMax Kade Foundation\nNorthwestern University\nHamburgisches Architekturarchiv\n\nIcons are licensed under Creative Commons 3.0 from:\nGPS icon from Icons8\n\nBuilt by Ben Meline in March 2015\nSend comments to benjaminmeline2015@u.northwestern.edu"
+        textView.text = "This project was made possible thanks to support from the following organizations:\nHamburg University\nMax Kade Foundation\nNorthwestern University\nHamburgisches Architekturarchiv\n\nSend comments to benjaminmeline2015@u.northwestern.edu"
         
         self.view.addSubview(textView)
+    }
+    
+    func setupNavBar() {
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 1)
     }
     
     override func viewWillLayoutSubviews() {

@@ -23,7 +23,14 @@ class ListViewController: UITableViewController, MWPhotoBrowserDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        setupNavBar()
         fetchLocations()
+    }
+    
+    func setupNavBar() {
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 1)
     }
     
     override func viewDidAppear(animated: Bool) {

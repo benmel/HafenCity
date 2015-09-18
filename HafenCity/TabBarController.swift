@@ -17,7 +17,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
     }
     
-    
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         // Disable popping view controller
         if selectedViewController == viewController {

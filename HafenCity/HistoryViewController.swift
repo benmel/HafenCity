@@ -18,6 +18,7 @@ class HistoryViewController: UIViewController, MWPhotoBrowserDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.        
         
+        setupNavBar()
         let imageNames = MWHelper.getImageNames(directory)
         let images = MWHelper.getImages(directory, imageNames: imageNames)
         let textArray = MWHelper.getTextArray(textDirectory, imageNames: imageNames)
@@ -26,6 +27,12 @@ class HistoryViewController: UIViewController, MWPhotoBrowserDelegate {
         MWHelper.configureBrowser(browser)
         browser.alwaysShowControls = true
         self.navigationController?.pushViewController(browser, animated: false)
+    }
+    
+    func setupNavBar() {
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 1)
     }
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
