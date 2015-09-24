@@ -19,10 +19,10 @@ class CreditsViewController: UIViewController {
         setupNavBar()
         textView = UITextView()
         textView.font = UIFont.systemFontOfSize(18)
-        textView.selectable = false
         textView.editable = false
-        textView.text = "This project was made possible thanks to support from the following organizations:\n\u{2022} Hamburg University\n\u{2022} Hamburgisches Architekturarchiv\n\u{2022} Max Kade Foundation\n\u{2022} Northwestern University\n\nPlease send comments to benjaminmeline2015@u.northwestern.edu"
-        
+        textView.dataDetectorTypes = .Link
+        textView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.blueColor(), NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        textView.text = "This project was made possible thanks to support from the following organizations:\n\u{2022} Hamburg University\n\u{2022} Hamburgisches Architekturarchiv\n\u{2022} Max Kade Foundation\n\u{2022} Northwestern University\n\nLearn more about this project at: https://curricula.mmlc.northwestern.edu/hamburg/2015s6/home-english/\nPlease send comments to: benjaminmeline2015@u.northwestern.edu"
         self.view.addSubview(textView)
     }
     
