@@ -23,6 +23,7 @@ class ListViewController: UITableViewController, MWPhotoBrowserDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         setupNavBar()
         fetchLocations()
     }
@@ -96,6 +97,7 @@ class ListViewController: UITableViewController, MWPhotoBrowserDelegate {
         // Configure the cell...
         let location = locations[indexPath.row]
         cell.textLabel?.text = location.name
+        cell.accessoryType = .DisclosureIndicator
         return cell
     }
     
