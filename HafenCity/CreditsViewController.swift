@@ -39,10 +39,11 @@ class CreditsViewController: UIViewController {
             top = NSLayoutConstraint(item: textView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0)
         }
         let bottom = NSLayoutConstraint(item: textView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0)
-        let leading = NSLayoutConstraint(item: textView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: spacing)
-        let trailing = NSLayoutConstraint(item: textView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: -spacing)
+        let leading = NSLayoutConstraint(item: textView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: textView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0)
         view.addConstraints([top, bottom, leading, trailing])
         
+        textView.textContainerInset = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
         textView.font = UIFont.systemFontOfSize(18)
         textView.editable = false
         textView.dataDetectorTypes = .Link
